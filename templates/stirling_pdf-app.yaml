@@ -16,8 +16,8 @@ spec:
       values: |
         nameOverride: stirling-pdf
         service:
+          externalPort: 80
           type: NodePort
-          port: 80
           targetPort: 8080
           nodePort: 31200
 
@@ -26,9 +26,7 @@ spec:
     namespace: stirling-pdf
   syncPolicy:
     automated:
-      prune: false
       selfHeal: true
-      allowEmpty: false
     syncOptions:
     - CreateNamespace=true
     managedNamespaceMetadata:
