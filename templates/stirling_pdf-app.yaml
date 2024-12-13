@@ -12,9 +12,9 @@ spec:
     repoURL: https://stirling-tools.github.io/Stirling-PDF-chart
     targetRevision: 1.3.1
     helm:
-      releaseName: stirling-pdf
-      valueFiles:
-      - stirling_pdf-values.yaml
+     # releaseName: stirling-pdf
+     # values: |
+     #   nameOverride: stirling-pdf
   destination:
     server: "https://kubernetes.default.svc"
     namespace: stirling-pdf
