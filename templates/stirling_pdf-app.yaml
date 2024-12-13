@@ -17,15 +17,10 @@ spec:
         nameOverride: stirling-pdf
         service:
           type: NodePort
-          ports:
-            - name: http
-              port: 80
-              targetPort: 8080
-              nodePort: 31200
-            - name: https
-              port: 443
-              targetPort: 8443
-              nodePort: 31201
+          port: 80
+          targetPort: 8080
+          nodePort: 31200
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: stirling-pdf
