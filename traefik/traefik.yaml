@@ -10,7 +10,20 @@ spec:
     repoURL: https://traefik.github.io/charts
     targetRevision: 33.2.1
     helm:
-      valuesfile: traefik/values.yaml
+      #valuesfile: traefik/values.yaml
+      values: |
+        service: 
+          type: NodePort
+        globalArguments:
+          - "--global.sendanonymoususage"
+        ingressRoute: 
+          dashboard: 
+            enabled: true
+          annotations:
+            kubernetes.io/ingress.class: "traefik"
+        logs: 
+          general: 
+            level: "DEBUG"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
