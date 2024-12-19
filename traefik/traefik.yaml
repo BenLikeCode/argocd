@@ -21,7 +21,9 @@ spec:
             enabled: true
           annotations:
             kubernetes.io/ingress.class: "traefik"
-
+        logs: 
+          general: 
+            level: DEBUG
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
