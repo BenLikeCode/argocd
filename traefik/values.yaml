@@ -1,8 +1,7 @@
-nameOverride: traefik_test
 service: 
   type: ClusterIP
-global:
-    sendAnonymousUsage: false
+globalArguments:
+  - "--global.sendanonymoususage"
 ingressRoute: 
   dashboard: 
     enabled: true
@@ -10,4 +9,4 @@ ingressRoute:
     kubernetes.io/ingress.class: "traefik"
 logs: 
   general: 
-    level: DEBUG
+    level: "DEBUG"
