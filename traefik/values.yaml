@@ -1,6 +1,6 @@
 nameOverride: traefik_test
 service: 
-  type: NodePort
+  type: ClusterIP
 global:
     sendAnonymousUsage: false
 ingressRoute: 
