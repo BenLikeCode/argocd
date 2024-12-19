@@ -1,0 +1,13 @@
+nameOverride: traefik_test
+service: 
+  type: NodePort
+global:
+    sendAnonymousUsage: false
+ingressRoute: 
+  dashboard: 
+    enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+logs: 
+  general: 
+    level: DEBUG
