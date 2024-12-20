@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  sources:
+  source:
     - repoURL: https://traefik.github.io/charts
       chart: traefik
       targetRevision: 33.2.1
@@ -14,8 +14,8 @@ spec:
         values: |
           service: 
             type: NodePort
-          globalArguments:
-            - "--global.sendanonymoususage: false"
+          #globalArguments:
+           # - "--global.sendanonymoususage: false"
           ingressRoute: 
             dashboard: 
               enabled: true
@@ -24,9 +24,6 @@ spec:
           logs: 
             general: 
               level: "DEBUG"
-    - repoURL: git@github.com:Th3Heavy/argocd.git
-      path: argocd
-      targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
