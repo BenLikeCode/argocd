@@ -14,8 +14,6 @@ spec:
         values: |
           service: 
             type: NodePort
-          globalArguments:
-           - --global.sendanonymoususage=false
           ingressRoute: 
             dashboard: 
               enabled: true
