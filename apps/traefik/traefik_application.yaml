@@ -25,14 +25,16 @@ spec:
             general: 
               level: "DEBUG"
     - repoURL: git@github.com:Th3Heavy/argocd.git
-      path: apps/argocd
+      path: argocd
       targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
   syncPolicy:
     automated:
+      prune: true
       selfHeal: true
+      allowEmpty : true 
 
 
 

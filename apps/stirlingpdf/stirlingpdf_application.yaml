@@ -19,11 +19,8 @@ spec:
     namespace: stirlingpdf
   syncPolicy:
     automated:
+      prune: true
       selfHeal: true
+      allowEmpty : true 
     syncOptions:
     - CreateNamespace=true
-    managedNamespaceMetadata:
-      labels:
-        name: stirlingpdf
-        app: stirlingpdf
-        namespace: stirlingpdf
