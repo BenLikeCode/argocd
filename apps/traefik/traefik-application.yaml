@@ -6,22 +6,23 @@ metadata:
 spec:
   project: default
   source:
-    - repoURL: https://traefik.github.io/charts
-      chart: traefik
-      targetRevision: 33.2.1
-      helm:
-        #valuesfile: traefik/values.yaml
-        values: |
-          service: 
-            type: NodePort
-          ingressRoute: 
-            dashboard: 
-              enabled: true
-            annotations:
-              kubernetes.io/ingress.class: "traefik"
-          logs: 
-            general: 
-              level: "DEBUG"
+    repoURL: https://traefik.github.io/charts
+    chart: traefik
+    targetRevision: 33.2.1
+    helm:
+      values: |
+        service: 
+          type: NodePort
+        globalArguments:
+           - --global.sendanonymoususage=false
+        ingressRoute: 
+          dashboard: 
+            enabled: true
+          annotations:
+            kubernetes.io/ingress.class: "traefik"
+        logs: 
+          general: 
+            level: "DEBUG"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
@@ -29,7 +30,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
-      allowEmpty : true 
-
-
-
+      allowEmpty: true
