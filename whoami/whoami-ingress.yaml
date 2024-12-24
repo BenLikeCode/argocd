@@ -6,7 +6,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /whoami2
+      - path: /
         pathType: Prefix
         backend:
           service:
