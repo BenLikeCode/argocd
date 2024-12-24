@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stirlingpdf
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    chart: metallb
+    repoURL: https://metallb.github.io/metallb
+    targetRevision: 0.14.9
+    helm:
+      values: |
+        nameOverride: stirling-pdf
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: metallb
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty : true 
+    syncOptions:
+    - CreateNamespace=true
