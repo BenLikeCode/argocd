@@ -11,7 +11,4 @@ spec:
       match: PathPrefix(`/dashboard`)
       services:
       - name: whoami
-
-
-
-
+        port: 80
