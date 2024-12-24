@@ -8,13 +8,13 @@ spec:
     - argocd-server
   routes:
     - kind: Rule
-      match: Host(`homeserver`)
+      match: PathPrefix(`/argocd`)
       priority: 10
       services:
       - name: argocd-server
         port: 80
     - kind: Rule
-      match: Host(`homeserver`) && Header(`Content-Type`, `application/grpc`)
+      match: PathPrefix(`/argocd`) && Header(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - name: argocd-server

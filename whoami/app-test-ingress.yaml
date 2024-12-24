@@ -8,7 +8,8 @@ spec:
     - whoami
   routes:
     - kind: Rule
-      match: PathPrefix(`/dashboard`)
+      match: PathPrefix(`/whoami`)
       services:
-      - name: whoami
+      - kind: Service
+        name: whoami
         port: 80
