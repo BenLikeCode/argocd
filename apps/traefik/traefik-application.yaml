@@ -23,11 +23,11 @@ spec:
             entryPoints: ["web"]
           healthcheck: 
             enabled: true
+        providers:
+          kubernetesCRD:
+            enabled: true
           kubernetesIngress:
             enabled: true
-          providers:
-            kubernetesCRD:
-              enabled: true
         logs: 
           general: 
             level: "DEBUG"
