@@ -36,7 +36,7 @@ spec:
         ports:
           traefik:
             expose:
-              default: false
+              default: true
         metrics:
           prometheus: null
 
