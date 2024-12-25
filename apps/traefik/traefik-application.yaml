@@ -37,6 +37,8 @@ spec:
           traefik:
             expose:
               default: false
+        metrics:
+          prometheus: null
 
   destination:
     server: "https://kubernetes.default.svc"
