@@ -12,17 +12,32 @@ spec:
     helm:
       values: |
         service: 
-          type: LoadBalancer
+          type: NodePort
         globalArguments:
            - --global.sendanonymoususage=false
         ingressRoute: 
           dashboard: 
             enabled: true
-          annotations:
-            kubernetes.io/ingress.class: "traefik"
+            annotations:
+              kubernetes.io/ingress.class: "traefik"
+            entryPoints: ["web"]
+          healthcheck: 
+            enabled: true
+          kubernetesIngress:
+            enabled: false
+          providers:
+            kubernetesCRD:
+              enabled: false
         logs: 
           general: 
             level: "DEBUG"
+          access:
+            enabled: true
+        ports:
+          traefik:
+            expose:
+              default: false
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
