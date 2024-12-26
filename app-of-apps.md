@@ -8,7 +8,7 @@ spec:
     namespace: argocd
     server: https://kubernetes.default.svc
   source:
-    path: .
+    path: apps
     repoURL: git@github.com:Th3Heavy/argocd
     targetRevision: HEAD
     directory:
@@ -17,5 +17,5 @@ spec:
   project: default
   syncPolicy:
     automated:
-      prune: false
+      prune: true
       selfHeal: true

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-proxy
+  namespace: kube-system
+  labels:
+    app: kube-proxy
+data:
+  config.conf: |-
+    apiVersion: kubeproxy.config.k8s.io/v1alpha1
+    # Les valeurs par défaut non incluses ici restent intactes.
+    bindAddress: 0.0.0.0  # Par défaut, il est probablement "127.0.0.1"
+    clusterCIDR: 10.244.0.0/16  # Exemple de CIDR pour votre réseau
+    iptables:
+      # Nous modifions la synchronisation de l'iptables ici.
+      minSyncPeriod: 1s
+      syncPeriod: 10s  # Ajustez la fréquence de synchronisation pour vos besoins
+    nodePortAddresses:
+      - 0.0.0.0/0  # Autoriser NodePort sur toutes les adresses locales
