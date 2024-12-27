@@ -8,6 +8,6 @@ spec:
     - name: web
       port: 80
       targetPort: web
-      nodePort: 30000 # Optionnel, sinon un port sera attribué automatiquement
+      #nodePort: 30000 
   selector:
     app: whoami
