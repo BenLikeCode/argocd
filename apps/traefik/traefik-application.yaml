@@ -17,17 +17,17 @@ spec:
            - --global.sendanonymoususage=false
         ingressRoute: 
           dashboard: 
-            enabled: true
+            enabled: false
             annotations:
               kubernetes.io/ingress.class: "traefik"
             entryPoints: ["web"]
           healthcheck: 
-            enabled: true
+            enabled: false
         providers:
           kubernetesCRD:
-            enabled: true
+            enabled: false
           kubernetesIngress:
-            enabled: true
+            enabled: false
         logs: 
           general: 
             level: "DEBUG"
