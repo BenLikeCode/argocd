@@ -25,9 +25,9 @@ spec:
             enabled: false
         providers:
           kubernetesCRD:
-            enabled: false
+            enabled: true
           kubernetesIngress:
-            enabled: false
+            enabled: true
         logs: 
           general: 
             level: "DEBUG"
