@@ -12,7 +12,7 @@ spec:
     helm:
       values: |
         service: 
-          type: ClusterIP
+          type: NodePort
         globalArguments:
            - --global.sendanonymoususage=false
         ingressRoute: 
@@ -25,9 +25,9 @@ spec:
             enabled: false
         providers:
           kubernetesCRD:
-            enabled: true
+            enabled: false
           kubernetesIngress:
-            enabled: true
+            enabled: false
         logs: 
           general: 
             level: "DEBUG"
