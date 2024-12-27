@@ -5,18 +5,18 @@ metadata:
   namespace: argocd
 spec:
   entryPoints:
-    - websecure
+    - web
   routes:
     - kind: Rule
       match: PathPrefix(`/argocd`)
       priority: 10
       services:
       - name: argocd-server
-        port: 443
+        port: 80
     - kind: Rule
       match: PathPrefix(`/argocd`) && Header(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - name: argocd-server
-          port: 443
+          port: 80
           scheme: h2c
