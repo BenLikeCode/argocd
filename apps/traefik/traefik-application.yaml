@@ -13,6 +13,9 @@ spec:
       values: |
         service: 
           type: NodePort
+        ports: 
+          web:
+            NodePort: 31960
         globalArguments:
            - --global.sendanonymoususage=false
         ingressRoute: 
@@ -33,10 +36,6 @@ spec:
             level: "DEBUG"
           access:
             enabled: true
-        ports:
-          traefik:
-            expose:
-              default: false
         metrics:
           prometheus: null
   destination:
