@@ -11,8 +11,6 @@ spec:
     targetRevision: 33.2.1
     helm:
       values: |
-        service: 
-          type: NodePort
         ports: 
           web:
             NodePort: 31960
@@ -30,14 +28,14 @@ spec:
             enabled: false
         providers:
           kubernetesCRD:
-            enabled: true
+            enabled: false
           kubernetesIngress:
-            enabled: true
+            enabled: false
         logs: 
           general: 
             level: "DEBUG"
           access:
-            enabled: true
+            enabled: false
         metrics:
           prometheus: null
   destination:
