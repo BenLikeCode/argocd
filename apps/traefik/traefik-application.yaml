@@ -35,7 +35,7 @@ spec:
             enabled: false
         logs: 
           general: 
-            level: "DEBUG"
+            level: "TRACE"
           access:
             enabled: false
         metrics:
