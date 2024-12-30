@@ -15,7 +15,7 @@ spec:
           type: NodePort
         ports: 
           web:
-            NodePort: 31960
+            NodePort: '31960'
         globalArguments:
            - --global.sendanonymoususage=false
         ingressRoute: 
