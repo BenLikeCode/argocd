@@ -26,13 +26,6 @@ spec:
             annotations:
               kubernetes.io/ingress.class: "traefik"
             entryPoints: ["web"]
-          healthcheck: 
-            enabled: false
-        providers:
-          kubernetesCRD:
-            enabled: false
-          kubernetesIngress:
-            enabled: false
         logs: 
           general: 
             level: "TRACE"
