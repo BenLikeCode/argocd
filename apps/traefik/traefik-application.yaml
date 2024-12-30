@@ -16,6 +16,8 @@ spec:
         ports: 
           web:
             NodePort: '31960'
+          websecure:
+            NodePort: '31961'
         globalArguments:
            - --global.sendanonymoususage=false
         ingressRoute: 
