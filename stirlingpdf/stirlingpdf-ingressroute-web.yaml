@@ -11,5 +11,5 @@ spec:
       match: PathPrefix(`/stirlingpdf`)
       services:
       - kind: Service
-        name: stirlingpdf-stirling-pdf
+        name: stirling-pdf
         port: 80
