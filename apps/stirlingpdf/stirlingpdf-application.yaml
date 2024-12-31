@@ -14,6 +14,7 @@ spec:
       helm:
         values: |
           fullnameOverride: stirling-pdf
+          rootPath: /stirlingpdf
     - repoURL: git@github.com:Th3Heavy/argocd.git
       path: stirlingpdf
       targetRevision: HEAD
