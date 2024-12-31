@@ -14,7 +14,7 @@ spec:
         values: |
           fullnameOverride: argocd
           global:
-            domain: homeserver
+            domain: server.home
           server:
             ingress:
               enabled: false
