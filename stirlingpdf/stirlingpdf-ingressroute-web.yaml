@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: whoami-web
+  namespace: argocd
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: PathPrefix(`/stirlingpdf`)
+      services:
+      - kind: Service
+        name: stirlingpdf-stirling-pdf
+        port: 80
