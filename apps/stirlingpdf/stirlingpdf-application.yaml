@@ -14,9 +14,6 @@ spec:
     - repoURL: git@github.com:Th3Heavy/argocd.git
       path: stirlingpdf
       targetRevision: HEAD
-      helm:
-        valueFiles: 
-          - values.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: stirlingpdf
