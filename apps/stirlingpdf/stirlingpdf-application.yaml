@@ -15,6 +15,9 @@ spec:
         values: |
           fullnameOverride: stirling-pdf
           rootPath: /stirlingpdf
+          service:
+            port: 443
+            targetPort: 8080
     - repoURL: git@github.com:Th3Heavy/argocd.git
       path: stirlingpdf
       targetRevision: HEAD
