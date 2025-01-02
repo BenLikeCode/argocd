@@ -21,7 +21,17 @@ traefik:
       enabled: false
   metrics:
     prometheus: null
-  # providers:
-  #   file:
-  #     enabled: true
-  #     content: 
+  providers:
+    file:
+      enabled: true
+      content: 
+        acme:
+          email: "admin@allapps.me"
+          storageFile: "/acme/acme.json"
+          entryPoint: "https"
+          onDemand: true
+          onHostRule: true
+          caServer: "https://acme-staging.api.letsencrypt.org/directory"
+          domains:
+            - main: "allapps.me"
+      

@@ -8,10 +8,8 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: HostSNI(`allapps.me`) && PathPrefix(`/whoami`)
+      match: Host(`allapps.me`) && PathPrefix(`/whoami`)
       services:
       - kind: Service
         name: whoami
         port: 80
-  tls:
-    passthrough: true
