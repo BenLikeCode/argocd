@@ -16,7 +16,7 @@ traefik:
       entryPoints: ["web"]
   logs: 
     general: 
-      level: "INFO"
+      level: "TRACE"
     access:
       enabled: false
   metrics:
