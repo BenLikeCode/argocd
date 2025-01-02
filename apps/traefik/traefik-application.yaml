@@ -28,11 +28,15 @@ spec:
             entryPoints: ["web"]
         logs: 
           general: 
-            level: "TRACE"
+            level: "INFO"
           access:
             enabled: false
         metrics:
           prometheus: null
+        providers:
+          file:
+            enabled: true
+            content: 
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
