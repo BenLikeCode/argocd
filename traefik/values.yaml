@@ -7,7 +7,11 @@ traefik:
     websecure:
       nodePort: 31961
   globalArguments:
-      - --global.sendanonymoususage=false
+      - "--global.sendanonymoususage=false"
+      - "--certificatesresolvers.lol.acme.email=admin@allapps.me"
+      - "--certificatesresolvers.lol.acme.storage=/data/acme.json"
+      - "--certificatesresolvers.lol.acme.tlschallenge=true"
+      - "--certificatesresolvers.lol.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory"
   ingressRoute: 
     dashboard: 
       enabled: true
@@ -21,16 +25,16 @@ traefik:
       enabled: false
   metrics:
     prometheus: null
-  providers:
-    file:
-      enabled: true
-      content: |
-        acme:
-          email: "admin@allapps.me"
-          storageFile: "/acme/acme.json"
-          entryPoint: "https"
-          onDemand: true
-          onHostRule: true
-          caServer: "https://acme-staging.api.letsencrypt.org/directory"
-          domains:
-            - main: "allapps.me"
+  # providers:
+  #   file:
+  #     enabled: true
+  #     content: |
+  #       acme:
+  #         email: "admin@allapps.me"
+  #         storageFile: "/acme/acme.json"
+  #         entryPoint: "https"
+  #         onDemand: true
+  #         onHostRule: true
+  #         caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
+  #         domains:
+  #           - main: "allapps.me"
