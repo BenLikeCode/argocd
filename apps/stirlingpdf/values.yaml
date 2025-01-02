@@ -1,7 +1,0 @@
-stirlingpdf:
-  fullnameOverride: stirling-pdf
-  rootPath: /stirlingpdf
-  service:
-    port: 443
-    targetPort: 8080
-    type: NodePort
