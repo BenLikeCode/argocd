@@ -1,4 +1,4 @@
-stirlingpdf:
+stirling-pdf-chart:
   fullnameOverride: stirling-pdf
   rootPath: /stirlingpdf
   service:
