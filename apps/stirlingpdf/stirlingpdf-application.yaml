@@ -7,14 +7,14 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
-  sources:
+  source:
     # - chart: stirling-pdf-chart
     #   repoURL: https://stirling-tools.github.io/Stirling-PDF-chart
     #   targetRevision: 1.3.1
     #   helm:
     #     valueFiles: 
     #       - values.yaml
-    - repoURL: git@github.com:Th3Heavy/argocd.git
+      repoURL: git@github.com:Th3Heavy/argocd.git
       path: stirlingpdf
       targetRevision: HEAD
       helm:
