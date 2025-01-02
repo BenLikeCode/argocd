@@ -1,4 +1,4 @@
-name: stirlingpdf
+name: stirling-pdf-chart
 version: 1.0.0
 apiVersion: v2
 dependencies:
