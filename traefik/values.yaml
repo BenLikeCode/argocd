@@ -1,0 +1,27 @@
+traefik:
+  service: 
+    type: NodePort
+  ports: 
+    web:
+      nodePort: 31960
+    websecure:
+      nodePort: 31961
+  globalArguments:
+      - --global.sendanonymoususage=false
+  ingressRoute: 
+    dashboard: 
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "traefik"
+      entryPoints: ["web"]
+  logs: 
+    general: 
+      level: "INFO"
+    access:
+      enabled: false
+  metrics:
+    prometheus: null
+  # providers:
+  #   file:
+  #     enabled: true
+  #     content: 
