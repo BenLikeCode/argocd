@@ -24,7 +24,7 @@ traefik:
   providers:
     file:
       enabled: true
-      content: 
+      content:
         acme:
           email: "admin@allapps.me"
           storageFile: "/acme/acme.json"
@@ -34,4 +34,3 @@ traefik:
           caServer: "https://acme-staging.api.letsencrypt.org/directory"
           domains:
             - main: "allapps.me"
-      
