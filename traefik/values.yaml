@@ -24,7 +24,7 @@ traefik:
   providers:
     file:
       enabled: true
-      content:
+      content: |
         acme:
           email: "admin@allapps.me"
           storageFile: "/acme/acme.json"
