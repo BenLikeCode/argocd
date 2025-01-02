@@ -5,11 +5,11 @@ metadata:
   namespace: argocd
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - kind: Rule
       match: Host(`allapps.me`) && PathPrefix(`/whoami`)
       services:
       - kind: Service
         name: whoami
-        port: 80
+        port: 443
