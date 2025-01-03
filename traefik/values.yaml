@@ -12,6 +12,13 @@ traefik:
       - "--certificatesresolvers.lol.acme.storage=/data/acme.json"
       - "--certificatesresolvers.lol.acme.tlschallenge=true"
       - "--certificatesresolvers.lol.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory"
+  providers:  # @schema additionalProperties: false
+    kubernetesCRD:
+      # -- Load Kubernetes IngressRoute provider
+      enabled: false
+    kubernetesIngress:
+      # -- Load Kubernetes Ingress provider
+      enabled: false
   ingressRoute: 
     dashboard: 
       enabled: true
