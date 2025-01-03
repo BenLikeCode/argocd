@@ -3,6 +3,8 @@ kind: IngressRoute
 metadata:
   name: whoami-web
   namespace: argocd
+  annotations:
+    kubernetes.io/ingress.class: traefik
 spec:
   entryPoints:
     - web
