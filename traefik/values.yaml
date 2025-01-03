@@ -6,18 +6,20 @@ traefik:
       nodePort: 31960
     websecure:
       nodePort: 31961
-  globalArguments:
-      - "--global.sendanonymoususage=false"
-      - "--certificatesresolvers.lol.acme.email=admin@allapps.me"
-      - "--certificatesresolvers.lol.acme.storage=/data/acme.json"
-      - "--certificatesresolvers.lol.acme.tlschallenge=true"
-      - "--certificatesresolvers.lol.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory"
+  # globalArguments:
+  #     - "--global.sendanonymoususage=false"
+  #     - "--certificatesresolvers.lol.acme.email=admin@allapps.me"
+  #     - "--certificatesresolvers.lol.acme.storage=/data/acme.json"
+  #     - "--certificatesresolvers.lol.acme.tlschallenge=true"
+  #     - "--certificatesresolvers.lol.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory"
   ingressRoute: 
     dashboard: 
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "traefik"
       entryPoints: ["web"]
+      tls:
+        passthrough: true
   logs: 
     general: 
       level: "TRACE"
