@@ -8,8 +8,10 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`allapps.me`) && PathPrefix(`/whoami`)
+      match: PathPrefix(`/whoami`)
       services:
       - kind: Service
         name: whoami
         port: 443
+  tls : 
+      certResolver : lol
