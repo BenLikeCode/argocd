@@ -13,5 +13,5 @@ spec:
       - kind: Service
         name: whoami
         port: 80
-  tls : 
-      certResolver : lol
+  # tls : 
+  #     certResolver : lol
