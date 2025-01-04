@@ -10,7 +10,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: "Host(`kubeserver`) || PathPrefix(`/whoami`)"
+      match: "Host(`allapps.me`) || PathPrefix(`/whoami`)"
       services:
       - kind: Service
         name: whoami
