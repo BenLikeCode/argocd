@@ -14,11 +14,10 @@ spec:
         - values.yaml
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: stirlingpdf
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-      allowEmpty : true 
     syncOptions:
     - CreateNamespace=true
