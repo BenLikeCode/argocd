@@ -8,12 +8,12 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: "Host(`kubeserver`) && Path(`/whoami`)"
+      match: "Path(`/whoami`)"
       services:
       - kind: Service
         name: whoami
-        port: 80
-  tls : 
-      certResolver : lol
-      domains:
-        - main: "kubeserver"
+        port: 443
+  # tls : 
+  #     certResolver : lol
+  #     domains:
+  #       - main: "kubeserver"
