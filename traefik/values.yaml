@@ -6,8 +6,8 @@ traefik:
       nodePort: 31960
     websecure:
       nodePort: 31961
-  # globalArguments:
-  #     - "--global.sendanonymoususage=false"
+  globalArguments:
+      - "--global.sendanonymoususage=false"
   #     - "--certificatesresolvers.lol.acme.email=admin@allapps.me"
   #     - "--certificatesresolvers.lol.acme.storage=/data/acme.json"
   #     - "--certificatesresolvers.lol.acme.tlschallenge=true"
