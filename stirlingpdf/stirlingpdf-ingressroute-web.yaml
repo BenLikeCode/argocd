@@ -2,7 +2,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: stirlingpdf-web
-  namespace: stirlingpdf
+  namespace: argocd
   annotations:
     kubernetes.io/ingress.class: traefik
 spec:
