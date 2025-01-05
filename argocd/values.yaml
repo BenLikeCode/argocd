@@ -4,3 +4,4 @@ argo-cd:
   configs:
     params:
       server.rootpath: "/argocd"
+      server.insecure: true
