@@ -3,5 +3,4 @@ argocd:
   namespaceOverride: argocd
   configs:
     params:
-      server.rootpath: /argocd
-
+      server\.rootpath: "/argocd"
