@@ -1,6 +1,7 @@
-argocd:
+argo-cd:
   fullnameOverride: argocd
   namespaceOverride: argocd
   configs:
     params:
-      server\.rootpath: "/argocd"
+      server.rootpath: "/argocd"
+      server.basehref: "/argocd/"
