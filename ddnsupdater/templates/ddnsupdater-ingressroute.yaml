@@ -1,8 +1,8 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: stirlingpdf-web
-  namespace: stirlingpdf
+  name: ddnsupdater
+  namespace: ddnsupdater
   annotations:
     kubernetes.io/ingress.class: traefik
 spec:
@@ -10,8 +10,8 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/stirlingpdf`)
+      match: PathPrefix(`/ddnsupdater`)
       services:
       - kind: Service
-        name: stirling-pdf
+        name: ddnsupdater
         port: 8080

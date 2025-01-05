@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ddnsupdater
+  labels:
+    app: ddnsupdater
+spec:
+  selector:
+    matchLabels:
+      app: ddnsupdater
+  template:
+    metadata:
+      labels:
+        app: ddnsupdater
+    spec:
+      containers:
+        - name: ddns
+          image: qmcgaw/ddnsupdater:latest
+          envFrom:
+            - secretRef:
+                name: ddnsupdater-config
+          ports:
+            - containerPort: 8000
