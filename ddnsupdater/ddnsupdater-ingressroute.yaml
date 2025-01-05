@@ -13,5 +13,5 @@ spec:
       match: PathPrefix(`/ddns`)
       services:
       - kind: Service
-        name: ddnsupdater
+        name: ddnsupdater-service
         port: 8000
