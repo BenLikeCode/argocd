@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ddnsupdater
+  name: ddnsupdater-service
 spec:
   selector:
     app: ddnsupdater

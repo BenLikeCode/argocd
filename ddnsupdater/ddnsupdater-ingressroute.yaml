@@ -1,7 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: ddnsupdater
+  name: ddnsupdater-ingressroute
   namespace: ddnsupdater
   annotations:
     kubernetes.io/ingress.class: traefik
@@ -10,7 +10,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/ddnsupdater`)
+      match: PathPrefix(`/ddns`)
       services:
       - kind: Service
         name: ddnsupdater
