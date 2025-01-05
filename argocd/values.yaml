@@ -1,0 +1,4 @@
+argocd:
+  fullnameOverride: argocd
+  namespaceOverride: argocd
+
