@@ -16,5 +16,8 @@ spec:
       containers:
         - name: changedetection
           image: ghcr.io/dgtlmoon/changedetection.io:latest
+          envFrom:
+            - configMapRef:
+                name: changedetection-configmap
           ports:
             - containerPort: 8000
