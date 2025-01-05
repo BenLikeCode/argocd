@@ -3,6 +3,7 @@ kind: ConfigMap
 metadata:
   name: changedetection-configmap
 data:
+  PORT: "8000"
   USE_X_SETTINGS: "1"
   HIDE_REFERER: "true"
   DISABLE_VERSION_CHECK: "true"
