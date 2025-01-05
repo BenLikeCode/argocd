@@ -1,4 +1,7 @@
 argocd:
   fullnameOverride: argocd
   namespaceOverride: argocd
+  configs:
+    params:
+      server.rootpath: /argocd
 
