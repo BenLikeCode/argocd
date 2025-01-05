@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ddnsupdater-configmap
+  name: changedetection-configmap
 data:
-  USE_X_SETTINGS: 1
-  HIDE_REFERER: true
-  DISABLE_VERSION_CHECK: true
+  USE_X_SETTINGS: "1"
+  HIDE_REFERER: "true"
+  DISABLE_VERSION_CHECK: "true"
   TZ: "Europe/Paris"
