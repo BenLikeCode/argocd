@@ -20,7 +20,7 @@ spec:
           image: ghcr.io/dgtlmoon/changedetection.io:latest
           env:
             - name: USE_X_SETTINGS
-              value: 0
+              value: "0"
             - name: HIDE_REFERER
               value: "true"
             - name: DISABLE_VERSION_CHECK
