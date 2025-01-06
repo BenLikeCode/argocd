@@ -19,16 +19,14 @@ spec:
         - name: changedetection
           image: ghcr.io/dgtlmoon/changedetection.io:latest
           env:
-            - name: BASE_URL
-              value: "http://kubeserver/"
             - name: USE_X_SETTINGS
-              value: "0"
+              value: "1"
             - name: HIDE_REFERER
               value: "true"
             - name: DISABLE_VERSION_CHECK
-              value: "true"
+              value: "false"
             - name: TZ
-              value: "Europe/Paris"
+              value: "UTC"
           # envFrom:
           #   - configMapRef:
           #       name: changedetection-configmap

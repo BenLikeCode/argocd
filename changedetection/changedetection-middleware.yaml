@@ -1,0 +1,13 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: changedetection-middleware
+spec:
+  stripPrefix:
+    prefixes:
+      - /changedetection
+  headers:
+    customRequestHeaders:
+      Host: "localhost"
+      X-Forwarded-Prefix: "/changedetection"
+      X-Forwarded-Proto: "http"

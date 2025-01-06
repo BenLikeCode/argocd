@@ -15,3 +15,5 @@ spec:
       - kind: Service
         name: changedetection-service
         port: 5000
+      middlewares:
+        - name: changedetection-middleware
