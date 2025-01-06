@@ -16,4 +16,5 @@ spec:
         name: changedetection-service
         port: 5000
       middlewares:
-        - name: changedetection-middleware
+        - name: changedetection-middleware-headers
+        - name: changedetection-middleware-strip

@@ -6,6 +6,3 @@ spec:
   headers:
     customRequestHeaders:
       X-Forwarded-Prefix: "/changedetection"
-  stripPrefix:
-    prefixes:
-      - /changedetection
