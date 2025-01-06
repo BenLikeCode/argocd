@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: changedetection-configmap
 data:
-  USE_X_SETTINGS: "1"
+  USE_X_SETTINGS: "0"
   HIDE_REFERER: "true"
   DISABLE_VERSION_CHECK: "true"
   TZ: "Europe/Paris"
