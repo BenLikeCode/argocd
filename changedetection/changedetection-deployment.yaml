@@ -20,7 +20,7 @@ spec:
           image: ghcr.io/dgtlmoon/changedetection.io:latest
           env:
             - name: BASE_URL
-              value: "http://kubeserver/
+              value: "http://kubeserver/"
             - name: USE_X_SETTINGS
               value: "0"
             - name: HIDE_REFERER
