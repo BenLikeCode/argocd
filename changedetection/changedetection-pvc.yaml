@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: changedetection-pvc
 spec:
-  storageClassName: ""
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce
   resources:
