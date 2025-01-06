@@ -5,6 +5,7 @@ metadata:
   labels:
     app: changedetection
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: changedetection
@@ -13,6 +14,7 @@ spec:
       labels:
         app: changedetection
     spec:
+      serviceAccountName: ""
       containers:
         - name: changedetection
           image: ghcr.io/dgtlmoon/changedetection.io:latest
@@ -20,4 +22,24 @@ spec:
             - configMapRef:
                 name: changedetection-configmap
           ports:
-            - containerPort: 8000
+            - name: http
+              containerPort: 5000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /changedetection
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /changedetection
+              port: http
+          volumeMounts:
+            - mountPath: /datastore
+              name: datastore
+          volumes:
+            - name: datastore
+              persistentVolumeClaim:
+                claimName: changedetection
+              emptyDir: { }
+
+

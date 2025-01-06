@@ -14,4 +14,4 @@ spec:
       services:
       - kind: Service
         name: changedetection-service
-        port: 80
+        port: 5000
