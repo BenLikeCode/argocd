@@ -36,10 +36,7 @@ spec:
           volumeMounts:
             - mountPath: /datastore
               name: datastore
-          volumes:
-            - name: datastore
-              persistentVolumeClaim:
-                claimName: changedetection-pvc
-              emptyDir: { }
-
-
+      volumes:
+        - name: datastore
+          persistentVolumeClaim:
+            claimName: changedetection-pvc
