@@ -39,7 +39,7 @@ spec:
           volumes:
             - name: datastore
               persistentVolumeClaim:
-                claimName: changedetection
+                claimName: changedetection-pvc
               emptyDir: { }
 
 
