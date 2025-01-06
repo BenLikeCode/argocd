@@ -27,11 +27,11 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /changedetection
+              path: /
               port: http
           readinessProbe:
             httpGet:
-              path: /changedetection
+              path: /
               port: http
           volumeMounts:
             - mountPath: /datastore
