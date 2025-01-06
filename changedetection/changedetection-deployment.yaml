@@ -18,9 +18,18 @@ spec:
       containers:
         - name: changedetection
           image: ghcr.io/dgtlmoon/changedetection.io:latest
-          envFrom:
-            - configMapRef:
-                name: changedetection-configmap
+          env:
+            - name: USE_X_SETTINGS
+              value: "0"
+            - name: HIDE_REFERER
+              value: "true"
+            - name: DISABLE_VERSION_CHECK
+              value: "true"
+            - name: TZ
+              value: "Europe/Paris"
+          # envFrom:
+          #   - configMapRef:
+          #       name: changedetection-configmap
           ports:
             - name: http
               containerPort: 5000
