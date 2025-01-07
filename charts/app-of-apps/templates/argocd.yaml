@@ -19,4 +19,4 @@ spec:
       selfHeal: false
     syncOptions:
     - CreateNamespace=true
-    - SkipMissingResources=true
+    # - SkipMissingResources=true
