@@ -3,11 +3,13 @@ kind: Application
 metadata:
   name: traefik
   namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: git@github.com:Th3Heavy/argocd.git
-    path: traefik
+    path: charts/traefik
     targetRevision: HEAD
     helm:
       valueFiles: 
