@@ -1,13 +1,14 @@
 argo-cd:
   fullnameOverride: argocd
   namespaceOverride: argocd
-  global:
-    domain: "allapps.me"
+  # global:
+  #   domain: "allapps.me"
   configs:
     params:
       server.rootpath: "/argocd"
       server.basehref: "/argocd"
       server.insecure: true
+      server.disable.auth: true
   dex:
     enabled: false
   notifications:
