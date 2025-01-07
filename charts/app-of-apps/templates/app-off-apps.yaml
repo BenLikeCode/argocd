@@ -3,19 +3,18 @@ kind: Application
 metadata:
   name: app-of-apps
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io
 spec:
+  project: default
+  source:
+    repoURL: git@github.com:Th3Heavy/argocd
+    path: charts/app-of-apps/
+    targetRevision: HEAD
+    # directory:
+    #   recurse: true
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
-  source:
-    path: charts/app-of-apps/
-    repoURL: git@github.com:Th3Heavy/argocd
-    targetRevision: HEAD
-    directory:
-      recurse: true
-  sources: []
-  project: default
   syncPolicy:
     automated:
       prune: false
