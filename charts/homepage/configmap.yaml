@@ -6,13 +6,12 @@ metadata:
   labels:
     app.kubernetes.io/name: homepage
 data:
-  # kubernetes.yaml: |
-  #   mode: cluster
-  settings.yaml: ""
-  #settings.yaml: |
-  #  providers:
-  #    longhorn:
-  #      url: https://longhorn.my.network
+    # kubernetes.yaml: |
+    #   mode: cluster
+  settings.yaml: |
+   title: Homepage
+   base: https://allapps.me/homepage
+  
   custom.css: ""
   custom.js: ""
   bookmarks.yaml: |
