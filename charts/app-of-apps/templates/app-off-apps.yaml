@@ -2,13 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app-of-apps
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    name: ''
     namespace: argocd
     server: https://kubernetes.default.svc
   source:
-    path: apps
+    path: charts/app-of-apps/
     repoURL: git@github.com:Th3Heavy/argocd
     targetRevision: HEAD
     directory:
@@ -17,5 +18,5 @@ spec:
   project: default
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true

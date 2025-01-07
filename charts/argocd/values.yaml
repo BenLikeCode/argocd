@@ -1,0 +1,13 @@
+argo-cd:
+  fullnameOverride: argocd
+  namespaceOverride: argocd
+  global:
+    domain: "allapps.me"
+  configs:
+    params:
+      # server.rootpath: "/argocd"
+      server.insecure: true
+  dex:
+    enabled: false
+  notifications:
+    enabled: false
