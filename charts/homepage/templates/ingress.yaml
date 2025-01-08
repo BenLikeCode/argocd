@@ -23,5 +23,5 @@ spec:
         name: homepage
         port: 3000
       middlewares:
-        - name: changedetection-headers
-        - name: changedetection-strip
+        - name: homepage-headers
+        - name: homepage-headers
