@@ -6,7 +6,7 @@ spec:
   project: default
   source:
     repoURL: git@github.com:Th3Heavy/argocd.git
-    path: changedetection
+    path: charts/changedetection
     targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
