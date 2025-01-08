@@ -4,3 +4,5 @@ stirling-pdf-chart:
   envs:
     - name: ALLOW_GOOGLE_VISIBILITY
       value: "false"
+    - name: enableAnalytics
+      value: "false"
