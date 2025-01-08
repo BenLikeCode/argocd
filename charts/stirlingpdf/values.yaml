@@ -1,8 +1,18 @@
 stirling-pdf-chart:
   fullnameOverride: stirling-pdf
   rootPath: /pdf
+  pv:
+    enabled: true
+    capacity:
+      storage: 1Gi
+  persistence:
+    enabled: true
+    size: 1Gi
+    path: configs
   envs:
     - name: ALLOW_GOOGLE_VISIBILITY
       value: "false"
-    - name: enableAnalytics
+    - name: APP_LOCALE
+      value: "fr-FR"
+    - name: SYSTEM_ENABLEANALYTICS
       value: "false"
