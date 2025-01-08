@@ -6,11 +6,12 @@ metadata:
   labels:
     app.kubernetes.io/name: homepage
 data:
-    # kubernetes.yaml: |
-    #   mode: cluster
+  kubernetes.yaml: |
+    mode: default
   settings.yaml: |
-   title: Homepage
+   title: ALL APPS HOMEPAGE
    base: https://allapps.me/homepage
+   language: fr
   
   custom.css: ""
   custom.js: ""
