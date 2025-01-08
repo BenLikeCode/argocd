@@ -17,7 +17,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/homepage`)
+      match: PathPrefix(`/`)
       services:
       - kind: Service
         name: homepage
