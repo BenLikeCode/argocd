@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: changedetection-deployment
+  name: changedetection
   labels:
     app: changedetection
 spec:
@@ -48,4 +48,4 @@ spec:
       volumes:
         - name: datastore
           persistentVolumeClaim:
-            claimName: changedetection-pvc
+            claimName: changedetection

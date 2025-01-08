@@ -22,3 +22,6 @@ spec:
       - kind: Service
         name: homepage
         port: 3000
+      middlewares:
+        - name: changedetection-headers
+        - name: changedetection-strip

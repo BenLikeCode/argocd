@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: changedetection-configmap
+  name: changedetection
 data:
   USE_X_SETTINGS: "0"
   HIDE_REFERER: "true"
