@@ -9,7 +9,7 @@ data:
   kubernetes.yaml: |
     mode: default
   settings.yaml: |
-   title: ALL APPS HOMEPAGEEE
+   title: ALL APPS HOMEPAGEEEEEE
    base: https://allapps.me/homepage
    language: fr
   
