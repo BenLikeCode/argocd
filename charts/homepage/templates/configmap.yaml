@@ -10,9 +10,6 @@ data:
     mode: default
   settings.yaml: |
    title: ALL APPS HOMEPAGE
-   base: https://allapps.me/homepage
-   language: fr
-  
   custom.css: ""
   custom.js: ""
   bookmarks.yaml: |
