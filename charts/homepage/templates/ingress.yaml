@@ -25,4 +25,3 @@ spec:
         port: 3000
       middlewares:
         - name: homepage-headers
-        # - name: homepage-strip
