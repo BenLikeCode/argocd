@@ -6,3 +6,4 @@ spec:
   headers:
     customRequestHeaders:
       X-Forwarded-Prefix: "/homepage"
+      Host: "kubeserver:31960"
