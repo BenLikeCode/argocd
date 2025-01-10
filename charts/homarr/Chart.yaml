@@ -5,3 +5,6 @@ dependencies:
   - name: homarr 
     version: 1.2.0
     repository: oci://ghcr.io/homarr-labs/charts
+  - name: mysql 
+    version: 12.2.1
+    repository: oci://registry-1.docker.io/bitnamicharts/
