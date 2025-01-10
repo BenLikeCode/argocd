@@ -23,5 +23,5 @@ spec:
       - kind: Service
         name: homepage
         port: 3000
-      middlewares:
-        - name: homepage-headers
+      # middlewares:
+      #   - name: homepage-headers
