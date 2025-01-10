@@ -13,7 +13,7 @@ data:
   custom.css: ""
   custom.js: ""
   bookmarks.yaml: |
-    - Developer:
+    - TEST:
         - TEST:
             - abbr: GH
               href: https://github.com/
