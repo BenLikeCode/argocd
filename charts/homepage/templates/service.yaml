@@ -2,16 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: homepage
-  namespace: homepage
-  labels:
-    app.kubernetes.io/name: homepage
-  annotations:
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 3000
-      targetPort: http
-      protocol: TCP
-      name: http
+      targetPort: 3000
+      nodePort: 31970  # Choisissez un port disponible
   selector:
     app.kubernetes.io/name: homepage

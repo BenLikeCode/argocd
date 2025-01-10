@@ -5,4 +5,4 @@ metadata:
 spec:
   headers:
     customRequestHeaders:
-      Host: "homepage:3000"
+      Host: "kubeserver:31960"
