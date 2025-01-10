@@ -17,7 +17,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/`) || PathPrefix(`/api`)
+      match: PathPrefix(`/api`)
       priority: 1
       services:
       - kind: Service
