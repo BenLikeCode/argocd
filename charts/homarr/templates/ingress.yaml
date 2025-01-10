@@ -5,24 +5,13 @@ metadata:
   namespace: homarr
   annotations:
     kubernetes.io/ingress.class: traefik
-    # gethomepage.dev/href: "http://kubeserver:31960/pdf"
-    # gethomepage.dev/enabled: "true"
-    # gethomepage.dev/description: "Stirling PDF"
-    # gethomepage.dev/group: Tools
-    # gethomepage.dev/icon: emby.png
-    # gethomepage.dev/name: "Stirling PDF"
-    # gethomepage.dev/widget.type: "emby"
-    # gethomepage.dev/widget.url: "http://kubeserver:31960/pdf"
-    # gethomepage.dev/pod-selector: ""
-    # gethomepage.dev/weight: "10" # optional
-    # gethomepage.dev/instance: "public" # optional
 spec:
   entryPoints:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/pdf`)
+      match: PathPrefix(`/`)
       services:
       - kind: Service
-        name: stirling-pdf
-        port: 8080
+        name: homarr
+        # port: 8080

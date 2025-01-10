@@ -4,4 +4,4 @@ apiVersion: v2
 dependencies:
   - name: homarr 
     version: "1.2.0"
-    repository: "oci://ghcr.io/homarr-labs/charts/homarr"
+    repository: "https://homarr-labs.github.io/charts/"
