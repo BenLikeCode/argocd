@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Cluster Management
     gethomepage.dev/icon: homepage.png
-    gethomepage.dev/name: Homepage
+    gethomepage.dev/name: Homepage  test
   labels:
     app.kubernetes.io/name: homepage
 spec:
