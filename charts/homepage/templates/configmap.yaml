@@ -14,7 +14,7 @@ data:
   custom.js: ""
   bookmarks.yaml: |
     - Developer:
-        - Github:
+        - TEST:
             - abbr: GH
               href: https://github.com/
   services.yaml: |
