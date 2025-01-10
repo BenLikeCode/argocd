@@ -5,7 +5,7 @@ metadata:
   namespace: stirlingpdf
   annotations:
     kubernetes.io/ingress.class: traefik
-    gethomepage.dev/href: "https://emby.example.com"
+    gethomepage.dev/href: "/pdf"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: "Stirling PDF"
     gethomepage.dev/group: Tools
