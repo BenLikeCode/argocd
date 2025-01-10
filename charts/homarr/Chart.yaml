@@ -7,4 +7,4 @@ dependencies:
     repository: oci://ghcr.io/homarr-labs/charts
   - name: mysql 
     version: 12.2.1
-    repository: oci://registry-1.docker.io/bitnamicharts/
+    repository: oci://registry-1.docker.io/bitnamicharts
