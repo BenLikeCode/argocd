@@ -1,27 +1,17 @@
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+apiVersion: v1
+kind: Service
 metadata:
   name: homepage
   namespace: homepage
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    gethomepage.dev/description: Dynamically Detected Homepage
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Cluster Management
-    gethomepage.dev/icon: homepage.png
-    gethomepage.dev/name: Homepage test
   labels:
     app.kubernetes.io/name: homepage
+  annotations:
 spec:
-  entryPoints:
-    - web
-  routes:
-    - kind: Rule
-      match: "PathPrefix(`/`)"
-      priority: 1
-      services:
-      - kind: Service
-        name: homepage
-        port: 3000
-      middlewares:
-        - name: homepage-headers
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: homepage
