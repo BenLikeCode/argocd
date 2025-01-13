@@ -15,3 +15,6 @@ spec:
       - kind: Service
         name: homarr
         port: 7575
+      middlewares:
+      - name: middleware-headers
+      - name: middleware-strip
