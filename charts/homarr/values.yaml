@@ -4,8 +4,8 @@ homarr:
     homarrDatabas:
       enabled: true
       size: "50Mi"
-      storageClassName: "default"
+      storageClassName: "standard"
     homarrImages:
       enabled: true
       size: "50Mi"
-      storageClassName: "default"
+      storageClassName: "standard"
