@@ -10,11 +10,11 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/homarr`)
+      match: PathPrefix(`/`)
       services:
       - kind: Service
         name: homarr
         port: 7575
-      middlewares:
-      - name: middleware-headers
-      - name: middleware-strip
+      # middlewares:
+      # - name: middleware-headers
+      # - name: middleware-strip
