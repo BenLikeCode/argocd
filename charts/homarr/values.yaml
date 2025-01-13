@@ -1,0 +1,4 @@
+homarr:
+  persistence:
+    - name: homarr-config
+      enabled: true
