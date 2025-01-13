@@ -5,13 +5,13 @@ metadata:
   namespace: homarr
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.priority: "1" 
 spec:
   entryPoints:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/homarr`)
+      match: PathPrefix(`/homarr`) || PathPrefix(`/init`)
+      priority: 1
       services:
       - kind: Service
         name: homarr
