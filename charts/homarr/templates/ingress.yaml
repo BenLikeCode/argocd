@@ -14,4 +14,4 @@ spec:
       services:
       - kind: Service
         name: homarr
-        # port: 7575
+        port: 7575
