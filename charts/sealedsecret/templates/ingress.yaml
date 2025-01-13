@@ -14,4 +14,4 @@ spec:
       services:
       - kind: Service
         name: sealed-secrets
-
+        port: 8080
