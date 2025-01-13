@@ -1,0 +1,7 @@
+name: sealed-secrets
+version: 1.0.0
+apiVersion: v2
+dependencies:
+  - name: sealed-secrets
+    version: "2.17.0"
+    repository: "https://stirling-tools.github.io/Stirling-PDF-chart"
