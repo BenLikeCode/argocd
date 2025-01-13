@@ -1,5 +1,4 @@
 homarr:
-  AUTH_PROVIDERS: ""
   persistence:
     homarrDatabase:
       enabled: true
