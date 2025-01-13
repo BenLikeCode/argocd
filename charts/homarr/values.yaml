@@ -3,5 +3,8 @@ homarr:
   persistence:
     homarrDatabas:
       enabled: true
+      size: "50Mi"
+      storageClassName: "local-path"
     homarrImages:
       enabled: true
+      size: "50Mi"
