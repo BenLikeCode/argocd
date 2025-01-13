@@ -10,7 +10,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/homarr`) || PathPrefix(`/init`)
+      match: PathPrefix(`/homarr`) || PathPrefix(`/init`) || PathPrefix(`/api`)
       priority: 1
       services:
       - kind: Service
