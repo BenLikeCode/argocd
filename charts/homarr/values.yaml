@@ -1,2 +1,7 @@
 homarr:
   AUTH_PROVIDERS: ""
+  persistence:
+    homarrDatabas:
+      enabled: true
+    homarrImages:
+      enabled: true
