@@ -3,6 +3,7 @@ kind: IngressRoute
 metadata:
   name: argocd-ingressroute
   namespace: argocd
+  traefik.ingress.kubernetes.io/router.priority: "10"
 spec:
   entryPoints:
     - web
