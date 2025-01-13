@@ -1,8 +1,7 @@
 argo-cd:
   fullnameOverride: argocd
   namespaceOverride: argocd
-  # global:
-  #   domain: "allapps.me"
+
   configs:
     params:
       server.rootpath: "/argocd"
