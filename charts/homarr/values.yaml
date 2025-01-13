@@ -1,4 +1,2 @@
 homarr:
-  persistence:
-    - name: homarr-config
-      enabled: true
+  AUTH_PROVIDERS: ""
