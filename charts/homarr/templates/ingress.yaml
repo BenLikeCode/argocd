@@ -10,7 +10,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/`)
+      match: PathPrefix(`/homarr`)
       services:
       - kind: Service
         name: homarr
