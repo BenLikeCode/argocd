@@ -1,7 +1,9 @@
 argo-cd:
   fullnameOverride: argocd
   namespaceOverride: argocd
-
+  server:
+    service:
+      type: NodePort
   configs:
     params:
       server.rootpath: "/argocd"
