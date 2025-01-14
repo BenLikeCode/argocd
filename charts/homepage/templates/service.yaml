@@ -7,6 +7,6 @@ spec:
   ports:
     - port: 3000
       targetPort: 3000
-      nodePort: 31970  # Choisissez un port disponible
+      nodePort: 30082  # Choisissez un port disponible
   selector:
     app.kubernetes.io/name: homepage
