@@ -5,12 +5,19 @@ metadata:
   namespace: ddnsupdater
   annotations:
     kubernetes.io/ingress.class: traefik
+    gethomepage.dev/href: "https://allapps.me/dns"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Tools
+    gethomepage.dev/icon: emby.png
+    gethomepage.dev/name: "DDNS Updater"
+    gethomepage.dev/pod-selector: ""
+    gethomepage.dev/weight: "10" # optional
 spec:
   entryPoints:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/ddns`)
+      match: PathPrefix(`/dns`)
       services:
       - kind: Service
         name: ddnsupdater

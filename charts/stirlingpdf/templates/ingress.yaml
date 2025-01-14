@@ -7,12 +7,9 @@ metadata:
     kubernetes.io/ingress.class: traefik
     gethomepage.dev/href: "https://allapps.me/pdf"
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/description: "Stirling PDF"
     gethomepage.dev/group: Tools
     gethomepage.dev/icon: emby.png
     gethomepage.dev/name: "Stirling PDF"
-    gethomepage.dev/widget.type: "emby"
-    gethomepage.dev/widget.url: "https://allapps.me/pdf"
     gethomepage.dev/pod-selector: ""
     gethomepage.dev/weight: "10" # optional
 spec: 
