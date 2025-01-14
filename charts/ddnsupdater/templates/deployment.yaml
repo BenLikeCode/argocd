@@ -18,8 +18,8 @@ spec:
           image: qmcgaw/ddns-updater:latest
           envFrom:
             - secretRef:
-                name: ddnsupdater-secret
+                name: ddnsupdater
             - configMapRef:
-                name: ddnsupdater-configmap
+                name: ddnsupdater
           ports:
             - containerPort: 8000
