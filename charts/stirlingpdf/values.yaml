@@ -1,6 +1,6 @@
 stirling-pdf-chart:
   fullnameOverride: stirling-pdf
-  # rootPath: /pdf/
+  rootPath: /pdf/
   pv:
     enabled: true
     capacity:
