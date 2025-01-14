@@ -1,6 +1,9 @@
 stirling-pdf-chart:
   fullnameOverride: stirling-pdf
   rootPath: /pdf
+  service:
+    type: NodePort
+    nodePort: 30081
   pv:
     enabled: true
     capacity:

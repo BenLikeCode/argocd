@@ -4,6 +4,7 @@ argo-cd:
   server:
     service:
       type: NodePort
+      nodePortHttp: 30080
   configs:
     params:
       server.rootpath: "/argocd"
