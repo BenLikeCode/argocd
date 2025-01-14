@@ -26,5 +26,3 @@ spec:
       - kind: Service
         name: stirling-pdf
         port: 8080
-      middlewares:
-      - name: middleware-headers
