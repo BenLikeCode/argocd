@@ -17,11 +17,11 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/`)
+      match: PathPrefix(`/home`)
       priority: 1
       services:
       - kind: Service
         name: homepage
         port: 3000
-      # middlewares:
-      #   - name: homepage-headers
+      middlewares:
+        - name: homepage-headers
