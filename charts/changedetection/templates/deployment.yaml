@@ -17,7 +17,7 @@ spec:
       serviceAccountName: ""
       containers:
         - name: changedetection
-          image: ghcr.io/dgtlmoon/changedetection.io:latest
+          image: ghcr.io/dgtlmoon/changedetection.io:0.48.05
           env:
             - name: USE_X_SETTINGS
               value: "1"
