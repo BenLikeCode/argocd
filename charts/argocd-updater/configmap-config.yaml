@@ -8,8 +8,6 @@ metadata:
 data:
   log.level: debug
   git.commit-message-template: |
-    build: automatic update of {{ .AppName }}
-
     {{ range .AppChanges -}}
-    updates image {{ .Image }} tag '{{ .OldTag }}' to '{{ .NewTag }}'
+    {{ .AppName }}: updates {{ .Image }} tag '{{ .OldTag }}' to '{{ .NewTag }}'
     {{ end -}}
