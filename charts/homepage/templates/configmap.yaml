@@ -10,7 +10,7 @@ data:
     mode: default 
   settings.yaml: |
    title: ALL APPS HOMEPAGE
-   base: http://kubeserver:30082/
+   base: http://kubeserver:30082/home
   custom.css: ""
   custom.js: ""
   bookmarks.yaml: |
