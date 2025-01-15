@@ -10,7 +10,7 @@ data:
     mode: default 
   settings.yaml: |
    title: ALL APPS HOMEPAGE
-   base: https:/allapps.me/home
+   base: http://kubeserver:30082/
   custom.css: ""
   custom.js: ""
   bookmarks.yaml: |
