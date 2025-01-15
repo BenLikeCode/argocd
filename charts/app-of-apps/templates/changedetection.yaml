@@ -6,6 +6,8 @@ metadata:
     - resources-finalizer.argocd.argoproj.io/foreground
   annotations:
     argocd-image-updater.argoproj.io/image-list: changedetection=ghcr.io/dgtlmoon/changedetection.io:~0.48
+    argocd-image-updater.argoproj.io/changedetection.helm.image-name: changedetection.image.name
+    argocd-image-updater.argoproj.io/changedetection.helm.image-tag: changedetection.image.tag
     argocd-image-updater.argoproj.io/changedetection.update-strategy: semver
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/write-back-target: helmvalues:../changedetection/values.yaml
