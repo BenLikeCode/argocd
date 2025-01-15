@@ -5,14 +5,14 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
   annotations:
-    argocd-image-updater.argoproj.io/image-list: changedetection=ghcr.io/dgtlmoon/changedetection.io:~0.48
+    argocd-image-updater.argoproj.io/image-list: changedetection=ghcr.io/dgtlmoon/changedetection.io:0.48.x
     argocd-image-updater.argoproj.io/write-back-method: git
 spec:
   project: default
   source:
     repoURL: git@github.com:Th3Heavy/argocd.git
     path: charts/changedetection
-    targetRevision: HEAD
+    targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
     namespace: changedetection
