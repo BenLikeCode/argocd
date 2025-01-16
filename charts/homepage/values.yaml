@@ -1,4 +1,4 @@
 homepage:
   image:
-    tag: 0.10.9
+    tag: v0.10.9
     name: ghcr.io/gethomepage/homepage
