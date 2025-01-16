@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: ddns
-          image: qmcgaw/ddns-updater:latest
+          image: "{{ .Values.ddns-updater.image.name }}:{{ .Values.ddns-updater.image.tag }}"
           envFrom:
             - secretRef:
                 name: ddnsupdater

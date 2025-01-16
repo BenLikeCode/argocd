@@ -4,11 +4,18 @@ metadata:
   name: ddnsupdater
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: ddns-updater=qmcgaw/ddns-updater:~2.9
+    argocd-image-updater.argoproj.io/ddns-updater.helm.image-name: ddns-updater.image.name
+    argocd-image-updater.argoproj.io/ddns-updater.helm.image-tag: ddns-updater.image.tag
+    argocd-image-updater.argoproj.io/ddns-updater.update-strategy: semver
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/write-back-target: helmvalues:../ddns-updater/values.yaml
 spec:
   project: default
   source:
     repoURL: git@github.com:Th3Heavy/argocd.git
-    path: charts/ddnsupdater
+    path: charts/ddns-updater
     targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"

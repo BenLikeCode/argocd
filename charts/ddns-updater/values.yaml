@@ -1,0 +1,4 @@
+ddns-updater:
+  image:
+    tag: 2.9.0
+    name: qmcgaw/ddns-updater
