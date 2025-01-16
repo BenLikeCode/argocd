@@ -56,7 +56,22 @@ spec:
             successThreshold: 1
             timeoutSeconds: 1
           securityContext: {}
-          volumeMounts: null
+          volumeMounts:
+            - name: stirling-pdf
+              mountPath: /usr/share/tessdata
+              subPath: tessdata
+            - name: stirling-pdf
+              mountPath: /configs
+              subPath: configs
+            - name: stirling-pdf
+              mountPath: /customFiles
+              subPath: customFiles
+            - name: stirling-pdf
+              mountPath: /logs
+              subPath: logs
+            - name: stirling-pdf
+              mountPath: /pipeline
+              subPath: pipeline
       securityContext:
         fsGroup: 1000
       serviceAccountName: stirling-pdf
