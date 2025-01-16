@@ -24,7 +24,7 @@ spec:
       enableServiceLinks: true
       containers:
         - name: homepage
-          image: "ghcr.io/gethomepage/homepage:latest"
+          image: "{{ .Values.homepage.image.name }}:{{ .Values.homepage.image.tag }}"
           imagePullPolicy: Always
           ports:
             - name: http

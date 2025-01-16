@@ -4,6 +4,13 @@ metadata:
   name: homepage
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: homepage=ghcr.io/gethomepage/homepage:~0.10
+    argocd-image-updater.argoproj.io/homepage.helm.image-name: homepage.image.name
+    argocd-image-updater.argoproj.io/homepage.helm.image-tag: homepage.image.tag
+    argocd-image-updater.argoproj.io/homepage.update-strategy: semver
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/write-back-target: helmvalues:../homepage/values.yaml
 spec:
   project: default
   source:
