@@ -76,6 +76,6 @@ spec:
         fsGroup: 1000
       serviceAccountName: stirling-pdf
       volumes:
-        - name: storage-volume
+        - name: stirling-pdf
           persistentVolumeClaim:
             claimName: stirling-pdf
