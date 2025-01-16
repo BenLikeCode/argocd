@@ -4,11 +4,18 @@ metadata:
   name: stirlingpdf
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: stirlingpdf=ghcr.io/getstirlingpdf/stirlingpdf:~v0.37
+    argocd-image-updater.argoproj.io/stirlingpdf.helm.image-name: stirlingpdf.image.name
+    argocd-image-updater.argoproj.io/stirlingpdf.helm.image-tag: stirlingpdf.image.tag
+    argocd-image-updater.argoproj.io/stirlingpdf.update-strategy: semver
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/write-back-target: helmvalues:../stirlingpdf/values.yaml
 spec:
   project: default
   source:
     repoURL: git@github.com:Th3Heavy/argocd.git
-    path: charts/stirlingpdf
+    path: charts/stirling-pdf
     targetRevision: HEAD
     helm:
       valueFiles: 
