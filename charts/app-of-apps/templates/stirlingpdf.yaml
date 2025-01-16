@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: stirlingpdf
+  name: stirling-pdf
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
   annotations:
@@ -10,7 +10,7 @@ metadata:
     argocd-image-updater.argoproj.io/stirlingpdf.helm.image-tag: stirlingpdf.image.tag
     argocd-image-updater.argoproj.io/stirlingpdf.update-strategy: semver
     argocd-image-updater.argoproj.io/write-back-method: git
-    argocd-image-updater.argoproj.io/write-back-target: helmvalues:../stirlingpdf/values.yaml
+    argocd-image-updater.argoproj.io/write-back-target: helmvalues:../stirling-pdf/values.yaml
 spec:
   project: default
   source:
@@ -19,7 +19,7 @@ spec:
     targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: stirlingpdf
+    namespace: stirling-pdf
   syncPolicy:
     automated:
       prune: false
