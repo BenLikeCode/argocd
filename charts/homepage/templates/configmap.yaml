@@ -15,13 +15,9 @@ data:
   bookmarks.yaml: ""
   services.yaml: |
     - My First Group:
-      - My First Service:
-          href: http://localhost/
-          description: Homepage is awesome
       - Argo-CD:
           icon: argo-cd.png
           href: https://allapps.me/argocd
-          description: Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
           widget:
             type: argocd
             fields: ["apps", "healthy"]
@@ -30,7 +26,6 @@ data:
       - Change-Detection:
           icon: changedetection.png
           href: https://allapps.me/changedetection
-          description: Change Detection is a tool to monitor changes on websites.
           widget:
             type: changedetectionio
             url: https://allapps.me/changedetectio
