@@ -7,8 +7,8 @@ metadata:
     kubernetes.io/ingress.class: traefik
     gethomepage.dev/href: "https://allapps.me/dns"
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Tools
-    gethomepage.dev/icon: emby.png
+    gethomepage.dev/group: Network
+    gethomepage.dev/icon: ddns-updater.png
     gethomepage.dev/name: "DDNS Updater"
     gethomepage.dev/pod-selector: ""
     gethomepage.dev/weight: "10" # optional
