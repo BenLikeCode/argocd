@@ -28,7 +28,7 @@ data:
           widget:
             type: argocd
             fields: ["apps", "healthy","synced","outOfSync"]
-            url: http://10.106.46.16:80
+            url: http://10.106.46.16/argocd:80
             key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJyZWFkb25seTphcGlLZXkiLCJuYmYiOjE3MzcxMzU1NTcsImlhdCI6MTczNzEzNTU1NywianRpIjoiMDAxMmU5MTgtYmU2MC00OTAwLWI4YjctZDkzYjgzNGZkN2EwIn0.9TtoMaV9MD0VecLzkswbV5nSvM7hcPk5RYRpBHqoJo0
   widgets.yaml: |
     - kubernetes:
