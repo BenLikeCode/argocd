@@ -10,8 +10,163 @@ data:
     mode: default 
   settings.yaml: |
    title: Home
-  custom.css: ""
-  custom.js: ""
+  custom.css: |
+      :root {
+          --primary-color: #3498db;
+          --secondary-color: #2ecc71;
+          --background-color: #1a1a1a;
+          --text-color: #ffffff;
+      }
+
+      .homepage-container {
+          background-color: var(--background-color);
+          color: var(--text-color);
+          padding: 2rem;
+          border-radius: 10px;
+      }
+
+      .service-card {
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 8px;
+          padding: 1rem;
+          margin-bottom: 1rem;
+          transition: transform 0.2s ease-in-out;
+      }
+
+      .service-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .service-icon {
+          color: var(--primary-color);
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+      }
+
+      .service-title {
+          color: var(--primary-color);
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+      }
+
+      .service-description {
+          font-size: 0.9rem;
+          opacity: 0.8;
+      }
+
+      .service-link {
+          color: var(--secondary-color);
+          text-decoration: none;
+          transition: color 0.2s ease;
+      }
+
+      .service-link:hover {
+          color: var(--primary-color);
+      }
+
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+
+      .service-card {
+          animation: fadeIn 0.5s ease-out forwards;
+      }
+
+      #my-service-id {
+          border: 2px solid var(--primary-color);
+          background: rgba(52, 152, 219, 0.1);
+      }
+  custom.js: |
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const serviceCards = document.querySelectorAll('.service-card');
+        
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+
+        function updateServiceStatus() {
+            const services = document.querySelectorAll('[data-service-status]');
+            
+            services.forEach(service => {
+                const status = service.dataset.serviceStatus;
+                const statusBadge = document.createElement('div');
+                statusBadge.className = 'status-badge';
+                statusBadge.textContent = status === 'online' ? '✓' : '✗';
+                statusBadge.style.color = status === 'online' ? '#2ecc71' : '#e74c3c';
+                
+                if (!service.querySelector('.status-badge')) {
+                    service.appendChild(statusBadge);
+                }
+            });
+        }
+
+
+        updateServiceStatus();
+        setInterval(updateServiceStatus, 30000);
+
+
+        const toggleTheme = () => {
+            const root = document.documentElement;
+            const currentTheme = root.classList.contains('dark-theme') ? 'light' : 'dark';
+            
+            if (currentTheme === 'light') {
+                root.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                root.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
+            }
+        };
+
+
+        const themeButton = document.createElement('button');
+        themeButton.id = 'theme-toggle';
+        themeButton.innerHTML = '🌓';
+        themeButton.addEventListener('click', toggleTheme);
+        document.body.appendChild(themeButton);
+
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark-theme');
+        }
+    });
+
+
+    document.addEventListener('keydown', function(e) {
+
+        if (e.altKey && e.key === 's') {
+            e.preventDefault();
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput) {
+                searchInput.focus();
+            }
+        }
+    });
+
+    // Fonction pour ajouter des notifications
+    function showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
   bookmarks.yaml: ""
   services.yaml: |
     - My First Group:
