@@ -12,8 +12,8 @@ data:
    title: Home
   custom.css: ""
   custom.js: ""
-  bookmarks.yaml:
-  services.yaml:
+  bookmarks.yaml: ""
+  services.yaml: ""
   widgets.yaml: |
     - kubernetes:
         nodes:
