@@ -14,13 +14,17 @@ data:
   custom.js: ""
   bookmarks.yaml: ""
   services.yaml: |
-    - Argo-CD:
-      icon: argo-cd.png
-      href: https://allapps.me/argocd
-      widget:
-        type: argocd
-        url: https://allapps.me/argocd
-        key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJyZWFkb25seTphcGlLZXkiLCJuYmYiOjE3MzcxMzU1NTcsImlhdCI6MTczNzEzNTU1NywianRpIjoiMDAxMmU5MTgtYmU2MC00OTAwLWI4YjctZDkzYjgzNGZkN2EwIn0.9TtoMaV9MD0VecLzkswbV5nSvM7hcPk5RYRpBHqoJo0
+    - My First Group:
+      - My First Service:
+          href: http://localhost/
+          description: Homepage is awesome
+      - Argo-CD:
+        icon: argo-cd.png
+        href: https://allapps.me/argocd
+        widget:
+          type: argocd
+          url: https://allapps.me/argocd
+          key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJyZWFkb25seTphcGlLZXkiLCJuYmYiOjE3MzcxMzU1NTcsImlhdCI6MTczNzEzNTU1NywianRpIjoiMDAxMmU5MTgtYmU2MC00OTAwLWI4YjctZDkzYjgzNGZkN2EwIn0.9TtoMaV9MD0VecLzkswbV5nSvM7hcPk5RYRpBHqoJo0
   widgets.yaml: |
     - kubernetes:
         cluster:
