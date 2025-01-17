@@ -6,7 +6,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     gethomepage.dev/href: "https://allapps.me/argocd"
-    gethomepage.dev/enabled: "true"
+    gethomepage.dev/enabled: "false"
     gethomepage.dev/group: Tools
     gethomepage.dev/icon: argo-cd.png
     gethomepage.dev/name: "Argo CD"
