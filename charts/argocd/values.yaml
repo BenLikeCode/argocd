@@ -11,6 +11,10 @@ argo-cd:
       server.basehref: "/argocd"
       server.insecure: true
       server.disable.auth: true
+    cm:
+      accounts.readonly: apiKey
+    rbac:
+      policy.csv: "g, readonly, role:readonly"
   dex:
     enabled: false
   notifications:
