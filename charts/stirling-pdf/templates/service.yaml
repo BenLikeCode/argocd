@@ -8,6 +8,7 @@ metadata:
 spec:
   selector:
     app.kubernetes.io/name: stirling-pdf
+  externalTrafficPolicy: Cluster
   ports:
     - name: http
       # nodePort: 30081
