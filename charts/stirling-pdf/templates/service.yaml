@@ -11,8 +11,8 @@ spec:
   externalTrafficPolicy: Local
   ports:
     - name: http
-      nodePort: 30081
+      # nodePort: 30081
       port: 8080
       protocol: TCP
       targetPort: http
-  type: NodePort
+  type: ClusterIP
