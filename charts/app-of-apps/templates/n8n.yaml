@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: n8n
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io/foreground
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: n8n=n8nio/n8n:~1.75
+    argocd-image-updater.argoproj.io/n8n.helm.image-name: n8n.image.name
+    argocd-image-updater.argoproj.io/n8n.helm.image-tag: n8n.image.tag
+    argocd-image-updater.argoproj.io/n8n.update-strategy: semver
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/write-back-target: helmvalues:../n8n/values.yaml
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:Th3Heavy/argocd.git
+    path: charts/n8n
+    targetRevision: main
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: n8n
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
