@@ -24,4 +24,4 @@ spec:
         name: homepage
         port: 3000
       middlewares:
-        - name: middleware-strip-strip
+        - name: middleware-strip
