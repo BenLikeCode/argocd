@@ -41,6 +41,8 @@ spec:
               value: "Europe/Paris"
             - name: N8N_DEFAULT_LOCALE
               value: "fr"
+            - name: WEBHOOK_URL
+              value: "https://allapps.me/n8n"
             - name: DB_TYPE
               value: postgresdb
             - name: DB_POSTGRESDB_HOST
