@@ -1,0 +1,9 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: homepage-headers
+spec:
+  headers:
+    customRequestHeaders:
+      # Host: "kubeserver:31960"
+      X-Forwarded-Prefix: "/home"
