@@ -37,6 +37,10 @@ spec:
               value: "false"
             - name: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
               value: "true"
+            - name: GENERIC_TIMEZONE
+              value: "Europe/Paris"
+            - name: N8N_DEFAULT_LOCALE
+              value: "fr"
             - name: DB_TYPE
               value: postgresdb
             - name: DB_POSTGRESDB_HOST
