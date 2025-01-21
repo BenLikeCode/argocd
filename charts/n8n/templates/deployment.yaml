@@ -34,7 +34,7 @@ spec:
             - name: N8N_PATH
               value: "/n8n"
             - name: N8N_DIAGNOSTICS_ENABLED
-              value: false
+              value: "false"
             - name: DB_TYPE
               value: postgresdb
             - name: DB_POSTGRESDB_HOST
