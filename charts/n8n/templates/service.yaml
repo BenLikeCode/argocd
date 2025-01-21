@@ -8,13 +8,13 @@ metadata:
 spec:
   selector:
     service: n8n
-  type: NodePort
+  type: ClusterIP
   ports:
     - name: "5678"
       port: 5678
       targetPort: 5678
       protocol: TCP
-      nodePort: 30085
+      # nodePort: 30085
 
 
 
