@@ -5,10 +5,10 @@ metadata:
 spec:
   selector:
     app: changedetection
-  type: NodePort
+  type: ClusterIP
   ports:
     - name: http
       port: 5000
       targetPort: http
       protocol: TCP
-      nodePort: 30084
+      # nodePort: 30084
