@@ -31,8 +31,8 @@ spec:
             - -c
             - sleep 5; n8n start
           env:
-            # - name: N8N_PATH
-            #   value: "/n8n"
+            - name: N8N_PATH
+              value: "/n8n"
             - name: N8N_DIAGNOSTICS_ENABLED
               value: "false"
             - name: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
