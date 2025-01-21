@@ -18,7 +18,7 @@ spec:
   routes:
     - kind: Rule
       match: PathPrefix(`/home`)
-      priority: 1
+      priority: 2
       services:
       - kind: Service
         name: homepage
