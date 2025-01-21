@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     service: n8n
-  type: Nodeport
+  type: NodePort
   ports:
     - name: "5678"
       port: 5678
