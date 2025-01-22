@@ -6,6 +6,6 @@ metadata:
     app.kubernetes.io/part-of: argocd-image-updater
   name: argocd-image-updater-config
 data:
-  log.level: debug
+  log.level: info
   git.commit-message-template: |
     ArgoCD-Update: {{ range .AppChanges }} {{ .Image }} tag '{{ .OldTag }}' to '{{ .NewTag }}'{{ end }}
