@@ -8,4 +8,4 @@ metadata:
 data:
   log.level: info
   git.commit-message-template: |
-    {{ .AppName }} updates image{{ range .AppChanges }} {{ .Image }} tag '{{ .OldTag }}' to '{{ .NewTag }}'{{ end }}
+    ArgoCD-Update: {{ range .AppChanges }} {{ .Image }} tag '{{ .OldTag }}' to '{{ .NewTag }}'{{ end }}

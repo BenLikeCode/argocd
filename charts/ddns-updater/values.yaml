@@ -1,4 +1,4 @@
 ddns-updater:
   image:
     tag: v2.9.0
-    name: qmcgaw/ddns-updater
+    name: ghcr.io/qdm12/ddns-updater
