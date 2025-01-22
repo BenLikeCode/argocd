@@ -16,7 +16,7 @@ spec:
   source:
     repoURL: git@github.com:Th3Heavy/argocd.git
     path: charts/ddns-updater
-    targetRevision: HEAD
+    targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ddnsupdater
