@@ -1,4 +1,4 @@
 n8n:
   image:
-    tag: 1.7.1
+    tag: 1.75.2
     name: n8nio/n8n
