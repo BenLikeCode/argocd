@@ -5,7 +5,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
   annotations:
-    argocd-image-updater.argoproj.io/image-list: ddnsupdater=ghcr.io/qdm12/ddns-updater:~2.9
+    argocd-image-updater.argoproj.io/image-list: ddnsupdater=ghcr.io/qdm12/ddns-updater:^2.9.0
     argocd-image-updater.argoproj.io/ddnsupdater.helm.image-name: ddnsupdater.image.name
     argocd-image-updater.argoproj.io/ddnsupdater.helm.image-tag: ddnsupdater.image.tag
     argocd-image-updater.argoproj.io/ddnsupdater.update-strategy: semver
