@@ -5,7 +5,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
   annotations:
-    argocd-image-updater.argoproj.io/image-list: stirlingpdf=ghcr.io/stirling-tools/stirling-pdf:^v0.1.0
+    argocd-image-updater.argoproj.io/image-list: stirlingpdf=ghcr.io/stirling-tools/stirling-pdf:>=0.37.1,<1.0.0
     argocd-image-updater.argoproj.io/stirlingpdf.helm.image-name: stirlingpdf.image.name
     argocd-image-updater.argoproj.io/stirlingpdf.helm.image-tag: stirlingpdf.image.tag
     argocd-image-updater.argoproj.io/stirlingpdf.update-strategy: semver
