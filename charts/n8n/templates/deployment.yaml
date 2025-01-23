@@ -65,7 +65,7 @@ spec:
               value: http
             - name: N8N_PORT
               value: "5678"
-          image: "{{ .Values.n8n.image.name }}:{{ .Values.n8n.image.tag }}"
+          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
           name: n8n
           ports:
             - containerPort: 5678
