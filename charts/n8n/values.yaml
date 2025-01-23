@@ -1,3 +1,2 @@
-image:
-  tag: 1.76.1
-  name: n8nio/n8n
+imageTag: 1.76.1
+imageName: n8nio/n8n
