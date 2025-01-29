@@ -88,17 +88,8 @@ metadata:
     helm.sh/chart: postgresql-16.4.5
 type: Opaque
 data:
-  postgres-password: "Mk4xRXFKa09HeQ=="
+  postgres-password: "aFVoNDgwWG0wRw=="
   # We don't auto-generate LDAP password when it's not provided as we do for other passwords
----
-# Source: n8n/templates/secret-no-crypted.yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: release-name-n8n
-type: Opaque
-data:
-  postgres-password: xxxxxxx
 ---
 # Source: n8n/templates/configmap.yaml
 apiVersion: v1
@@ -343,11 +334,6 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: release-name-n8n-postgresql
-                  key: DB_POSTGRESDB_PASSWORD
-            - name: DB_POSTGRESDB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: release-name-n8n-postgresql
                   key: postgres-password
                   optional: true
           envFrom:
@@ -585,12 +571,12 @@ spec:
     prefixes:
       - /n8nbis
 ---
-# Source: n8n/templates/secret-no-crypted.yaml
----
+# Source: n8n/templates/secret.yaml
 apiVersion: v1
 kind: Secret
 metadata:
   name: release-name-n8n-encryption-key-secret
+  namespace: default
   labels:
     app: n8n
     chart: n8n-1.0.0
@@ -601,4 +587,4 @@ metadata:
     "helm.sh/hook-delete-policy": "before-hook-creation"
 type: Opaque
 data:
-  N8N_ENCRYPTION_KEY: "YlA0OGtOWEVCaWQxNzVwM1lrVTlhM0JEb3NDRXFpdkQ="
+  N8N_ENCRYPTION_KEY: "OHM1U2hNbW85SEVTQmp4M1Z3Vzd4WWs3eDNmRlFIYko="

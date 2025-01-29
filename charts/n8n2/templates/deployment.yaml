@@ -76,35 +76,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ default (include "n8n.postgresql.fullname" .) .Values.externalPostgresql.existingSecret }}
-                  {{- if .Values.postgresql.auth.username }}
-                  key: password
-                  {{- else }}
-                  key: DB_POSTGRESDB_PASSWORD
-                  {{- end }}
-            - name: DB_POSTGRESDB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ default (include "n8n.postgresql.fullname" .) .Values.externalPostgresql.existingSecret }}
               {{- if .Values.postgresql.auth.username }}
                   key: password
               {{- else }}
                   key: postgres-password
               {{- end }}
                   optional: true
-            {{- if eq .Values.worker.mode "queue" }}
-            - name: QUEUE_BULL_REDIS_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ default (include "n8n.redis.fullname" .) .Values.externalRedis.existingSecret }}
-                  key: redis-username
-                  optional: true
-            - name: QUEUE_BULL_REDIS_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ default (include "n8n.redis.fullname" .) .Values.externalRedis.existingSecret }}
-                  key: redis-password
-                  optional: true
-            {{- end }}
           {{- end }}
           {{- if .Values.webhook.url }}
             - name: WEBHOOK_URL
