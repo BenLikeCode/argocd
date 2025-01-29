@@ -118,9 +118,6 @@ externalRedis:
   password: ""
   port: 6379
   existingSecret: ""
-pvc:
-  enable: true
-  storage: 2Gi
 postgresql:
   enabled: true
   architecture: standalone
