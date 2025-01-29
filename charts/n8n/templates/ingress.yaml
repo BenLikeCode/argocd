@@ -1,26 +1,24 @@
+{{- if .Values.ingress.enabled -}}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: n8n
-  namespace: n8n
+  name: {{ include "n8n.fullname" . }}
+  {{- with .Values.ingress.annotations }}
   annotations:
-    kubernetes.io/ingress.class: traefik
-    gethomepage.dev/href: "https://allapps.me/n8n"
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Tools
-    gethomepage.dev/icon: n8n.png
-    gethomepage.dev/name: "N8n"
-    gethomepage.dev/pod-selector: ""
-    gethomepage.dev/weight: "10" # optional
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   entryPoints:
-    - web
+    - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: PathPrefix(`/n8n`)
+      match: PathPrefix(`{{ .Values.ingress.path | default "/" }}`)
       services:
-      - kind: Service
-        name: n8n
-        port: 5678
+        - kind: Service
+          name: {{ include "n8n.fullname" . }}
+          port: {{ .Values.service.port }}
+      {{- if .Values.ingress.middlewares }}
       middlewares:
-        - name: middleware-strip
+      {{ toYaml .Values.ingress.middlewares | indent 8 }}
+      {{- end }}
+{{- end }}

@@ -1,13 +1,14 @@
+{{- if .Values.pvc.enabled -}}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  name: {{ include "n8n.fullname" . }}
   labels:
-    service: n8n-claim0
-  name: n8n-claim0
-  namespace: n8n
+    {{- include "n8n.labels" . | nindent 4 }}
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: {{ .Values.service.storage }}
+{{- end }}

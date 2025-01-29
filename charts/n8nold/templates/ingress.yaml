@@ -1,0 +1,26 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: n8n
+  namespace: n8n
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    gethomepage.dev/href: "https://allapps.me/n8n"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Tools
+    gethomepage.dev/icon: n8n.png
+    gethomepage.dev/name: "N8n"
+    gethomepage.dev/pod-selector: ""
+    gethomepage.dev/weight: "10" # optional
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: PathPrefix(`/n8n`)
+      services:
+      - kind: Service
+        name: n8n
+        port: 5678
+      middlewares:
+        - name: middleware-strip
