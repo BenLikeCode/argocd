@@ -295,7 +295,7 @@ postgresql:
 
     persistence:
       enabled: true
-      existingClaim: "data-n8n2-postgresql-0"
+      existingClaim: ""
 
   auth:
     username: ""
