@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: homepage
+  name: n8n2
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
 spec:
   project: default
   source:
     repoURL: git@github.com:Th3Heavy/argocd.git
-    path: charts/homepage
-    targetRevision: HEAD
+    path: charts/n8n2
+    targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: homepage
+    namespace: n8n2
   syncPolicy:
     automated:
       prune: false
