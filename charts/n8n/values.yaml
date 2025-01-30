@@ -26,7 +26,7 @@ service:
   name: http
   annotations: {}
 log:
-  level: info
+  level: debug
   output:
   - console
   scopes: []
