@@ -1,5 +1,7 @@
 image:
   pullPolicy: IfNotPresent
+  tag: 1.76.1
+  repository: n8nio/n8n
 BasePath: /n8n
 imagePullSecrets: []
 nameOverride: ""
@@ -24,7 +26,7 @@ service:
   name: http
   annotations: {}
 log:
-  level: debug
+  level: info
   output:
   - console
   scopes: []
@@ -137,7 +139,4 @@ externalPostgresql:
   port: 5432
   database: n8n
   existingSecret: ""
-n8n:
-  image:
-    tag: 1.77.0
-    name: n8nio/n8n
+
