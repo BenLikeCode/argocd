@@ -89,7 +89,7 @@ ingress:
     gethomepage.dev/weight: "10"
   path: /n8n
   middlewares:
-  - name: middleware-strip
+  - name: n8n-strip-prefix
 extraEnvVars: {}
 extraSecretNamesForEnvFrom: []
 resources: {}
