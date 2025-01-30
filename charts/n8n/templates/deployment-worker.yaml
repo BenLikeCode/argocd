@@ -41,7 +41,7 @@ spec:
         - name: {{ include "n8n.worker.name" . }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.n8n.image.name }}:{{ .Values.n8n.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["n8n"]
           args: ["worker", "--concurrency={{ .Values.worker.concurrency }}"]

@@ -1,7 +1,5 @@
 image:
-  repository: n8nio/n8n
   pullPolicy: IfNotPresent
-  tag: ""
 BasePath: /n8n
 imagePullSecrets: []
 nameOverride: ""

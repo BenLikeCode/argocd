@@ -6,8 +6,8 @@ metadata:
     - resources-finalizer.argocd.argoproj.io/foreground
   annotations:
     argocd-image-updater.argoproj.io/image-list: n8n=n8nio/n8n:1.x
-    argocd-image-updater.argoproj.io/n8n.helm.image-name: n8n.image.name
-    argocd-image-updater.argoproj.io/n8n.helm.image-tag: n8n.image.tag
+    argocd-image-updater.argoproj.io/n8n.helm.image-name: image.repository
+    argocd-image-updater.argoproj.io/n8n.helm.image-tag: image.tag
     argocd-image-updater.argoproj.io/n8n.update-strategy: semver
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/write-back-target: helmvalues:../n8n/values.yaml
