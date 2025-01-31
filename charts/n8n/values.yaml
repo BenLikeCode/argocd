@@ -126,6 +126,7 @@ postgresql:
       ports:
         postgresql: 5432
     persistence:
+      size: 1Gi
       enabled: true
       existingClaim: ""
   auth:
