@@ -62,6 +62,8 @@ spec:
               subPath: widgets.yaml
             - mountPath: /app/config/logs
               name: homepage
+            - mountPath: /app/public/icons
+              name: homepage
       volumes:
         - name: homepage-config
           configMap:
