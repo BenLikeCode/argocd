@@ -28,6 +28,11 @@ spec:
             {{- end }}
             - name: DATABASE_STRING
               value: postgresql+psycopg://{{ .Values.postgresql.auth.username }}:{{ .Values.postgresql.auth.password }}@{{ template "skyvern.fullname" . }}-postgresql:{{ .Values.postgresql.primary.service.ports.postgresql }}/{{ .Values.postgresql.auth.database }}
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: openai-api-key
           volumeMounts:
             - name: artifacts
               mountPath: /data/artifacts
