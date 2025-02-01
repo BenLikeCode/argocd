@@ -15,7 +15,7 @@ spec:
     - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: PathPrefix(`{{ .Values.ingress.basePath | default "/" }}api`)
+      match: PathPrefix(`/skyvern/api`)
       services:
         - kind: Service
           name: {{ include "skyvern.fullname" . }}
@@ -42,7 +42,7 @@ spec:
     - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: PathPrefix(`{{ .Values.ingress.basePath | default "/" }}`)
+      match: PathPrefix(`/skyvern`)
       priority: 1
       services:
         - kind: Service
@@ -69,7 +69,7 @@ spec:
     - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: PathPrefix(`{{ .Values.ingress.basePath | default "/" }}api/v1/stream`)
+      match: PathPrefix(`/skyvern/api/v1/stream`)
       services:
         - kind: Service
           name: {{ template "skyvern.ui.fullname" . }}
