@@ -71,8 +71,7 @@ skyvern:
   env:
     BROWSER_TYPE: chromium-headless
     ENABLE_OPENAI: "true"
-    DATABASE_STRING: postgresql+psycopg://{{ .Values.postgresql.auth.username }}:{{ .Values.postgresql.auth.password }}@{{ include "skyvern.postgresql.fullname" . }}:5432/{{ .Values.postgresql.auth.database }}
-    OPENAI_API_KEY: <your_openai_key>
+    OPENAI_API_KEY: ""
     # If you want to use other LLM provider, like azure and anthropic:
     # - ENABLE_ANTHROPIC=true
     # - LLM_KEY=ANTHROPIC_CLAUDE3.5_SONNET

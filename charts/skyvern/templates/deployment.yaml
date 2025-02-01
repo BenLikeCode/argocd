@@ -23,7 +23,7 @@ spec:
               protocol: TCP
           env:
             - name: DATABASE_STRING
-              value: postgresql+psycopg://{{ .Values.postgresql.auth.username }}:{{ .Values.postgresql.auth.password }}@{{ .Release.Name }}-postgresql:5432/{{ .Values.postgresql.auth.database }}
+              value: postgresql+psycopg://{{ .Values.postgresql.auth.username }}:{{ .Values.postgresql.auth.password }}@{{ template "skyvern.fullname" . }}-postgresql:{{ .Values.postgresql.primary.service.ports.postgresql }}/{{ .Values.postgresql.auth.database }}
             {{- range $key, $value := .Values.skyvern.env }}
             - name: {{ $key }}
               value: {{ $value | quote }}
