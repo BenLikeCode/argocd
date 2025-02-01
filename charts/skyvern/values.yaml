@@ -135,7 +135,7 @@ ingress:
   enabled: true
   entryPoints: websecure
   # All routes will be prefixed with this path (e.g., /skyvern)
-  basePath: /skyvern
+  basePath: /
   middlewares:
   - name: skyvern-strip-prefix
   annotations:
