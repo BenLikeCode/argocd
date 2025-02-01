@@ -63,32 +63,4 @@ spec:
       middlewares:
       {{ toYaml .Values.ingress.middlewares | indent 8 }}
       {{- end }}
-# ---
-# WebSocket IngressRoute
-# apiVersion: traefik.io/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: {{ template "skyvern.ui.fullname" . }}-ws
-#   labels:
-#     {{- include "skyvern.labels" . | nindent 4 }}
-#   {{- with .Values.ingress.annotations }}
-#   annotations:
-#     {{- toYaml . | nindent 4 }}
-#   {{- end }}
-# spec:
-#   entryPoints:
-#     - {{ .Values.ingress.entryPoints | default "web" }}
-#   routes:
-#     - kind: Rule
-#       match: PathPrefix(`/skyvern/api/v1/stream`)
-#       services:
-#         - kind: Service
-#           name: {{ template "skyvern.ui.fullname" . }}
-#           port: {{ .Values.skyvernUi.service.wsPort }}
-#       middlewares:
-#         - name: strip-prefix
-#       {{- if .Values.ingress.middlewares }}
-#       middlewares:
-#       {{ toYaml .Values.ingress.middlewares | indent 8 }}
-#       {{- end }}
 {{- end }}
