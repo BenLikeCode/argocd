@@ -5,5 +5,5 @@ metadata:
 spec:
   headers:
     customRequestHeaders:
-      Host: "kubeserver:31960"
+      # Host: "kubeserver:31960"
       X-Forwarded-Prefix: "/home"
