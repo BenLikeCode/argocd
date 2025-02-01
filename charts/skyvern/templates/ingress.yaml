@@ -8,7 +8,6 @@ metadata:
     {{- include "skyvern.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
-    kubernetes.io/ingress.class: traefik
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
@@ -36,7 +35,6 @@ metadata:
     {{- include "skyvern.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
-    kubernetes.io/ingress.class: traefik
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
@@ -64,7 +62,6 @@ metadata:
     {{- include "skyvern.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
-      kubernetes.io/ingress.class: traefik
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:

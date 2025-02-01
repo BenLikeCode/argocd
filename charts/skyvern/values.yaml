@@ -146,3 +146,4 @@ ingress:
     gethomepage.dev/name: Skyvern
     gethomepage.dev/pod-selector: ""
     gethomepage.dev/weight: "10"
+    kubernetes.io/ingress.class: traefik
