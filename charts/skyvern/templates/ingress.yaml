@@ -39,6 +39,13 @@ metadata:
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
+    gethomepage.dev/href: https://allapps.me/skyvern
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Tools
+    gethomepage.dev/icon: /icons/skyvern.png
+    gethomepage.dev/name: Skyvern
+    gethomepage.dev/pod-selector: ""
+    gethomepage.dev/weight: "10"
 spec:
   entryPoints:
     - {{ .Values.ingress.entryPoints | default "web" }}

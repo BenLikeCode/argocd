@@ -128,11 +128,4 @@ ingress:
   middlewares:
   - name: skyvern-strip-prefix
   annotations:
-    gethomepage.dev/href: https://allapps.me/skyvern
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Tools
-    gethomepage.dev/icon: skyvern.png
-    gethomepage.dev/name: Skyvern
-    gethomepage.dev/pod-selector: ""
-    gethomepage.dev/weight: "10"
     kubernetes.io/ingress.class: traefik
