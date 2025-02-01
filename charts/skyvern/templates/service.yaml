@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "skyvern.fullname" . }}
+  labels:
+    {{- include "skyvern.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.skyvern.service.type }}
+  ports:
+    - port: {{ .Values.skyvern.service.port }}
+      targetPort: 8000
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "skyvern.selectorLabels" . | nindent 4 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "skyvern.ui.fullname" . }}
+  labels:
+    {{- include "skyvern.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.skyvernUi.service.type }}
+  ports:
+    - port: {{ .Values.skyvernUi.service.port }}
+      targetPort: 8080
+      protocol: TCP
+      name: http
+    - port: {{ .Values.skyvernUi.service.wsPort }}
+      targetPort: 9090
+      protocol: TCP
+      name: websocket
+  selector:
+    {{- include "skyvern.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: ui

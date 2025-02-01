@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "skyvern.fullname" . }}
+  labels:
+    {{- include "skyvern.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "skyvern.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "skyvern.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.skyvern.image.repository }}:{{ .Values.skyvern.image.tag }}"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+          env:
+            - name: DATABASE_STRING
+              value: postgresql+psycopg://{{ .Values.global.postgresql.auth.username }}:{{ .Values.global.postgresql.auth.password }}@{{ .Release.Name }}-postgresql:5432/{{ .Values.global.postgresql.auth.database }}
+            {{- range $key, $value := .Values.skyvern.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
+          volumeMounts:
+            - name: artifacts
+              mountPath: /data/artifacts
+            - name: videos
+              mountPath: /data/videos
+            - name: har
+              mountPath: /data/har
+            - name: log
+              mountPath: /data/log
+            - name: streamlit
+              mountPath: /app/.streamlit
+      volumes:
+        - name: artifacts
+          persistentVolumeClaim:
+            claimName: {{ include "skyvern.fullname" . }}-artifacts
+        - name: videos
+          persistentVolumeClaim:
+            claimName: {{ include "skyvern.fullname" . }}-videos
+        - name: har
+          persistentVolumeClaim:
+            claimName: {{ include "skyvern.fullname" . }}-har
+        - name: log
+          persistentVolumeClaim:
+            claimName: {{ include "skyvern.fullname" . }}-log
+        - name: streamlit
+          persistentVolumeClaim:
+            claimName: {{ include "skyvern.fullname" . }}-streamlit

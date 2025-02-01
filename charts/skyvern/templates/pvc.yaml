@@ -1,0 +1,74 @@
+{{- if .Values.skyvern.persistence.artifacts.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "skyvern.fullname" . }}-artifacts
+  labels:
+    {{- include "skyvern.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.skyvern.persistence.artifacts.size }}
+---
+{{- end }}
+{{- if .Values.skyvern.persistence.videos.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "skyvern.fullname" . }}-videos
+  labels:
+    {{- include "skyvern.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.skyvern.persistence.videos.size }}
+---
+{{- end }}
+{{- if .Values.skyvern.persistence.har.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "skyvern.fullname" . }}-har
+  labels:
+    {{- include "skyvern.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.skyvern.persistence.har.size }}
+---
+{{- end }}
+{{- if .Values.skyvern.persistence.log.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "skyvern.fullname" . }}-log
+  labels:
+    {{- include "skyvern.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.skyvern.persistence.log.size }}
+---
+{{- end }}
+{{- if .Values.skyvern.persistence.streamlit.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "skyvern.fullname" . }}-streamlit
+  labels:
+    {{- include "skyvern.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.skyvern.persistence.streamlit.size }}
+{{- end }}

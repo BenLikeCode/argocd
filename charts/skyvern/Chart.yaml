@@ -1,0 +1,9 @@
+apiVersion: v2
+name: skyvern
+description: Helm chart for Skyvern application
+version: 0.1.0
+type: application
+dependencies:
+  - name: postgresql
+    version: 12.5.6
+    repository: https://charts.bitnami.com/bitnami

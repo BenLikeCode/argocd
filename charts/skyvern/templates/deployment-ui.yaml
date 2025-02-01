@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "skyvern.ui.fullname" . }}
+  labels:
+    {{- include "skyvern.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "skyvern.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: ui
+  template:
+    metadata:
+      labels:
+        {{- include "skyvern.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: ui
+    spec:
+      containers:
+        - name: {{ include "skyvern.ui.name" . }}
+          image: "{{ .Values.skyvernUi.image.repository }}:{{ .Values.skyvernUi.image.tag }}"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 9090
+              protocol: TCP
+          env:
+            {{- range $key, $value := .Values.skyvernUi.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
+          volumeMounts:
+            - name: artifacts
+              mountPath: /data/artifacts
+            - name: videos
+              mountPath: /data/videos
+            - name: har
+              mountPath: /data/har
+            - name: log
+              mountPath: /data/log
+            - name: streamlit
+              mountPath: /app/.streamlit
+              subPath: streamlit
+      volumes:
+        - name: artifacts
+          persistentVolumeClaim:
+            claimName: {{ include "skyvern.fullname" . }}-artifacts
+        - name: videos
+          persistentVolumeClaim:
+            claimName: {{ include "skyvern.fullname" . }}-videos
+        - name: har
+          persistentVolumeClaim:
+            claimName: {{ include "skyvern.fullname" . }}-har
+        - name: log
+          persistentVolumeClaim:
+            claimName: {{ include "skyvern.fullname" . }}-log
+        - name: streamlit
+          persistentVolumeClaim:
+            claimName: {{ include "skyvern.fullname" . }}-streamlit
