@@ -38,9 +38,6 @@ postgresql:
       size: 1Gi
       enabled: true
       existingClaim: ""
-    extraEnvVars:
-      - name: PGDATA
-        value: /var/lib/postgresql/data/pgdata
     containerSecurityContext:
       runAsUser: 1001
       runAsNonRoot: true
