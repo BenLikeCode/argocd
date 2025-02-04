@@ -1,6 +1,6 @@
 image:
   pullPolicy: IfNotPresent
-  tag: 1.77.1
+  tag: 1.77.2
   repository: n8nio/n8n
 BasePath: /n8n
 imagePullSecrets: []
