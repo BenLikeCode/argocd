@@ -17,7 +17,8 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: Host(`dns.allapps.me`) 
+      # match: Host(`dns.allapps.me`) 
+      match: 'HostRegexp(`^dns\..+$`)'
       services:
       - kind: Service
         name: ddnsupdater
