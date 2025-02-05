@@ -18,10 +18,7 @@ spec:
   routes:
     - kind: Rule
       match: PathPrefix(`/`)
-      priority: 2
       services:
       - kind: Service
         name: homepage
         port: 3000
-      # middlewares:
-      #   - name: middleware-strip
