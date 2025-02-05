@@ -17,18 +17,18 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/argocd`)
+      match: HostRegexp(`^argocd\..+$`)
       priority: 10
       services:
       - name: argocd-server
         port: 80
     - kind: Rule
-      match: PathPrefix(`/argocd`) && Header(`Content-Type`, `application/grpc`)
+      match: HostRegexp(`^argocd\..+$`) && Header(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - name: argocd-server
           port: 80
           scheme: h2c
-      middlewares:
-      - name: middleware-headers
-      - name: middleware-strip
+      # middlewares:
+      # - name: middleware-headers
+      # - name: middleware-strip
