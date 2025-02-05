@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: ddnsupdater
 data:
-  ROOT_URL: "/dns"
+  ROOT_URL: "/"
