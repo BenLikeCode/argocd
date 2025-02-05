@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
   annotations:
     kubernetes.io/ingress.class: traefik
-    gethomepage.dev/href: "https://allapps.me/argocd"
+    gethomepage.dev/href: "https://argocd.allapps.me"
     gethomepage.dev/enabled: "false"
     gethomepage.dev/group: Tools
     gethomepage.dev/icon: argo-cd.png
@@ -17,13 +17,13 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: HostRegexp(`^argocd\..+$`)
+      match: 'HostRegexp(`^argocd\..+$`)'
       priority: 10
       services:
       - name: argocd-server
         port: 80
     - kind: Rule
-      match: HostRegexp(`^argocd\..+$`) && Header(`Content-Type`, `application/grpc`)
+      match: 'HostRegexp(`^argocd\..+$`) && Header(`Content-Type`, `application/grpc`)'
       priority: 11
       services:
         - name: argocd-server
