@@ -17,7 +17,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: HostHeader(`dns`)
+      match: HostRegexp(`^dns\..*`)
       services:
       - kind: Service
         name: ddnsupdater
