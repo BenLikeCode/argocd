@@ -4,6 +4,9 @@ metadata:
   name: argocd-ingressroute
   namespace: argocd
   annotations:
+    meta.helm.sh/release-name: argocd
+    meta.helm.sh/release-namespace: argocd
+    app.kubernetes.io/managed-by: Helm
     kubernetes.io/ingress.class: traefik
     gethomepage.dev/href: "https://argocd.allapps.me"
     gethomepage.dev/enabled: "false"

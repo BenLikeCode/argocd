@@ -1,4 +1,4 @@
-argo-cd:
+argocd:
   fullnameOverride: argocd
   namespaceOverride: argocd
   server:
