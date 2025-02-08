@@ -10,7 +10,8 @@ metadata:
   {{- end }}
 spec:
   entryPoints:
-    - {{ .Values.ingress.entryPoints | default "web" }}
+    # - {{ .Values.ingress.entryPoints | default "web" }}
+    - websecure
   routes:
     - kind: Rule
       match: PathPrefix(`{{ .Values.ingress.path | default "/" }}`)

@@ -48,7 +48,8 @@ metadata:
     gethomepage.dev/weight: "10"
 spec:
   entryPoints:
-    - {{ .Values.ingress.entryPoints | default "web" }}
+    # - {{ .Values.ingress.entryPoints | default "web" }}
+    - websecure
   routes:
     - kind: Rule
       match: PathPrefix(`/skyvern`)

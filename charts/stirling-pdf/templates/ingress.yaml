@@ -14,7 +14,7 @@ metadata:
     gethomepage.dev/weight: "10" # optional
 spec: 
   entryPoints:
-    - web
+    - websecure
   routes:
     - kind: Rule
       match: PathPrefix(`/pdf`)

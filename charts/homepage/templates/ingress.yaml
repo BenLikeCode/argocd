@@ -14,7 +14,7 @@ metadata:
     app.kubernetes.io/name: homepage
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - kind: Rule
       match: PathPrefix(`/home`)
