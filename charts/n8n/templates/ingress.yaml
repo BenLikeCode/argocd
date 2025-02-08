@@ -10,11 +10,10 @@ metadata:
   {{- end }}
 spec:
   entryPoints:
-    # - {{ .Values.ingress.entryPoints | default "web" }}
-    - websecure
+    - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: PathPrefix(`{{ .Values.ingress.path | default "/" }}`)
+      match: 'HostRegexp(`^n8n\..+$`)'
       services:
         - kind: Service
           name: {{ include "n8n.fullname" . }}

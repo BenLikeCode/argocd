@@ -87,7 +87,7 @@ ingress:
     gethomepage.dev/name: N8n
     gethomepage.dev/pod-selector: ""
     gethomepage.dev/weight: "10"
-  path: /n8n
+  path: /
   middlewares:
   - name: n8n-strip-prefix
 extraEnvVars: {}

@@ -14,10 +14,10 @@ metadata:
     gethomepage.dev/weight: "10" # optional
 spec: 
   entryPoints:
-    - websecure
+    - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/pdf`)
+      match: 'HostRegexp(`^dns\..+$`)'
       services:
       - kind: Service
         name: stirling-pdf

@@ -124,8 +124,8 @@ ingress:
   enabled: true
   entryPoints: web
   # All routes will be prefixed with this path (e.g., /skyvern)
-  basePath: /skyvern
-  middlewares:
-  - name: skyvern-strip-prefix
+  # basePath: /
+  # middlewares:
+  # - name: skyvern-strip-prefix
   annotations:
     kubernetes.io/ingress.class: traefik

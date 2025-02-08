@@ -48,18 +48,15 @@ metadata:
     gethomepage.dev/weight: "10"
 spec:
   entryPoints:
-    # - {{ .Values.ingress.entryPoints | default "web" }}
-    - websecure
+    - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: PathPrefix(`/skyvern`)
+      match: 'HostRegexp(`^skyvern\..+$`)'
       priority: 1
       services:
         - kind: Service
           name: {{ template "skyvern.ui.fullname" . }}
           port: {{ .Values.skyvernUi.service.port }}
-      middlewares:
-        - name: strip-prefix
       {{- if .Values.ingress.middlewares }}
       middlewares:
       {{ toYaml .Values.ingress.middlewares | indent 8 }}
