@@ -3,8 +3,8 @@ argo-cd:
   namespaceOverride: argocd
   server:
     service:
-      type: ClusterIP
-      # nodePortHttp: 30080
+      # type: ClusterIP
+      nodePortHttp: 30080
   configs:
     params:
       # server.rootpath: "/"
