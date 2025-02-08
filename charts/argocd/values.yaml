@@ -4,6 +4,7 @@ argo-cd:
   server:
     service:
       # type: ClusterIP
+      type: NodePort
       nodePortHttp: 30080
   configs:
     params:
