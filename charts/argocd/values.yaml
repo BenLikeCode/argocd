@@ -7,8 +7,8 @@ argo-cd:
       # nodePortHttp: 30080
   configs:
     params:
-      server.rootpath: "/argocd"
-      server.basehref: "/argocd"
+      server.rootpath: "/"
+      server.basehref: "/"
       server.insecure: true
       server.disable.auth: true
     cm:
