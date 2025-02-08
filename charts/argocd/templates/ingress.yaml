@@ -20,15 +20,13 @@ spec:
     - web
   routes:
     - kind: Rule
-      # match: 'HostRegexp(`^argocd\..+$`)'
-      match: Host(`argocd.allapps.me`)
+      match: 'HostRegexp(`^argocd\..+$`)'
       priority: 10
       services:
       - name: argocd-server
         port: 80
     - kind: Rule
-      # match: 'HostRegexp(`^argocd\..+$`) && Header(`Content-Type`, `application/grpc`)'
-      match: Host(`argocd.allapps.me`) && Header(`Content-Type`, `application/grpc`) 
+      match: 'HostRegexp(`^argocd\..+$`) && Header(`Content-Type`, `application/grpc`)'
       priority: 11
       services:
         - name: argocd-server
