@@ -17,18 +17,18 @@ metadata:
     gethomepage.dev/weight: "10" # optional
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - kind: Rule
       # match: 'HostRegexp(`^argocd\..+$`)'
-      match: Host(`allapps.me`)
+      match: Host(`allapps.me`) && PathPrefix(`/argocd`)
       priority: 10
       services:
       - name: argocd-server
         port: 80
     - kind: Rule
       # match: 'HostRegexp(`^argocd\..+$`) && Header(`Content-Type`, `application/grpc`)'
-      match: Host(`allapps.me`) && Header(`Content-Type`, `application/grpc`)
+      match: Host(`allapps.me`) && Header(`Content-Type`, `application/grpc`) && PathPrefix(`/argocd`)
       priority: 11
       services:
         - name: argocd-server
