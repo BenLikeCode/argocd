@@ -21,7 +21,7 @@ spec:
   routes:
     - kind: Rule
       # match: 'HostRegexp(`^argocd\..+$`)'
-      match: PathPrefix(`/`)
+      match: PathPrefix(`/`) || PathPrefix(`/api/v1/settings`)
       priority: 10
       services:
       - name: argocd-server
