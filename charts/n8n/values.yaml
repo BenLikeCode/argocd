@@ -123,7 +123,7 @@ postgresql:
         postgresql: 5432
     persistence:
       size: 1Gi
-      enabled: true
+      enabled: false
       existingClaim: ""
   auth:
     username: ""
