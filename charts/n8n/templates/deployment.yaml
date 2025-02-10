@@ -53,8 +53,6 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
-            - name: N8N_PATH
-              value: {{ .Values.BasePath | quote }}
             - name: N8N_HIRING_BANNER_ENABLED
               value: "false"
             - name: NODE_ENV
