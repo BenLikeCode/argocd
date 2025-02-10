@@ -86,7 +86,6 @@ ingress:
     gethomepage.dev/name: N8n
     gethomepage.dev/pod-selector: ""
     gethomepage.dev/weight: "10"
-  path: /
 extraEnvVars: {}
 extraSecretNamesForEnvFrom: []
 resources: {}
@@ -124,7 +123,7 @@ postgresql:
         postgresql: 5432
     persistence:
       size: 1Gi
-      enabled: true
+      enabled: false
       existingClaim: ""
   auth:
     username: ""

@@ -5,7 +5,7 @@ metadata:
   namespace: stirling-pdf
   annotations:
     kubernetes.io/ingress.class: traefik
-    gethomepage.dev/href: "https://allapps.me/pdf"
+    gethomepage.dev/href: "https://pdf.allapps.me"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Tools
     gethomepage.dev/icon: stirling-pdf.png
