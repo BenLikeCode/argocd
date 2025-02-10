@@ -17,7 +17,8 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: 'HostRegexp(`^home\..+$`)'
+      # match: 'HostRegexp(`^home\..+$`)'
+      match: Host(`home.allapps.me`)
       services:
       - kind: Service
         name: homepage

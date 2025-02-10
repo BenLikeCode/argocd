@@ -9,7 +9,7 @@ data:
   kubernetes.yaml: |
     mode: default 
   settings.yaml: |
-   title: Home
+    title: Home
   custom.css: ""
   custom.js: ""
   bookmarks.yaml: ""
