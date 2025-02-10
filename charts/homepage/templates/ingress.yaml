@@ -18,7 +18,7 @@ spec:
   routes:
     - kind: Rule
       # match: 'HostRegexp(`^home\..+$`)'
-      match: Host(`home.allapps.me`)
+      match: Host(`home.allapps.me`) || Host(`home.allapps.me`) && PathPrefix(`/api`)
       services:
       - kind: Service
         name: homepage
