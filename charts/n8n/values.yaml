@@ -87,8 +87,6 @@ ingress:
     gethomepage.dev/pod-selector: ""
     gethomepage.dev/weight: "10"
   path: /
-  # middlewares:
-  # - name: n8n-strip-prefix
 extraEnvVars: {}
 extraSecretNamesForEnvFrom: []
 resources: {}
