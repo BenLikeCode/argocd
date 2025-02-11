@@ -20,8 +20,6 @@ spec:
         - kind: Service
           name: {{ include "skyvern.fullname" . }}
           port: {{ .Values.skyvern.service.port }}
-      middlewares:
-        - name: strip-prefix
       {{- if .Values.ingress.middlewares }}
       middlewares:
       {{ toYaml .Values.ingress.middlewares | indent 8 }}
