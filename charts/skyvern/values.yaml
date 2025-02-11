@@ -36,7 +36,7 @@ postgresql:
         postgresql: 5432
     persistence:
       size: 1Gi
-      enabled: false
+      enabled: true
       existingClaim: ""
     containerSecurityContext:
       runAsUser: 1001
