@@ -51,7 +51,7 @@ spec:
     - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: HostRegexp(`^skyvern\..+$`)
+      match: HostRegexp(`^skyvern\..+$`) || HostRegexp(`^skyvern\..+$`) && PathPrefix(`/assets`)
       priority: 1
       services:
         - kind: Service
