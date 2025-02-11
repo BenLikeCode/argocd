@@ -15,7 +15,7 @@ spec:
     - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: HostRegexp(`^skyvern\..+$`) || HostRegexp(`^skyvern\..+$`) && PathPrefix(`/api`)
+      match: HostRegexp(`^skyvern\..+$`) && PathPrefix(`/api`)
       services:
         - kind: Service
           name: {{ include "skyvern.fullname" . }}
@@ -49,7 +49,7 @@ spec:
     - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: HostRegexp(`^skyvern\..+$`) || HostRegexp(`^skyvern\..+$`) && PathPrefix(`/assets`)
+      match: HostRegexp(`^skyvern\..+$`)
       priority: 1
       services:
         - kind: Service
