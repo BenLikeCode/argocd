@@ -30,7 +30,7 @@ spec:
               mountPath: /app/.streamlit
       containers:
         - name: {{ include "skyvern.ui.name" . }}
-          image: "{{ .Values.skyvernUi.image.repository }}:{{ .Values.skyvernUi.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
