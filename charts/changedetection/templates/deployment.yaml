@@ -17,7 +17,7 @@ spec:
       serviceAccountName: ""
       containers:
         - name: changedetection
-          image: "{{ .Values.changedetection.image.name }}:{{ .Values.changedetection.image.tag }}"
+          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
           env:
             - name: USE_X_SETTINGS
               value: "1"

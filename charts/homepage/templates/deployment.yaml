@@ -26,7 +26,7 @@ spec:
       enableServiceLinks: true
       containers:
         - name: homepage
-          image: "{{ .Values.homepage.image.name }}:{{ .Values.homepage.image.tag }}"
+          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
           imagePullPolicy: Always
           ports:
             - name: http

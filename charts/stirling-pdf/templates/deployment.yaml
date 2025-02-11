@@ -29,7 +29,7 @@ spec:
               value: fr-FR
             - name: SYSTEM_ENABLEANALYTICS
               value: 'false'
-          image: "{{ .Values.stirlingpdf.image.name }}:{{ .Values.stirlingpdf.image.tag }}"
+          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
