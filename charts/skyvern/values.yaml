@@ -17,7 +17,7 @@ serviceAccount:
   annotations: {}
   name: ""
 
-# Pod configurations
+# Pod configurationss
 podAnnotations: {}
 podLabels: {}
 podSecurityContext: {}
