@@ -1,4 +1,3 @@
-stirlingpdf:
-  image:
-    tag: 0.41.0
-    name: ghcr.io/stirling-tools/stirling-pdf
+image:
+  tag: 0.41.0
+  name: ghcr.io/stirling-tools/stirling-pdf

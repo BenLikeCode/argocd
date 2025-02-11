@@ -1,4 +1,3 @@
-changedetection:
-  image:
-    tag: 0.49.1
-    name: ghcr.io/dgtlmoon/changedetection.io
+image:
+  tag: 0.49.1
+  name: ghcr.io/dgtlmoon/changedetection.io
