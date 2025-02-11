@@ -21,7 +21,7 @@ spec:
           ports:
             - containerPort: 8000
               protocol: TCP
-          {{- if .Values.primary.livenessProbe.enabled }}
+          {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             exec:
               command:
