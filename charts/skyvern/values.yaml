@@ -71,8 +71,8 @@ skyvern:
   env:
     BROWSER_TYPE: "chromium-headless"
     ENABLE_OPENAI: "true"
-    OPENAI_API_KEY: ""
-
+    SKYVERN_TELEMETRY: "false"
+    LOG_LEVEL: "DEBUG"
     # If you want to use other LLM provider, like azure and anthropic:
     # - ENABLE_ANTHROPIC=true
     # - LLM_KEY=ANTHROPIC_CLAUDE3.5_SONNET
@@ -116,7 +116,7 @@ skyvernUi:
     port: 8080
     wsPort: 9090
   env:
-    VITE_WSS_BASE_URL: ws://skyvern.allapps.me/api/v1
+    VITE_WSS_BASE_URL: wss://skyvern.allapps.me/api/v1
     VITE_API_BASE_URL: https://skyvern.allapps.me/api/v1
     # VITE_ARTIFACT_API_BASE_URL: http://localhost:9090
 
