@@ -36,7 +36,7 @@ postgresql:
         postgresql: 5432
     persistence:
       size: 1Gi
-      enabled: true
+      enabled: false
       existingClaim: ""
     containerSecurityContext:
       runAsUser: 1001
@@ -123,9 +123,5 @@ skyvernUi:
 ingress:
   enabled: true
   entryPoints: web
-  # All routes will be prefixed with this path (e.g., /skyvern)
-  # basePath: /
-  # middlewares:
-  # - name: skyvern-strip-prefix
   annotations:
     kubernetes.io/ingress.class: traefik
