@@ -15,7 +15,7 @@ spec:
     - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: HostRegexp(`^skyvern\..+$`) && PathPrefix(`/api`)
+      match: HostRegexp(`^skyvern\..+$`) && PathPrefix(`/api/v1/workflows`)
       priority: 10
       services:
         - kind: Service

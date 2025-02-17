@@ -16,18 +16,18 @@ spec:
         {{- include "skyvern.selectorLabels" . | nindent 8 }}
         app.kubernetes.io/component: ui
     spec:
-      initContainers:
-        - name: init-streamlit-config
-          image: busybox
-          command:
-            - /bin/sh
-            - -c
-            - |
-              mkdir -p /app/.streamlit
-              touch /app/.streamlit/secrets.toml
-          volumeMounts:
-            - name: streamlit
-              mountPath: /app/.streamlit
+      # initContainers:
+      #   - name: init-streamlit-config
+      #     image: busybox
+      #     command:
+      #       - /bin/sh
+      #       - -c
+      #       - |
+      #         mkdir -p /app/.streamlit
+      #         touch /app/.streamlit/secrets.toml
+      #     volumeMounts:
+      #       - name: streamlit
+      #         mountPath: /app/.streamlit
       containers:
         - name: {{ include "skyvern.ui.name" . }}
           image: "{{ .Values.skyvernUi.image.repository }}:{{ .Values.skyvernUi.image.tag }}"
