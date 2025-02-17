@@ -53,7 +53,6 @@ spec:
               mountPath: /data/log
             - name: streamlit
               mountPath: /app/.streamlit
-              subPath: streamlit
       volumes:
         - name: artifacts
           persistentVolumeClaim:
