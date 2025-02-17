@@ -3,7 +3,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ include "skyvern.fullname" . }}-api
+  name: {{ include "skyvern.fullname" . }}
   labels:
     {{- include "skyvern.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
@@ -15,7 +15,7 @@ spec:
     - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: HostRegexp(`^skyvern\..+$`) && PathPrefix(`/api/v1/workflows`)
+      match: HostRegexp(`^skyvern\..+$`) && PathPrefix(`/api`)
       priority: 10
       services:
         - kind: Service
@@ -31,7 +31,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ template "skyvern.ui.fullname" . }}-web
+  name: {{ template "skyvern.ui.fullname" . }}
   labels:
     {{- include "skyvern.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
