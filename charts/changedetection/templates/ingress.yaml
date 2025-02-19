@@ -22,5 +22,3 @@ spec:
       - kind: Service
         name: changedetection
         port: 5000
-      middlewares:
-      - name: middleware-strip
