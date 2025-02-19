@@ -24,7 +24,7 @@ traefik:
       matchRule: HostRegexp(`^traefik\..+$`) && PathPrefix(`/dashboard`) || HostRegexp(`^traefik\..+$`) && PathPrefix(`/api`)
       annotations:
         kubernetes.io/ingress.class: "traefik"
-      entryPoints: ["traefik"]
+      entryPoints: ["web"]
   logs: 
     general: 
       level: "TRACE"
