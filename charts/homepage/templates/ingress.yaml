@@ -17,7 +17,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: HostRegexp(`^home\..+$`) || HostRegexp(`^home\..+$`) && PathPrefix(`/api`)
+      match: HostRegexp(`^home\..+$`)
       services:
       - kind: Service
         name: homepage
