@@ -1,0 +1,19 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  labels:
+    app.kubernetes.io/instance: traefik-traefik
+    app.kubernetes.io/name: traefik
+    argocd.argoproj.io/instance: traefik
+    helm.sh/chart: traefik-33.2.1
+  name: traefik-dashboard
+  namespace: traefik
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: 'HostRegexp(`^traefik\..+$`) && PathPrefix(`/dashboard`) || HostRegexp(`^traefik\..+$`) && PathPrefix(`/api`)'
+      services:
+        - kind: TraefikService
+          name: api@internal
