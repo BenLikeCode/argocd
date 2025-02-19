@@ -130,7 +130,7 @@ skyvernUi:
   service:
     type: ClusterIP
     port: 8080
-    wsPort: 9090
+    artifactPort: 9090
   env:
     VITE_WSS_BASE_URL: wss://skyvern.allapps.me/api/v1
     VITE_API_BASE_URL: https://skyvern.allapps.me/api/v1

@@ -71,3 +71,17 @@ Create skyvern UI full name
 {{- define "skyvern.ui.fullname" -}}
 {{- printf "%s-ui" (include "skyvern.fullname" .) | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{/*
+ARTIFACT name
+*/}}
+{{- define "skyvern.artifact.name" -}}
+{{- printf "%s-artifact" (include "skyvern.name" .) | trunc 63 | trimSuffix "-" -}}
+{{- end }}
+
+{{/*
+Create skyvern ARTIFACT full name
+*/}}
+{{- define "skyvern.artifact.fullname" -}}
+{{- printf "%s-artifact" (include "skyvern.fullname" .) | trunc 63 | trimSuffix "-" -}}
+{{- end -}}

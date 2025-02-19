@@ -28,10 +28,23 @@ spec:
       targetPort: 8080
       protocol: TCP
       name: http
-    - port: {{ .Values.skyvernUi.service.wsPort }}
+  selector:
+    {{- include "skyvern.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: ui
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "skyvern.artifact.fullname" . }}
+  labels:
+    {{- include "skyvern.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.skyvernUi.service.type }}
+  ports:
+    - port: {{ .Values.skyvernUi.service.artifactPort }}
       targetPort: 9090
       protocol: TCP
-      name: websocket
+      name: http
   selector:
     {{- include "skyvern.selectorLabels" . | nindent 4 }}
     app.kubernetes.io/component: ui
