@@ -21,7 +21,7 @@ traefik:
   ingressRoute: 
     dashboard: 
       enabled: true
-      matchRule: HostRegexp(`^traefik\..+$`) && PathPrefix(`/dashboard`) || HostRegexp(`^traefik\..+$`) && PathPrefix(`/api`)
+      matchRule: HostRegexp(`^traefik\..+$`)
       annotations:
         kubernetes.io/ingress.class: "traefik"
       entryPoints: ["web"]
