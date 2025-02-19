@@ -4,8 +4,11 @@ traefik:
   ports: 
     web:
       nodePort: 31960
+      asDefault: true
     websecure:
       nodePort: 31961
+      expose:
+        default: false
   globalArguments:
       - "--global.sendanonymoususage=false"
   providers:  # @schema additionalProperties: false
@@ -17,15 +20,16 @@ traefik:
       enabled: true
   ingressRoute: 
     dashboard: 
-      enabled: false
+      enabled: true
+      matchRule: HostRegexp(`^traefik\..+$`) && PathPrefix(`/dashboard`) || HostRegexp(`^traefik\..+$`) && PathPrefix(`/api`)
       annotations:
         kubernetes.io/ingress.class: "traefik"
-      entryPoints: ["web"]
+      entryPoints: ["traefik"]
   logs: 
     general: 
       level: "TRACE"
     access:
-      enabled: false
+      enabled: true
 
 
 
