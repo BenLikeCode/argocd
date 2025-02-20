@@ -1,0 +1,28 @@
+{{- if .Values.ingress.enabled -}}
+# Backend IngressRoute
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ include "actualbudget.fullname" . }}
+  labels:
+    {{- include "actualbudget.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  entryPoints:
+    - {{ .Values.ingress.entryPoints | default "web" }}
+  routes:
+    - kind: Rule
+      match: HostRegexp(`^budget\..+$`)
+      priority: 10
+      services:
+        - kind: Service
+          name: {{ include "actualbudget.fullname" . }}
+          port: {{ .Values.service.port }}
+      {{- if .Values.ingress.middlewares }}
+      middlewares:
+      {{ toYaml .Values.ingress.middlewares | indent 8 }}
+      {{- end }}
+{{- end }}

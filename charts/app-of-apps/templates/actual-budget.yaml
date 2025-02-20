@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: actual-budget
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io/foreground
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: actual-budget=actualbudget/actual-server:25.x
+    argocd-image-updater.argoproj.io/actual-budget.helm.image-name: image.repository
+    argocd-image-updater.argoproj.io/actual-budget.helm.image-tag: image.tag
+    argocd-image-updater.argoproj.io/actual-budget.update-strategy: semver
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/write-back-target: helmvalues:../actual-budget/values.yaml
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:Th3Heavy/argocd.git
+    path: charts/actual-budget
+    targetRevision: main
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: actual-budget
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
