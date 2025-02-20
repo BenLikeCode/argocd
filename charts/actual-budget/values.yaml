@@ -104,15 +104,32 @@ readinessProbe:
     path: /
     port: http
 
-# -- Additional volumes on the output Deployment definition.
-volumes:
-  - name: data
-    persistentVolumeClaim:
-      claimName: actualbudget-volume
+data:
+  persistence:
+    enabled: true
+    # -- Size of persistent disk
+    size: 1Gi
+    # -- Annotations for PVCs
+    annotations: {}
+    # -- Access modes of persistent disk
+    accessModes:
+      - ReadWriteOnce
+    # -- Config name
+    name: ""
+    # -- Name of the permanent volume to reference in the claim.
+    # Can be used to bind to existing volumes
+    volumeName: data
 
-volumeMounts:
-  - name: data
-    mountPath: "/data"
+
+    # -- Additional volumes on the output Deployment definition.
+    volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: actualbudget-volume
+
+    volumeMounts:
+      - name: data
+        mountPath: "/data"
 
 # -- For more information checkout: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector
 nodeSelector: {}

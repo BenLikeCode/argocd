@@ -60,3 +60,11 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+
+{{/*
+Create the name of the pvc data to use
+*/}}
+{{- define "actualbudget.dataPersistenceName" -}}
+{{- default (printf "%s-data" (include "actualbudget.fullname" .)) .Values.data.persistence.name }}
+{{- end }}
