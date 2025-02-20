@@ -55,7 +55,7 @@ Create the name of the service account to use
 */}}
 {{- define "actualbudget.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "actualbudget.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "actualbudget.name" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
@@ -66,5 +66,5 @@ Create the name of the service account to use
 Create the name of the pvc data to use
 */}}
 {{- define "actualbudget.dataPersistenceName" -}}
-{{- default (printf "%s-data" (include "actualbudget.fullname" .)) .Values.data.persistence.name }}
+{{- default (printf "%s-data" (include "actualbudget.name" .)) .Values.data.persistence.name }}
 {{- end }}

@@ -121,7 +121,7 @@ data:
     volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: actualbudget-volume
+          claimName: actualbudget-data
 
     volumeMounts:
       - name: data
