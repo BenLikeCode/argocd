@@ -77,6 +77,13 @@ ingress:
   entryPoints: web
   annotations:
     kubernetes.io/ingress.class: traefik
+    gethomepage.dev/href: https://money.allapps.me
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Tools
+    gethomepage.dev/icon: actual-budget.png
+    gethomepage.dev/name: Actual Budget
+    gethomepage.dev/pod-selector: ""
+    gethomepage.dev/weight: "10"
 
 # -- Extra environment variables
 extraEnvVars: {}

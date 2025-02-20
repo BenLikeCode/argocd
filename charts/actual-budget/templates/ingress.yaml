@@ -15,7 +15,7 @@ spec:
     - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: HostRegexp(`^budget\..+$`)
+      match: HostRegexp(`^money\..+$`)
       priority: 10
       services:
         - kind: Service

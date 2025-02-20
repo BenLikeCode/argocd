@@ -1,0 +1,3 @@
+apiVersion: v2
+name: argocdupdater
+version: 1.0.0
