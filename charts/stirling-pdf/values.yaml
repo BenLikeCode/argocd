@@ -104,6 +104,8 @@ env:
   ALLOW_GOOGLE_VISIBILITY: "false"
   APP_LOCALE: "fr-FR"
   SYSTEM_ENABLEANALYTICS: "false"
+  PUID: "1000"
+  PGID: "1000"
 
 strategy:
   type: RollingUpdate
