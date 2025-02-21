@@ -69,26 +69,26 @@ persistence:
 
 # Volumes supplémentaires configurables
 volumes:
-  - name: stirling-pdf
+  - name: stirlingpdf
     config:
       persistentVolumeClaim:
-        claimName: stirling-pdf
+        claimName: stirlingpdf
 
 # Montages de volumes supplémentaires
 volumeMounts:
-  - name: stirling-pdf
+  - name: stirlingpdf
     mountPath: /usr/share/tessdata
     subPath: tessdata
-  - name: stirling-pdf
+  - name: stirlingpdf
     mountPath: /configs
     subPath: configs
-  - name: stirling-pdf
+  - name: stirlingpdf
     mountPath: /customFiles
     subPath: customFiles
-  - name: stirling-pdf
+  - name: stirlingpdf
     mountPath: /logs
     subPath: logs
-  - name: stirling-pdf
+  - name: stirlingpdf
     mountPath: /pipeline
     subPath: pipeline
 
