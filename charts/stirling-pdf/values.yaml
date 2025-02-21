@@ -68,7 +68,7 @@ volumes:
   - name: stirling-pdf
     config:
       persistentVolumeClaim:
-        claimName: stirling-pdf-data
+        claimName: stirling-pdf
 
 # Montages de volumes supplémentaires
 volumeMounts:
