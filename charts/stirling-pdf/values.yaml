@@ -25,13 +25,13 @@ podLabels: {}
 # -- does not allow this, try setting securityContext: {}
 securityContext:
   runAsNonRoot: false
-  runAsUser: 1000
+  # runAsUser: 1000
   fsGroup: 1000
-  readOnlyRootFilesystem: true
-  allowPrivilegeEscalation: false
-  capabilities:
-    drop:
-      - ALL
+  # readOnlyRootFilesystem: true
+  # allowPrivilegeEscalation: false
+  # capabilities:
+  #   drop:
+  #     - ALL
 
 containerSecurityContext: {}
 
