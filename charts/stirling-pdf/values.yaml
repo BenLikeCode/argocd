@@ -24,10 +24,14 @@ podLabels: {}
 # -- is required for local persistent storage. If your cluster
 # -- does not allow this, try setting securityContext: {}
 securityContext:
-  runAsNonRoot: true
-  # runAsUser: 1000
+  runAsNonRoot: false
+  runAsUser: 1000
   fsGroup: 1000
-
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
 
 containerSecurityContext: {}
 
