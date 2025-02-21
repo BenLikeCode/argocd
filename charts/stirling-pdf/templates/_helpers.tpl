@@ -26,7 +26,7 @@ Nom du service account
 */}}
 {{- define "stirlingpdf.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "stirlingpdf.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "stirlingpdf.name" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
