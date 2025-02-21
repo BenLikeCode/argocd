@@ -1,13 +1,21 @@
+{{- if .Values.persistence.enabled -}}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  name: {{ include "stirlingpdf.name" . }}
   labels:
-    app.kubernetes.io/name: stirling-pdf
-  name: stirling-pdf
-  namespace: stirling-pdf
+    {{- include "stirlingpdf.labels" . | nindent 4 }}
+  {{- with .Values.persistence.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   accessModes:
-    - ReadWriteOnce
+    {{- toYaml .Values.persistence.accessModes | nindent 4 }}
   resources:
     requests:
-      storage: 1Gi
+      storage: {{ .Values.persistence.size }}
+  {{- if .Values.persistence.storageClass }}
+  storageClassName: {{ .Values.persistence.storageClass }}
+  {{- end }}
+{{- end }}

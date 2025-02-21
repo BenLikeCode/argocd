@@ -1,17 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
+  name: {{ include "stirlingpdf.name" . }}
   labels:
-    app.kubernetes.io/name: stirling-pdf
-  name: stirling-pdf
-  namespace: stirling-pdf
+    {{- include "stirlingpdf.labels" . | nindent 4 }}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
-  selector:
-    app.kubernetes.io/name: stirling-pdf
+  type: {{ .Values.service.type }}
   ports:
-    - name: http
-      # nodePort: 30081
-      port: 8080
-      protocol: TCP
+    - port: {{ .Values.service.port }}
       targetPort: http
-  type: ClusterIP
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "stirlingpdf.selectorLabels" . | nindent 4 }}

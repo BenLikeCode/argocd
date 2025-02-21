@@ -1,3 +1,128 @@
+# Default values for stirling-pdf
+replicaCount: 1
+
 image:
+  repository: ghcr.io/stirling-tools/stirling-pdf
   tag: 0.42.0
-  name: ghcr.io/stirling-tools/stirling-pdf
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+  automountServiceAccountToken: false
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 1000
+
+securityContext:
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+
+service:
+  type: ClusterIP
+  port: 8080
+  annotations: {}
+
+ingress:
+  enabled: true
+  entryPoints: ["web"]
+  matchRule: HostRegexp(`^pdf\..+$`)
+  annotations:
+    kubernetes.io/ingress.class: traefik
+
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 1Gi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+persistence:
+  enabled: true
+  size: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  mountPath: /data
+  existingClaim: ""
+  storageClass: ""
+  annotations: {}
+
+# Volumes supplémentaires configurables
+volumes:
+  - name: stirling-pdf
+    config:
+      persistentVolumeClaim:
+        claimName: stirling-pdf-data
+
+# Montages de volumes supplémentaires
+volumeMounts:
+  - name: stirling-pdf
+    mountPath: /usr/share/tessdata
+    subPath: tessdata
+  - name: stirling-pdf
+    mountPath: /configs
+    subPath: configs
+  - name: stirling-pdf
+    mountPath: /customFiles
+    subPath: customFiles
+  - name: stirling-pdf
+    mountPath: /logs
+    subPath: logs
+  - name: stirling-pdf
+    mountPath: /pipeline
+    subPath: pipeline
+
+# Volumes extra pour des cas spéciaux
+extraVolumes: []
+# - name: config-volume
+#   configMap:
+#     name: special-config
+
+# Montages de volumes extra pour des cas spéciaux
+extraVolumeMounts: []
+# - name: config-volume
+#   mountPath: /etc/config
+
+env:
+  SYSTEM_ROOTURIPATH: "/"
+  ALLOW_GOOGLE_VISIBILITY: "false"
+  APP_LOCALE: "fr-FR"
+  SYSTEM_ENABLEANALYTICS: "false"
+
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 25%
+    maxUnavailable: 25%
+
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 1
+  failureThreshold: 3
+  successThreshold: 1
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 1
+  failureThreshold: 3
+  successThreshold: 1

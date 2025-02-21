@@ -1,24 +1,34 @@
+{{- if .Values.ingress.enabled -}}
+# Traefik IngressRoute
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: stirling-pdf
-  namespace: stirling-pdf
+  name: {{ include "stirlingpdf.name" . }}
+  labels:
+    {{- include "stirlingpdf.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
   annotations:
-    kubernetes.io/ingress.class: traefik
-    gethomepage.dev/href: "https://pdf.allapps.me"
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Tools
-    gethomepage.dev/icon: stirling-pdf.png
-    gethomepage.dev/name: "Stirling PDF"
-    gethomepage.dev/pod-selector: ""
-    gethomepage.dev/weight: "10" # optional
-spec: 
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
   entryPoints:
-    - web
+    {{- range .Values.ingress.entryPoints | default (list "web") }}
+    - {{ . }}
+    {{- end }}
   routes:
     - kind: Rule
-      match: 'HostRegexp(`^pdf\..+$`)'
+      match: |
+        {{- if .Values.ingress.matchRule }}
+        {{ .Values.ingress.matchRule }}
+        {{- else }}
+        HostRegexp(`^{{ include "stirlingpdf.name" . }}\..*$`)
+        {{- end }}
       services:
-      - kind: Service
-        name: stirling-pdf
-        port: 8080
+        - kind: Service
+          name: {{ include "stirlingpdf.name" . }}
+          port: {{ .Values.service.port }}
+  {{- if .Values.ingress.tls }}
+  tls:
+    {{- toYaml .Values.ingress.tls | nindent 4 }}
+  {{- end }}
+{{- end }}
