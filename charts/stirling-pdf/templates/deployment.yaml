@@ -28,11 +28,11 @@ spec:
       serviceAccountName: {{ include "stirlingpdf.serviceAccountName" . }}
       automountServiceAccountToken: {{ .Values.serviceAccount.automountServiceAccountToken }}
       securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+        {{- toYaml .Values.securityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
+            {{- toYaml .Values.containerSecurityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
@@ -86,6 +86,4 @@ spec:
         - name: {{ .name }}
           {{- toYaml .config | nindent 10 }}
         {{- end }}
-      securityContext:
-        fsGroup: 1000
       serviceAccountName: {{ include "stirlingpdf.serviceAccountName" . }}

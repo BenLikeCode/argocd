@@ -19,18 +19,18 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
-podSecurityContext:
+# -- UID/GID 1000 is the default user "stirling-pdf" used in
+# -- the container image starting in v0.8.0 and above. This
+# -- is required for local persistent storage. If your cluster
+# -- does not allow this, try setting securityContext: {}
+securityContext:
   runAsNonRoot: true
-  runAsUser: 1000
+  # runAsUser: 1000
   fsGroup: 1000
 
-securityContext:
-  readOnlyRootFilesystem: true
-  runAsNonRoot: true
-  allowPrivilegeEscalation: false
-  capabilities:
-    drop:
-      - ALL
+
+containerSecurityContext: {}
+
 
 service:
   type: ClusterIP
