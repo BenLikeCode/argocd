@@ -27,9 +27,12 @@ spec:
                   - /bin/sh
                   - -c
                   - |
+                    echo "PostStart hook running" >> /tmp/poststart.log
                     {{- range .Values.job.browserFactory.content }}
                     sed -i '#{{ $.Values.job.browserFactory.insertAfter }}#a\{{ . }}' {{ $.Values.job.browserFactory.file }}
+                    echo "Added line: {{ . }}" >> /tmp/poststart.log
                     {{- end }}
+
           ports:
             - containerPort: 8000
               protocol: TCP
