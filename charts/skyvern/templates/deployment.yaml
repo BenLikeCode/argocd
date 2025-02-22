@@ -27,7 +27,7 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    echo "PostStart hook running" >> /tmp/poststart.log
+                    sed -i '\#browser_args = \[#a\            "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",' /app/skyvern/webeye/browser_factory.py
 
           ports:
             - containerPort: 8000
