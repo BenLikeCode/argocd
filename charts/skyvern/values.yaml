@@ -23,6 +23,15 @@ podLabels: {}
 podSecurityContext: {}
 securityContext: {}
 
+# Job configuration
+job:
+  browserFactory:
+    file: "/app/skyvern/webeye/browser_factory.py"
+    insertAfter: "browser_args = ["
+    content:
+      - "            \"--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\","
+      - "            \"--disable-notifications\","
+
 livenessProbe:
   enabled: true
   initialDelaySeconds: 30
@@ -91,6 +100,8 @@ skyvern:
     SECONDARY_LLM_KEY: "OPENAI_GPT4O_MINI"
     SKYVERN_TELEMETRY: "false"
     LOG_LEVEL: "DEBUG"
+    BROWSER_LOCALE: "fr-FR"
+    BROWSER_TIMEZONE: "Europe/Paris"
     # If you want to use other LLM provider, like azure and anthropic:
     # - ENABLE_ANTHROPIC=true
     # - LLM_KEY=ANTHROPIC_CLAUDE3.5_SONNET
