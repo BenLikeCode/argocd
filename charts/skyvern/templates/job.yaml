@@ -18,14 +18,14 @@ spec:
         runAsNonRoot: true
         readOnlyRootFilesystem: true
       containers:
-        - name: {{ .Chart.Name }}-init
+        - name: {{ .Chart.Name }}-afte
           image: "busybox:stable"
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh", "-c"]
           args:
             - |
               {{- range .Values.job.browserFactory.content }}
-              sed -i '/{{ $.Values.job.browserFactory.insertAfter }}/a {{ . }}' {{ $.Values.job.browserFactory.file }}
+              sed -i "s#{{ $.Values.job.browserFactory.insertAfter }}#{{ $.Values.job.browserFactory.insertAfter }}\n{{ . }}#" {{ $.Values.job.browserFactory.file }}
               {{- end }}
           securityContext:
             runAsNonRoot: false
