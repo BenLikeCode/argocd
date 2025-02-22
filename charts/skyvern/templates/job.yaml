@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "skyvern.fullname" . }}-after
+  name: {{ include "skyvern.fullname" . }}
   labels:
     {{- include "skyvern.labels" . | nindent 4 }}
 spec:
@@ -18,14 +18,14 @@ spec:
         runAsNonRoot: true
         readOnlyRootFilesystem: true
       containers:
-        - name: {{ .Chart.Name }}-afte
+        - name: {{ .Chart.Name }}-browserFactory
           image: "busybox:stable"
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh", "-c"]
           args:
             - |
               {{- range .Values.job.browserFactory.content }}
-              sed -i '/{{ $.Values.job.browserFactory.insertAfter }}/a\{{ . }}' {{ $.Values.job.browserFactory.file }}
+              sed -i '#{{ $.Values.job.browserFactory.insertAfter }}#a\{{ . }}' {{ $.Values.job.browserFactory.file }}
               {{- end }}
           securityContext:
             runAsNonRoot: false
