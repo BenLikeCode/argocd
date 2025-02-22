@@ -20,6 +20,16 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.skyvern.image.repository }}:{{ .Values.skyvern.image.tag }}"
           imagePullPolicy: Always
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    {{- range .Values.job.browserFactory.content }}
+                    sed -i '#{{ $.Values.job.browserFactory.insertAfter }}#a\{{ . }}' {{ $.Values.job.browserFactory.file }}
+                    {{- end }}
           ports:
             - containerPort: 8000
               protocol: TCP
