@@ -27,15 +27,8 @@ spec:
               - /bin/sh
               - -c
               - |
-                FILE="{{ $.Values.job.browserFactory.file }}"
-                INSERT_AFTER="{{ $.Values.job.browserFactory.insertAfter }}"
-                echo "Modifying $FILE after pattern '$INSERT_AFTER'..." >> /tmp/poststart.log
-
-                {{- range .Values.job.browserFactory.content }}
-                sed -i "\#${INSERT_AFTER}#a\\{{ . }}" "$FILE"
-                {{- end }}
-
-                echo "PostStart hook completed" >> /tmp/poststart.log
+                FILE=/app/skyvern/webeye/browser_factory.py
+                sed -i '\#browser_args = \[#a\            "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",' $FILE
           ports:
             - containerPort: 8000
               protocol: TCP

@@ -23,14 +23,14 @@ podLabels: {}
 podSecurityContext: {}
 securityContext: {}
 
-# Job configuration
-job:
-  browserFactory:
-    file: "/app/skyvern/webeye/browser_factory.py"
-    insertAfter: "browser_args = ["
-    content:
-      - "            \"--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\","
-      - "            \"--disable-notifications\","
+# Job configuration : AJOUTE EN DUR CAR NE FONCTIONNE PAS AVEC LE RANGE HELM
+# job:
+#   browserFactory:
+#     file: "/app/skyvern/webeye/browser_factory.py"
+#     insertAfter: "browser_args = ["
+#     content:
+#       - "            \"--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\","
+#       - "            \"--disable-notifications\","
 
 livenessProbe:
   enabled: true
