@@ -20,15 +20,15 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.skyvern.image.repository }}:{{ .Values.skyvern.image.tag }}"
           imagePullPolicy: Always
-      lifecycle:
-        postStart:
-          exec:
-            command:
-              - /bin/sh
-              - -c
-              - |
-                FILE=/app/skyvern/webeye/browser_factory.py
-                sed -i '\#browser_args = \[#a\            "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",' $FILE
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    FILE=/app/skyvern/webeye/browser_factory.py
+                    sed -i '\#browser_args = \[#a\            "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",' $FILE
           ports:
             - containerPort: 8000
               protocol: TCP
