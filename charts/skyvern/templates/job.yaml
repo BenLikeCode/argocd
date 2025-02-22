@@ -18,7 +18,7 @@ spec:
         runAsNonRoot: true
         readOnlyRootFilesystem: true
       containers:
-        - name: {{ .Chart.Name }}-browserFactory
+        - name: {{ .Chart.Name }}-browserfactory
           image: "busybox:stable"
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh", "-c"]
