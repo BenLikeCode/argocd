@@ -25,7 +25,7 @@ spec:
           args:
             - |
               {{- range .Values.job.browserFactory.content }}
-              sed -i "s#{{ $.Values.job.browserFactory.insertAfter }}#{{ $.Values.job.browserFactory.insertAfter }}\n{{ . }}#" {{ $.Values.job.browserFactory.file }}
+              sed -i '/{{ $.Values.job.browserFactory.insertAfter }}/a\{{ . }}' {{ $.Values.job.browserFactory.file }}
               {{- end }}
           securityContext:
             runAsNonRoot: false
