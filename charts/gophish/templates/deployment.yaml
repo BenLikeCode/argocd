@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gophish
+  labels:
+    app: gophish
+spec:
+  selector:
+    matchLabels:
+      app: gophish
+  template:
+    metadata:
+      labels:
+        app: gophish
+    spec:
+      containers:
+        - name: gophish
+          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 3333
