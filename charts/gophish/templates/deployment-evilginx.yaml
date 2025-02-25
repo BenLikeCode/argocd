@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gophish
+  name: evilginx
   labels:
-    app: gophish
+    app: evilginx
 spec:
   selector:
     matchLabels:
-      app: gophish
+      app: evilginx
   template:
     metadata:
       labels:
-        app: gophish
+        app: evilginx
     spec:
       containers:
         - name: evilginx
