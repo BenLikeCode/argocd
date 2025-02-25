@@ -2,7 +2,7 @@ gophish:
   image:
     tag: 1.0.0
     name: docker.io/th3heavy/gophish
-evinlginx:
+evilginx:
   image:
     tag: 1.0.0
-    name: docker.io/th3heavy/evinlginx
+    name: docker.io/th3heavy/evilginx
