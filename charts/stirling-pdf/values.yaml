@@ -1,54 +1,34 @@
-# Default values for stirling-pdf
 replicaCount: 1
-
 image:
   repository: ghcr.io/stirling-tools/stirling-pdf
-  tag: 0.42.0
+  tag: 0.43.0
   pullPolicy: IfNotPresent
-
+  name: ghcr.io/stirling-tools/stirling-pdf
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
 serviceAccount:
   create: true
   name: ""
   annotations: {}
   automountServiceAccountToken: false
-
 podAnnotations: {}
 podLabels: {}
-
-# -- UID/GID 1000 is the default user "stirling-pdf" used in
-# -- the container image starting in v0.8.0 and above. This
-# -- is required for local persistent storage. If your cluster
-# -- does not allow this, try setting securityContext: {}
 securityContext:
   runAsNonRoot: false
-  # runAsUser: 1000
   fsGroup: 1000
-  # readOnlyRootFilesystem: true
-  # allowPrivilegeEscalation: false
-  # capabilities:
-  #   drop:
-  #     - ALL
-
 containerSecurityContext: {}
-
-
 service:
   type: ClusterIP
   port: 8080
   annotations: {}
-
 ingress:
   enabled: true
-  entryPoints: ["web"]
+  entryPoints:
+  - web
   matchRule: HostRegexp(`^pdf\..+$`)
   annotations:
     kubernetes.io/ingress.class: traefik
-
-
 resources:
   limits:
     cpu: 1000m
@@ -56,67 +36,50 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-
 persistence:
   enabled: true
   size: 1Gi
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   mountPath: /data
   existingClaim: ""
   storageClass: ""
   annotations: {}
-
-# Volumes supplémentaires configurables
 volumes:
-  - name: stirlingpdf
-    config:
-      persistentVolumeClaim:
-        claimName: stirlingpdf
-
-# Montages de volumes supplémentaires
+- name: stirlingpdf
+  config:
+    persistentVolumeClaim:
+      claimName: stirlingpdf
 volumeMounts:
-  - name: stirlingpdf
-    mountPath: /usr/share/tessdata
-    subPath: tessdata
-  - name: stirlingpdf
-    mountPath: /configs
-    subPath: configs
-  - name: stirlingpdf
-    mountPath: /customFiles
-    subPath: customFiles
-  - name: stirlingpdf
-    mountPath: /logs
-    subPath: logs
-  - name: stirlingpdf
-    mountPath: /pipeline
-    subPath: pipeline
-
-# Volumes extra pour des cas spéciaux
+- name: stirlingpdf
+  mountPath: /usr/share/tessdata
+  subPath: tessdata
+- name: stirlingpdf
+  mountPath: /configs
+  subPath: configs
+- name: stirlingpdf
+  mountPath: /customFiles
+  subPath: customFiles
+- name: stirlingpdf
+  mountPath: /logs
+  subPath: logs
+- name: stirlingpdf
+  mountPath: /pipeline
+  subPath: pipeline
 extraVolumes: []
-# - name: config-volume
-#   configMap:
-#     name: special-config
-
-# Montages de volumes extra pour des cas spéciaux
 extraVolumeMounts: []
-# - name: config-volume
-#   mountPath: /etc/config
-
 env:
-  SYSTEM_ROOTURIPATH: "/"
+  SYSTEM_ROOTURIPATH: /
   ALLOW_GOOGLE_VISIBILITY: "false"
-  APP_LOCALE: "fr-FR"
+  APP_LOCALE: fr-FR
   SYSTEM_ENABLEANALYTICS: "false"
   PUID: "1000"
   PGID: "1000"
-
 strategy:
   type: RollingUpdate
   rollingUpdate:
     maxSurge: 25%
     maxUnavailable: 25%
-
 livenessProbe:
   enabled: true
   initialDelaySeconds: 5
@@ -124,7 +87,6 @@ livenessProbe:
   timeoutSeconds: 1
   failureThreshold: 3
   successThreshold: 1
-
 readinessProbe:
   enabled: true
   initialDelaySeconds: 5
