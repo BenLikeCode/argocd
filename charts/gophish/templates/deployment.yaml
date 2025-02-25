@@ -18,7 +18,7 @@ spec:
           image: "{{ .Values.gophish.image.name }}:{{ .Values.gophish.image.tag }}"
           ports:
             - containerPort: 3333
-        - name: evinlginx
-          image: "{{ .Values.evinlginx.image.name }}:{{ .Values.evinlginx.image.tag }}"
+        - name: evilginx
+          image: "{{ .Values.evilginx.image.name }}:{{ .Values.evilginx.image.tag }}"
           ports:
             - containerPort: 8080
