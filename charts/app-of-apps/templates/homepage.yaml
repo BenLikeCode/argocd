@@ -5,7 +5,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
   annotations:
-    argocd-image-updater.argoproj.io/image-list: homepage=ghcr.io/gethomepage/homepage:0.x
+    argocd-image-updater.argoproj.io/image-list: homepage=ghcr.io/gethomepage/homepage:1.x
     argocd-image-updater.argoproj.io/homepage.helm.image-name: image.name
     argocd-image-updater.argoproj.io/homepage.helm.image-tag: image.tag
     argocd-image-updater.argoproj.io/homepage.update-strategy: semver
