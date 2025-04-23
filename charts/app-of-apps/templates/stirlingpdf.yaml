@@ -14,7 +14,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:Th3Heavy/argocd.git
+    repoURL: git@github.com:BenLikeCode/argocd.git
     path: charts/stirling-pdf
     targetRevision: main
   destination:
