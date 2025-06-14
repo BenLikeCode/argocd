@@ -44,7 +44,7 @@ spec:
             - name: DB_TYPE
               value: {{ .Values.db.type | quote }}
             - name: DB_POSTGRESDB_HOST
-              value: {{ template "n8n.fullname" . }}-postgresql
+              value: {{ include "n8n.fullname" . }}-postgres.n8n.svc.cluster.local
             - name: DB_POSTGRESDB_PORT
               value: {{ .Values.db.service.ports.postgresql | quote }}
             - name: DB_POSTGRESDB_DATABASE

@@ -18,3 +18,4 @@ spec:
       name: {{ .Values.service.name }}
   selector:
     {{- include "n8n.selectorLabels" . | nindent 4 }}
+    service: {{ include "n8n.fullname" . }}
