@@ -20,6 +20,7 @@ spec:
     metadata:
       labels:
         service: {{ include "n8n.fullname" . }}-postgres
+        {{- include "n8n.labels" . | nindent 8 }}
     spec:
       containers:
         - image: postgres:11
