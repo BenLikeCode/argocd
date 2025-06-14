@@ -4,6 +4,7 @@ metadata:
   name: {{ include "n8n.fullname" . }}
   labels:
     {{- include "n8n.labels" . | nindent 4 }}
+    service: {{ include "n8n.fullname" . }}
   {{- with .Values.service.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}

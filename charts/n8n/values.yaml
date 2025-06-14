@@ -36,14 +36,24 @@ log:
 db:
   tablePrefix: ""
   type: postgresdb
+  service:
+    ports:
+      postgresql: 5432
+  resources:
+    limits:
+      cpu: "4"
+      memory: 4Gi
+    requests:
+      cpu: "1"
+      memory: 2Gi
+  auth:
+    username: ""
+    password: ""
+    database: n8n
   logging:
     enabled: false
     options: error
     maxQueryExecutionTime: 0
-  sqlite:
-    database: database.sqlite
-    poolSize: 0
-    vacuum: false
 diagnostics:
   enabled: false
   frontendConfig: 1zPn9bgWPzlQc0p8Gj1uiK6DOTn;https://telemetry.n8n.io
@@ -88,7 +98,13 @@ ingress:
     gethomepage.dev/weight: "10"
 extraEnvVars: {}
 extraSecretNamesForEnvFrom: []
-resources: {}
+resources:
+  requests:
+    memory: "250Mi"
+    cpu: "250m"
+  limits:
+    memory: "500Mi"
+    cpu: "500m"
 livenessProbe:
   httpGet:
     path: /healthz
@@ -102,37 +118,3 @@ volumeMounts: []
 nodeSelector: {}
 tolerations: []
 affinity: {}
-redis:
-  enabled: false
-  architecture: standalone
-  master:
-    persistence:
-      enabled: false
-externalRedis:
-  host: ""
-  username: ""
-  password: ""
-  port: 6379
-  existingSecret: ""
-postgresql:
-  enabled: true
-  architecture: standalone
-  primary:
-    service:
-      ports:
-        postgresql: 5432
-    persistence:
-      size: 1Gi
-      enabled: false
-      existingClaim: ""
-  auth:
-    username: ""
-    password: ""
-    database: n8n
-externalPostgresql:
-  host: ""
-  username: postgres
-  password: ""
-  port: 5432
-  database: n8n
-  existingSecret: ""
