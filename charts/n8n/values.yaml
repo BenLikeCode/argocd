@@ -1,6 +1,6 @@
 image:
   pullPolicy: IfNotPresent
-  tag: 1.100.1
+  tag: 1.101.0
   repository: n8nio/n8n
 imagePullSecrets: []
 nameOverride: ""
