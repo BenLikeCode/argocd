@@ -1,0 +1,138 @@
+image:
+  pullPolicy: IfNotPresent
+  tag: 1.90.1
+  repository: n8nio/n8n
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 25%
+    maxUnavailable: 25%
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+podAnnotations: {}
+podLabels: {}
+podSecurityContext: {}
+securityContext: {}
+service:
+  type: ClusterIP
+  port: 5678
+  name: http
+  annotations: {}
+log:
+  level: info
+  output:
+  - console
+  scopes: []
+  file:
+    location: logs/n8n.log
+    maxsize: 16
+    maxcount: "100"
+db:
+  tablePrefix: ""
+  type: postgresdb
+  logging:
+    enabled: false
+    options: error
+    maxQueryExecutionTime: 0
+  sqlite:
+    database: database.sqlite
+    poolSize: 0
+    vacuum: false
+diagnostics:
+  enabled: false
+  frontendConfig: 1zPn9bgWPzlQc0p8Gj1uiK6DOTn;https://telemetry.n8n.io
+  backendConfig: 1zPn7YoGC3ZXE9zLeTKLuQCB4F6;https://telemetry.n8n.io
+  postHog:
+    apiKey: phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo
+    apiHost: https://ph.n8n.io
+versionNotifications:
+  enabled: false
+  endpoint: https://api.n8n.io/api/versions/
+  infoUrl: https://docs.n8n.io/hosting/installation/updating/
+api:
+  enabled: true
+  path: api
+  swagger:
+    enabled: true
+worker:
+  mode: regular
+  count: 2
+  concurrency: 10
+webhook:
+  mode: regular
+  count: 2
+  url: ""
+workflowHistory:
+  enabled: true
+  pruneTime: 336
+encryptionKey: ""
+timezone: Europe/Paris
+defaultLocale: en
+gracefulShutdownTimeout: 30
+ingress:
+  enabled: true
+  entryPoints: web
+  annotations:
+    gethomepage.dev/href: https://n8n.allapps.me
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Tools
+    gethomepage.dev/icon: n8n.png
+    gethomepage.dev/name: N8n
+    gethomepage.dev/pod-selector: ""
+    gethomepage.dev/weight: "10"
+extraEnvVars: {}
+extraSecretNamesForEnvFrom: []
+resources: {}
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: http
+readinessProbe:
+  httpGet:
+    path: /healthz/readiness
+    port: http
+volumes: []
+volumeMounts: []
+nodeSelector: {}
+tolerations: []
+affinity: {}
+redis:
+  enabled: false
+  architecture: standalone
+  master:
+    persistence:
+      enabled: false
+externalRedis:
+  host: ""
+  username: ""
+  password: ""
+  port: 6379
+  existingSecret: ""
+postgresql:
+  enabled: true
+  architecture: standalone
+  primary:
+    service:
+      ports:
+        postgresql: 5432
+    persistence:
+      size: 1Gi
+      enabled: false
+      existingClaim: ""
+  auth:
+    username: ""
+    password: ""
+    database: n8n
+externalPostgresql:
+  host: ""
+  username: postgres
+  password: ""
+  port: 5432
+  database: n8n
+  existingSecret: ""
