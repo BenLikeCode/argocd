@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: actualbudget/actual-server
   pullPolicy: IfNotPresent
-  tag: 25.8.0
+  tag: 25.9.0
 strategy:
   type: Recreate
   rollingUpdate:
