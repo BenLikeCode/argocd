@@ -4,8 +4,8 @@ metadata:
   name: {{ include "stirlingpdf.name" . }}
 spec:
   hard:
-    requests.cpu: "500m"
-    requests.memory: "128Mi"
-    limits.cpu: "2"
-    limits.memory: "1Gi"
+    requests.cpu: "1"
+    requests.memory: "256Mi"
+    limits.cpu: "4"
+    limits.memory: "2Gi"
     pods: "5"
