@@ -19,7 +19,7 @@ spec:
     targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: tinyauth
+    namespace: traefik
   syncPolicy:
     automated:
       prune: false
