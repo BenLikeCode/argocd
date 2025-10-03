@@ -12,7 +12,7 @@ type: Opaque
 
 
 # This is the important bit:
-kubeseal --controller-name=sealed-secrets --controller-namespace=kube-system --format=yaml -f secret.yaml > sealedsecret.yaml
+kubeseal --controller-name=sealed-secrets --controller-namespace=kube-system --format=yaml -f secrettmp.yaml > secret.yaml
 # At this point mysealedsecret.json is safe to upload to Github,
 # post on Twitter, etc.
 
