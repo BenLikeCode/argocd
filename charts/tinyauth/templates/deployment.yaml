@@ -25,8 +25,6 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "tinyauth.serviceAccountName" . }}
-      automountServiceAccountToken: {{ .Values.serviceAccount.automountServiceAccountToken }}
       securityContext:
         {{- toYaml .Values.securityContext | nindent 8 }}
       containers:
@@ -36,12 +34,12 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            {{- include "tinyauth.envVars" . | nindent 12 }}
+          {{- include "tinyauth.envVars" . | nindent 12 }}
+          {{- include "tinyauth.secretEnvVars" . | nindent 12 }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             httpGet:
               path: /api/healthcheck
@@ -52,25 +50,4 @@ spec:
               port: 3000
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:
-            {{- if .Values.extraVolumeMounts }}
-            {{- toYaml .Values.extraVolumeMounts | nindent 12 }}
-            {{- end }}
-            {{- range .Values.volumeMounts }}
-            - name: {{ .name }}
-              mountPath: {{ .mountPath }}
-              {{- if .subPath }}
-              subPath: {{ .subPath }}
-              {{- end }}
-            {{- end }}
-      volumes:
-        {{- if .Values.extraVolumes }}
-        {{- toYaml .Values.extraVolumes | nindent 8 }}
-        {{- end }}
-        {{- range .Values.volumes }}
-        - name: {{ .name }}
-          {{- toYaml .config | nindent 10 }}
-        {{- end }}
-      {{- if .Values.serviceAccount.create }}
-      serviceAccountName: {{ include "tinyauth.serviceAccountName" . }}
-      {{- end }}
+

@@ -10,13 +10,9 @@ metadata:
 type: Opaque
 
 
-# Create a json/yaml-encoded Secret somehow:
-# (note use of `--dry-run` - this is just a local file!)
-echo -n bar | kubectl create secret generic mysecret --dry-run=client --from-file=foo=/dev/stdin -o json >mysecret.json
 
 # This is the important bit:
-kubeseal -f mysecret.json -w mysealedsecret.json --controller-namespace kube-system --controller-name sealed-secrets
-
+kubeseal --controller-name=sealed-secrets --controller-namespace=kube-system --format=yaml -f secret.yaml > sealedsecret.yaml
 # At this point mysealedsecret.json is safe to upload to Github,
 # post on Twitter, etc.
 

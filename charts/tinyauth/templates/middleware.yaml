@@ -1,0 +1,7 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ include "tinyauth.name" . }}
+spec:
+  forwardAuth:
+    address: http://tinyauth:3000/api/auth/traefik

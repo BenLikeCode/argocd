@@ -60,11 +60,24 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
-Variables d'environnement
+Variables d'environnement statiques
 */}}
 {{- define "tinyauth.envVars" -}}
 {{- range $key, $value := .Values.env }}
 - name: {{ $key | upper }}
-  value: {{ $value | quote }}
+  value: {{ printf $value | quote }}
+{{- end }}
+{{- end }}
+
+{{/*
+Variables d'environnement provenant de secrets
+*/}}
+{{- define "tinyauth.secretEnvVars" -}}
+{{- range $key, $secret := .Values.secretEnv }}
+- name: {{ $key | upper }}
+  valueFrom:
+    secretKeyRef:
+      name: {{ $secret.name }}
+      key: {{ $secret.key }}
 {{- end }}
 {{- end }}

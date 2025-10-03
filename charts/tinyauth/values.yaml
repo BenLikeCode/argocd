@@ -19,10 +19,10 @@ securityContext:
 containerSecurityContext: {}
 service:
   type: ClusterIP
-  port: 8080
+  port: 3000
   annotations: {}
 ingress:
-  enabled: false
+  enabled: true
   entryPoints:
   - web
   matchRule: HostRegexp(`^auth\..+$`)
@@ -56,15 +56,14 @@ volumeMounts:
 extraVolumes: []
 extraVolumeMounts: []
 env:
-  SYSTEM_ROOTURIPATH: /
-  ALLOW_GOOGLE_VISIBILITY: "false"
-  APP_LOCALE: fr-FR
-  SYSTEM_ENABLEANALYTICS: "false"
-  PUID: "1000"
-  PGID: "1000"
+  APP_URL: "http://auth.allapps.me"
+  USERS: "user:$$2a$$10$$UdLYoJ5lgPsC0RKqYH/jMua7zIn0g9kPqWmhYayJYLaZQ/FTmH2/u" # Username is user and password is password
+secretEnv:
+  SECRET:
+    name: tinyauth
+    key: secretKey
 strategy:
   type: RollingUpdate
   rollingUpdate:
     maxSurge: 25%
     maxUnavailable: 25%
-

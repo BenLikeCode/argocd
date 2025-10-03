@@ -27,6 +27,9 @@ spec:
         - kind: Service
           name: {{ include "stirlingpdf.name" . }}
           port: {{ .Values.service.port }}
+      middlewares:
+        - name: tinyauth
+        - namespace: tinyauth
   {{- if .Values.ingress.tls }}
   tls:
     {{- toYaml .Values.ingress.tls | nindent 4 }}
