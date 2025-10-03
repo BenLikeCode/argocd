@@ -59,6 +59,7 @@ extraVolumeMounts: []
 env:
   APP_URL: https://auth.allapps.me/
   APP_TITLE: Login
+  LOG_LEVEL: 0
   USERS: admin:$2a$10$lwWOB24pMMEP45B6w1mnPu5bUWZsBa2Ce9V5xC5oNICKGIVFYgIei
 secretEnv:
   SECRET:
