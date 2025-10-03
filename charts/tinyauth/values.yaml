@@ -1,8 +1,9 @@
 replicaCount: 1
 image:
   repository: ghcr.io/steveiliop56/tinyauth
-  tag: 3.6.2
+  tag: v3.6.2
   pullPolicy: IfNotPresent
+  name: ghcr.io/steveiliop56/tinyauth
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -56,8 +57,8 @@ volumeMounts:
 extraVolumes: []
 extraVolumeMounts: []
 env:
-  APP_URL: "http://auth.allapps.me"
-  USERS: "user:$$2a$$10$$UdLYoJ5lgPsC0RKqYH/jMua7zIn0g9kPqWmhYayJYLaZQ/FTmH2/u" # Username is user and password is password
+  APP_URL: http://auth.allapps.me
+  USERS: user:$$2a$$10$$UdLYoJ5lgPsC0RKqYH/jMua7zIn0g9kPqWmhYayJYLaZQ/FTmH2/u
 secretEnv:
   SECRET:
     name: tinyauth
