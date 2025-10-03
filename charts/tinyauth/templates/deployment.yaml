@@ -44,27 +44,12 @@ spec:
           {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             httpGet:
-              path: /
-              port: http
-              scheme: HTTP
-            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
-            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
-            timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
-            failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
-            successThreshold: {{ .Values.livenessProbe.successThreshold }}
-          {{- end }}
-          {{- if .Values.readinessProbe.enabled }}
+              path: /api/healthcheck
+              port: 3000
           readinessProbe:
             httpGet:
-              path: /
-              port: http
-              scheme: HTTP
-            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
-            timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
-            failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
-            successThreshold: {{ .Values.readinessProbe.successThreshold }}
-          {{- end }}
+              path: /api/healthcheck
+              port: 3000
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
@@ -86,4 +71,6 @@ spec:
         - name: {{ .name }}
           {{- toYaml .config | nindent 10 }}
         {{- end }}
+      {{- if .Values.serviceAccount.create }}
       serviceAccountName: {{ include "tinyauth.serviceAccountName" . }}
+      {{- end }}

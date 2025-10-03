@@ -1,3 +1,15 @@
+Créer un fichier secret avec le pwd encodé en base64
+ex:
+apiVersion: v1
+data:
+  secretKey: xxxx==
+kind: Secret
+metadata:
+  name: tinyauth
+  namespace: tinyauth
+type: Opaque
+
+
 # Create a json/yaml-encoded Secret somehow:
 # (note use of `--dry-run` - this is just a local file!)
 echo -n bar | kubectl create secret generic mysecret --dry-run=client --from-file=foo=/dev/stdin -o json >mysecret.json
