@@ -31,11 +31,11 @@ ingress:
     kubernetes.io/ingress.class: traefik
 resources:
   limits:
-    cpu: 1000m
-    memory: 1Gi
-  requests:
     cpu: 100m
     memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 56Mi
 persistence:
   enabled: false
   size: 1Gi
@@ -57,7 +57,7 @@ volumeMounts:
 extraVolumes: []
 extraVolumeMounts: []
 env:
-  APP_URL: http://auth.allapps.me
+  APP_URL: https://auth.allapps.me/
   APP_TITLE: Login
   USERS: admin:$2a$10$lwWOB24pMMEP45B6w1mnPu5bUWZsBa2Ce9V5xC5oNICKGIVFYgIei
 secretEnv:

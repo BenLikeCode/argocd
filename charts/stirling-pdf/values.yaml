@@ -34,7 +34,7 @@ resources:
     cpu: 2
     memory: 1Gi
   requests:
-    cpu: 100m
+    cpu: 500m
     memory: 128Mi
 persistence:
   enabled: true

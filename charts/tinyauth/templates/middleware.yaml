@@ -8,3 +8,6 @@ spec:
     trustForwardHeader: true
     authResponseHeaders:
       - remote-user
+      - remote-groups
+      - remote-email
+      - remote-name
