@@ -6,7 +6,7 @@ spec:
   project: default
   source:
     repoURL: git@github.com:BenLikeCode/argocd.git
-    path: base/quotas/stirlingpdf.yaml
+    path: charts/app-of-apps/base/quotas/stirlingpdf.yaml
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc
