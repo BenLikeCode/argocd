@@ -58,7 +58,8 @@ extraVolumes: []
 extraVolumeMounts: []
 env:
   APP_URL: http://auth.allapps.me
-  USERS: user:$$2a$$10$$UdLYoJ5lgPsC0RKqYH/jMua7zIn0g9kPqWmhYayJYLaZQ/FTmH2/u
+  APP_TITLE: Login
+  USERS: admin:$2a$10$lwWOB24pMMEP45B6w1mnPu5bUWZsBa2Ce9V5xC5oNICKGIVFYgIei
 secretEnv:
   SECRET:
     name: tinyauth
