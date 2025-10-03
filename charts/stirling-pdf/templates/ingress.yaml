@@ -29,7 +29,6 @@ spec:
           port: {{ .Values.service.port }}
       middlewares:
         - name: tinyauth
-          namespace: traefik
   {{- if .Values.ingress.tls }}
   tls:
     {{- toYaml .Values.ingress.tls | nindent 4 }}
