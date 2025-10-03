@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: quota-stirling-pdf
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:BenLikeCode/argocd.git
+    path: base/quotas/stirlingpdf.yaml
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: stirling-pdf
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
