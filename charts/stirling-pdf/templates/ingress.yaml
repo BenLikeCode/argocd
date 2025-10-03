@@ -29,7 +29,7 @@ spec:
           port: {{ .Values.service.port }}
       middlewares:
         - name: tinyauth
-        - namespace: tinyauth
+          namespace: tinyauth
   {{- if .Values.ingress.tls }}
   tls:
     {{- toYaml .Values.ingress.tls | nindent 4 }}
