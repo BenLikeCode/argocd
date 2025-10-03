@@ -4,4 +4,7 @@ metadata:
   name: {{ include "tinyauth.name" . }}
 spec:
   forwardAuth:
-    address: http://tinyauth:3000/api/auth/traefik
+    address: http://tinyauth.tinyauth.svc.cluster.local:3000/api/auth/traefik
+    trustForwardHeader: true
+    authResponseHeaders:
+      - X-Forwarded-User
