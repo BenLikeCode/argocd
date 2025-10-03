@@ -1,8 +1,7 @@
 apiVersion: v1
 kind: ResourceQuota
 metadata:
-  name: stirlingpdf-quota
-  namespace: stirlingpdf
+  name: {{ include "stirlingpdf.name" . }}
 spec:
   hard:
     requests.cpu: "500m"
