@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tinyauth
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io/foreground
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: tinyauth=ghcr.io/steveiliop56/tinyauth:3.x
+    argocd-image-updater.argoproj.io/tinyauth.helm.image-name: image.name
+    argocd-image-updater.argoproj.io/tinyauth.helm.image-tag: image.tag
+    argocd-image-updater.argoproj.io/tinyauth.update-strategy: semver
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/write-back-target: helmvalues:../tinyauth/values.yaml
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:BenLikeCode/argocd.git
+    path: charts/tinyauth
+    targetRevision: main
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: tinyauth
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
