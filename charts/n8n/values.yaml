@@ -98,9 +98,9 @@ ingress:
     gethomepage.dev/pod-selector: ""
     gethomepage.dev/weight: "10"
 extraEnvVars:
-  N8N_RUNNERS_ENABLED: true
-  N8N_BLOCK_ENV_ACCESS_IN_NODE: true
-  N8N_GIT_NODE_DISABLE_BARE_REPO: true
+  N8N_RUNNERS_ENABLED: "true"
+  N8N_BLOCK_ENV_ACCESS_IN_NODE: "true"
+  N8N_GIT_NODE_DISABLE_BARE_REPO: "true"
 extraSecretNamesForEnvFrom: []
 resources:
   requests:
