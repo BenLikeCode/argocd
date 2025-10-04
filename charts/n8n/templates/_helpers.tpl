@@ -69,23 +69,6 @@ Create redis name secret name.
 {{- printf "%s-redis" (include "n8n.fullname" .) | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{/*
-Create postgresql name secret name.
-*/}}
-{{- define "n8n.postgresql.fullname" -}}
-{{- printf "%s-postgresql" (include "n8n.fullname" .) | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-
-{{/*
-Create PostgreSQL database username
-*/}}
-{{- define "n8n.postgresql.username" -}}
-{{- if .Values.postgresql.enabled }}
-{{- printf "%s" .Values.postgresql.auth.username | default "postgres" }}
-{{- else }}
-{{- printf "%s" .Values.externalPostgresql.username | default "postgres" }}
-{{- end }}
-{{- end }}
 
 {{/*
 Worker name
@@ -155,4 +138,14 @@ Webhook selector labels
 app.kubernetes.io/name: {{ include "n8n.webhook.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/component: webhook
+{{- end }}
+
+{{/*
+Variables d'environnement statiques
+*/}}
+{{- define "n8n.envVars" -}}
+{{- range $key, $value := .Values.extraEnvVars }}
+- name: {{ $key | upper }}
+  value: {{ printf $value | quote }}
+{{- end }}
 {{- end }}

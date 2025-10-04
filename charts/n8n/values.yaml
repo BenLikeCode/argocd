@@ -35,7 +35,7 @@ log:
     maxcount: "100"
 db:
   tablePrefix: ""
-  type: postgresdb
+  type: sqlite
   service:
     ports:
       postgresql: 5432
