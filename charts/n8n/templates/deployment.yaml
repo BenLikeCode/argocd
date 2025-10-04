@@ -30,7 +30,7 @@ spec:
       initContainers:
         - name: volume-permissions
           image: busybox:1.36
-          command: ["sh", "-c", "chmod 0600 /home/node/.n8n/config"]
+          command: ["sh", "-c", "chmod 0640 /home/node/.n8n/config"]
           volumeMounts:
             - name: {{ include "n8n.fullname" . }}-pvc
               mountPath: /home/node/.n8n/config
