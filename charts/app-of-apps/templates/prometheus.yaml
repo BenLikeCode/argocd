@@ -15,7 +15,7 @@ spec:
       path: charts/prometheus
       targetRevision: HEAD
     - repoURL: https://github.com/BenLikeCode/argocd.git
-      path: charts/prometheus
+      targetRevision: HEAD
       ref: values
   destination:
     server: https://kubernetes.default.svc
