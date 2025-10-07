@@ -108,6 +108,7 @@ extraEnvVars:
   N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
   N8N_PROXY_HOPS: "1"
   N8N_LOG_LEVEL: "debug"
+  GENERIC_TIMEZONE: "Europe/Paris"
 extraSecretNamesForEnvFrom: []
 resources:
   requests:
