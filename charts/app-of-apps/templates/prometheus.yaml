@@ -11,7 +11,7 @@ spec:
       chart: kube-prometheus-stack
       targetRevision: 77.13.0
       path: charts/prometheus
-    - repoURL: git@github.com:BenLikeCode/argocd.git
+    - repoURL: https://github.com/BenLikeCode/argocd.git
       path: charts/prometheus
       targetRevision: HEAD
   destination:
