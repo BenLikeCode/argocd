@@ -121,15 +121,15 @@ resources:
     cpu: 500m
 livenessProbe:
   enabled: true
-  initialDelaySeconds: 5
-  periodSeconds: 60
+  initialDelaySeconds: 30
+  periodSeconds: 10
   timeoutSeconds: 1
   failureThreshold: 3
   successThreshold: 1
 readinessProbe:
   enabled: true
-  initialDelaySeconds: 5
-  periodSeconds: 60
+  initialDelaySeconds: 30
+  periodSeconds: 10
   timeoutSeconds: 1
   failureThreshold: 3
   successThreshold: 1
