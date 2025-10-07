@@ -10,7 +10,8 @@ spec:
     - repoURL: https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
       targetRevision: 77.13.0
-      path: charts/prometheus
+      valueFiles:
+              - $values/charts/prometheus/values.yaml
     - repoURL: https://github.com/BenLikeCode/argocd.git
       path: charts/prometheus
       targetRevision: HEAD
