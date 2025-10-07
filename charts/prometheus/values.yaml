@@ -1,1 +1,1 @@
-nameOverride: "prometheus"
+fullnameOverride: "prometheus"
