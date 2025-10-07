@@ -107,8 +107,10 @@ extraEnvVars:
   N8N_HOST: "n8n.allapps.me"
   N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
   N8N_PROXY_HOPS: "1"
-  N8N_LOG_LEVEL: "debug"
+  N8N_LOG_LEVEL: "info"
   GENERIC_TIMEZONE: "Europe/Paris"
+  N8N_METRICS: "true"
+  QUEUE_HEALTH_CHECK_ACTIVE: "true"
 extraSecretNamesForEnvFrom: []
 resources:
   requests:
@@ -118,13 +120,19 @@ resources:
     memory: 500Mi
     cpu: 500m
 livenessProbe:
-  httpGet:
-    path: /healthz
-    port: http
+  enabled: true
+  initialDelaySeconds: 5
+  periodSeconds: 60
+  timeoutSeconds: 1
+  failureThreshold: 3
+  successThreshold: 1
 readinessProbe:
-  httpGet:
-    path: /healthz/readiness
-    port: http
+  enabled: true
+  initialDelaySeconds: 5
+  periodSeconds: 60
+  timeoutSeconds: 1
+  failureThreshold: 3
+  successThreshold: 1
 volumes: []
 volumeMounts: []
 nodeSelector: {}

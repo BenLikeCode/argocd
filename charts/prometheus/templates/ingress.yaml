@@ -1,0 +1,21 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+  labels:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: prometheus
+  name: prometheus
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: |
+        HostRegexp(`^prometheus\..+$`)
+      services:
+        - kind: Service
+          name: prometheus  
+          port: 9090
