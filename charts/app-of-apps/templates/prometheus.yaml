@@ -7,17 +7,18 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://prometheus-community.github.io/helm-charts
-      chart: kube-prometheus-stack
-      targetRevision: 77.13.0
+  - repoURL: https://prometheus-community.github.io/helm-charts
+    chart: kube-prometheus-stack
+    targetRevision: 77.13.0
+    helm:
       valueFiles:
-              - $values/charts/prometheus/values.yaml
-    - repoURL: https://github.com/BenLikeCode/argocd.git
-      path: charts/prometheus
-      targetRevision: HEAD
-    - repoURL: https://github.com/BenLikeCode/argocd.git
-      targetRevision: HEAD
-      ref: values
+      - $values/charts/prometheus/values.yaml
+  - repoURL: https://github.com/BenLikeCode/argocd.git
+    path: charts/prometheus
+    targetRevision: HEAD
+  - repoURL: https://github.com/BenLikeCode/argocd.git
+    targetRevision: HEAD
+    ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
