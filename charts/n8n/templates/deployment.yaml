@@ -28,6 +28,17 @@ spec:
         {{- end }}
     spec:
       containers:
+        - name: {{ include "n8n.worker.name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /home/node/.n8n
+              name: {{ include "n8n.fullname" . }}-pvc
+            - mountPath: /files
+              name: {{ include "n8n.fullname" . }}-host
           env:
           {{- include "n8n.envVars" . | nindent 12 }}
             - name: DB_TYPE
@@ -40,17 +51,6 @@ spec:
               value: {{ .Values.service.name | quote }}
             - name: N8N_PORT
               value: {{ .Values.service.port | quote }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          name: {{ include "n8n.worker.name" . }}
-          ports:
-            - containerPort: {{ .Values.service.port }}
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:
-            - mountPath: /home/node/.n8n
-              name: {{ include "n8n.fullname" . }}-pvc
-            - mountPath: /files
-              name: {{ include "n8n.fullname" . }}-host
       restartPolicy: Always
       volumes:
         - name: {{ include "n8n.fullname" . }}-pvc
