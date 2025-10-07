@@ -1,4 +1,4 @@
 fullnameOverride: "prometheus"
 prometheusOperator:
   tls:
-      enabled: "false"
+    enabled: false
