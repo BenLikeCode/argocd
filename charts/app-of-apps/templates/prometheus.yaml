@@ -13,6 +13,7 @@ spec:
       path: charts/prometheus
     - repoURL: git@github.com:BenLikeCode/argocd.git
       path: charts/prometheus
+      targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
