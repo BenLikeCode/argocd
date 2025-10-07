@@ -27,25 +27,15 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
-      initContainers:
-        - name: volume-permissions
-          image: busybox:1.36
-          command: ["sh", "-c", "chmod 0777 /home/node/.n8n/config"]
-          volumeMounts:
-            - name: {{ include "n8n.fullname" . }}-pvc
-              mountPath: /home/node/.n8n/config
       containers:
-        - command:
-            - /bin/sh
-          args:
-            - -c
-            - sleep 5; n8n start
           env:
           {{- include "n8n.envVars" . | nindent 12 }}
             - name: DB_TYPE
               value: {{ .Values.db.type | quote }}
             - name: DB_SQLITE_POOL_SIZE
               value: {{.Values.db.sqlitePoolSize | quote }}
+            - name: DB_SQLITE_VACUUM_ON_STARTUP
+              value: {{.Values.db.runVacuumSQLite | quote }}
             - name: N8N_PROTOCOL
               value: {{ .Values.service.name | quote }}
             - name: N8N_PORT
