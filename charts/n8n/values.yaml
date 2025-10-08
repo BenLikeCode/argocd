@@ -1,6 +1,6 @@
 image:
   pullPolicy: IfNotPresent
-  tag: 1.115.0
+  tag: 1.115.1
   repository: n8nio/n8n
 imagePullSecrets: []
 nameOverride: ""
@@ -102,13 +102,13 @@ extraEnvVars:
   N8N_RUNNERS_ENABLED: "true"
   N8N_BLOCK_ENV_ACCESS_IN_NODE: "true"
   N8N_GIT_NODE_DISABLE_BARE_REPOS: "true"
-  N8N_EDITOR_BASE_URL: "https://n8n.allapps.me"
-  WEBHOOK_URL: "https://n8n.allapps.me/"
-  N8N_HOST: "n8n.allapps.me"
+  N8N_EDITOR_BASE_URL: https://n8n.allapps.me
+  WEBHOOK_URL: https://n8n.allapps.me/
+  N8N_HOST: n8n.allapps.me
   N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
   N8N_PROXY_HOPS: "1"
-  N8N_LOG_LEVEL: "info"
-  GENERIC_TIMEZONE: "Europe/Paris"
+  N8N_LOG_LEVEL: info
+  GENERIC_TIMEZONE: Europe/Paris
   N8N_METRICS: "true"
   QUEUE_HEALTH_CHECK_ACTIVE: "true"
 extraSecretNamesForEnvFrom: []
