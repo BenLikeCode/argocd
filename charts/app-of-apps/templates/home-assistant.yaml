@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: home-assistant
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io/foreground
+  # annotations:
+  #   argocd-image-updater.argoproj.io/image-list: stirlingpdf=ghcr.io/stirling-tools/home-assistant:1.x
+  #   argocd-image-updater.argoproj.io/stirlingpdf.helm.image-name: image.name
+  #   argocd-image-updater.argoproj.io/stirlingpdf.helm.image-tag: image.tag
+  #   argocd-image-updater.argoproj.io/stirlingpdf.update-strategy: semver
+  #   argocd-image-updater.argoproj.io/write-back-method: git
+  #   argocd-image-updater.argoproj.io/write-back-target: helmvalues:../home-assistant/values.yaml
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:BenLikeCode/argocd.git
+    path: charts/home-assistant
+    targetRevision: main
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: home-assistant
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
