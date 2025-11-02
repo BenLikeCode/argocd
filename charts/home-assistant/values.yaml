@@ -1,0 +1,81 @@
+image:
+  pullPolicy: IfNotPresent
+  tag: stable
+  repository: ghcr.io/home-assistant/home-assistant
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 25%
+    maxUnavailable: 25%
+serviceAccount:
+  create: true
+  automountServiceAccountToken: true
+  annotations: {}
+  name: ""
+podAnnotations: {}
+podLabels: {}
+podSecurityContext: {}
+containerSecurityContext: {}
+securityContext:
+  privileged: true
+service:
+  type: ClusterIP
+  port: 8123
+  name: http
+  annotations: {}
+ingress:
+  enabled: true
+  entryPoints: web
+  annotations:
+    gethomepage.dev/href: https://dom.allapps.me
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Tools
+    gethomepage.dev/icon: home-assistant.png
+    gethomepage.dev/name: Home Assistant
+    gethomepage.dev/pod-selector: ""
+    gethomepage.dev/weight: "10"
+extraEnvVars:
+  TEST: "true"
+extraSecretNamesForEnvFrom: []
+replicaCount: 1
+resources:
+  requests:
+    memory: 250Mi
+    cpu: 250m
+  limits:
+    memory: 500Mi
+    cpu: 500m
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 1
+  failureThreshold: 3
+  successThreshold: 1
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 1
+  failureThreshold: 3
+  successThreshold: 1
+volumes:
+  - name: home-assistant-config-volume
+    config:
+      persistentVolumeClaim:
+        claimName: home-assistant-pvc
+  - name: home-assistant-time-volume
+    config:
+      persistentVolumeClaim:
+        claimName: home-assistant-time-pvc
+volumeMounts:
+  - mountPath: /config
+    name: home-assistant-config-volume
+  - mountPath: /etc/localtime
+    name: home-assistant-time-volume
+nodeSelector: {}
+tolerations: []
+affinity: {}
