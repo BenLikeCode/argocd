@@ -13,7 +13,7 @@ spec:
   hostPath:
     path: /home-assistant-pv #set you own location
   claimRef:
-    name: home-assistant-pvc
+    name: {{ include "home-assistant.fullname" . }}-pvc
 
 
 ---
@@ -21,7 +21,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: {{ include "home-assistant.fullname" . }}-pv
+  name: {{ include "home-assistant.fullname" . }}-time-pvc
   labels:
     {{- include "home-assistant.labels" . | nindent 4 }}
 spec:
