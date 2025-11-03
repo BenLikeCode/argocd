@@ -22,9 +22,9 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 podSecurityContext: {}
-containerSecurityContext: {}
-securityContext:
+containerSecurityContext:
   privileged: true
+securityContext: {}
 service:
   type: ClusterIP
   port: 8123
