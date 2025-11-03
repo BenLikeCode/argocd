@@ -33,6 +33,9 @@ service:
 ingress:
   enabled: true
   entryPoints: web
+  trustedProxies:
+    - 127.0.0.1
+    - ::1
   annotations:
     gethomepage.dev/href: https://dom.allapps.me
     gethomepage.dev/enabled: "true"
