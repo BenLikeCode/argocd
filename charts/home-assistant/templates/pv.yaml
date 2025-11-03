@@ -13,7 +13,7 @@ spec:
   hostPath:
     path: /home-assistant-pv #set you own location
   claimRef:
-    name: {{ include "home-assistant.fullname" . }}-pvc
+    name: {{ include "home-assistant.fullname" . }}-pv
 
 
 ---
