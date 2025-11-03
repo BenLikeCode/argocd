@@ -11,7 +11,7 @@ strategy:
     maxSurge: 25%
     maxUnavailable: 25%
 serviceAccount:
-  create: true
+  create: false
   automountServiceAccountToken: true
   annotations: {}
   name: ""
