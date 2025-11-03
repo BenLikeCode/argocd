@@ -28,7 +28,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 8123
-  name: http
+  name: home-assistant-web
   annotations: {}
 ingress:
   enabled: true
