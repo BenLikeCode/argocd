@@ -8,8 +8,12 @@ fullnameOverride: ""
 strategy:
   type: RollingUpdate
   rollingUpdate:
-    maxSurge: 25%
-    maxUnavailable: 25%
+    # Ne pas créer de pod "en surplus" pendant la mise à jour.
+    # Avec maxSurge: 0 et replicaCount: 1, le controller tuera l'ancien pod
+    # puis créera le nouveau (downtime mais pas deux instances simultanées).
+    maxSurge: 0
+    # Autorise 1 pod indisponible pendant l'upgrade — utile quand replicaCount = 1.
+    maxUnavailable: 1
 serviceAccount:
   create: false
   automountServiceAccountToken: true
