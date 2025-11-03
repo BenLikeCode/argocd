@@ -5,6 +5,10 @@ traefik:
     web:
       nodePort: 31960
       asDefault: true
+      forwardedHeaders:
+        trustedIPs:
+          - 127.0.0.1
+          - ::1
     websecure:
       nodePort: 31961
       expose:
