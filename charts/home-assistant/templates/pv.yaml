@@ -34,4 +34,3 @@ spec:
     path: /etc/localtime
   claimRef:
     name: {{ include "home-assistant.fullname" . }}-time-pvc
-    namespace: default
