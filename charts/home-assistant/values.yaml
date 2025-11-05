@@ -74,6 +74,9 @@ volumes:
     config:
       persistentVolumeClaim:
         claimName: home-assistant-pvc
+  - name: configmap-file
+    configMap:
+      name: home-assistant
   - name: home-assistant-time-volume
     config:
       persistentVolumeClaim:
@@ -81,6 +84,12 @@ volumes:
 volumeMounts:
   - mountPath: /config
     name: home-assistant-config-volume
+  - mountPath: /config/configuration.yaml
+    subPath: configuration.yaml
+    name: configmap-file
+  - mountPath: /config/automations.yaml
+    subPath: automations.yaml
+    name: configmap-file
   - mountPath: /etc/localtime
     name: home-assistant-time-volume
 nodeSelector: {}

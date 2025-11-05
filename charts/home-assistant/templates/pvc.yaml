@@ -27,4 +27,15 @@ spec:
       storage: 1Mi
 
   
-  
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: zigbee2mqtt-data
+spec:
+  resources:
+      requests:
+        storage: 10Gi
+  accessModes:
+  - ReadWriteOnce
