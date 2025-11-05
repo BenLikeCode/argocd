@@ -75,7 +75,7 @@ volumes:
       persistentVolumeClaim:
         claimName: home-assistant-pvc
   - name: configmap-file
-    configMap:
+    config:
       name: home-assistant
   - name: home-assistant-time-volume
     config:

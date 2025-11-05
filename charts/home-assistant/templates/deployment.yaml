@@ -88,4 +88,4 @@ spec:
         - name: {{ .name }}
           {{- toYaml .config | nindent 10 }}
         {{- end }}
-      serviceAccountName: {{ include "home-assistant.serviceAccountName" . }}
+
