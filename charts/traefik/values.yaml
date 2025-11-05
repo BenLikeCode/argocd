@@ -7,6 +7,7 @@ traefik:
       asDefault: true
       forwardedHeaders:
         trustedIPs:
+          - 10.244.7.156
           - 127.0.0.1
           - ::1
     websecure:
