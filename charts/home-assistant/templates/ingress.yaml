@@ -22,6 +22,7 @@ spec:
           port: {{ .Values.service.port }}
 {{- end }}
 
+---
 
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -41,5 +42,5 @@ spec:
       match: HostRegexp(`^mqtt\..+$`)
       services:
         - kind: Service
-          name: mqtt
+          name: zigbee2mqtt
           port: 8080
