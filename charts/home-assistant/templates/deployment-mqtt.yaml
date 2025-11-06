@@ -37,19 +37,19 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /data
-        # - name: usb
-        #   mountPath: /dev/ttyUSB0
-        # - name: udev
-        #   mountPath: /run/udev
+        - name: usb
+          mountPath: /dev/ttyUSB0
+        - name: udev
+          mountPath: /run/udev
         securityContext:
           privileged: true
       volumes:
       - name: data
         persistentVolumeClaim:
           claimName: zigbee2mqtt-data
-      # - name: usb
-      #   hostPath:
-      #     path: /dev/ttyUSB0
-      # - name: udev
-      #   hostPath:
-      #     path: /run/udev
+      - name: usb
+        hostPath:
+          path: /dev/ttyUSB0
+      - name: udev
+        hostPath:
+          path: /run/udev
