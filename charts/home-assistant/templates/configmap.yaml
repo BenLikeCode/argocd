@@ -39,7 +39,7 @@ data:
 
     # Home Assistant integration (MQTT discovery)
     homeassistant:
-        enabled: false
+        enabled: true
 
     # Enable the frontend, runs on port 8080 by default
     frontend:
