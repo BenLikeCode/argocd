@@ -41,6 +41,9 @@ spec:
           mountPath: /dev/ttyUSB0
         - name: udev
           mountPath: /run/udev
+        - mountPath: /app/configuration.yaml
+          subPath: configuration.yaml
+          name: vol-configmap-file-mqtt
         securityContext:
           privileged: true
       volumes:
@@ -53,3 +56,6 @@ spec:
       - name: udev
         hostPath:
           path: /run/udev
+      - name: vol-configmap-file-mqtt
+        configMap:
+          name: home-assistant-configmap-mqtt
