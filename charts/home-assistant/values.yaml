@@ -82,8 +82,9 @@ volumes:
       persistentVolumeClaim:
         claimName: home-assistant-time-pvc
   - name: usb
-    hostPath:
-      path: /dev/ttyUSB0
+    config:
+      hostPath:
+        path: /dev/ttyUSB0
 volumeMounts:
   - mountPath: /config
     name: home-assistant-config-volume
