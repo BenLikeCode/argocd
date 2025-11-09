@@ -77,4 +77,5 @@ data:
         # Let Zigbee2MQTT generate a pan_id on first start
         pan_id: 0x1a62
         # Let Zigbee2MQTT generate a ext_pan_id on first start
-        ext_pan_id: GENERATE
+        ext_pan_id: [0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD]
+
