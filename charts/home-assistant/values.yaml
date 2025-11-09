@@ -1,6 +1,6 @@
 image:
   pullPolicy: IfNotPresent
-  tag: stable
+  tag: latest
   repository: ghcr.io/home-assistant/home-assistant
 imagePullSecrets: []
 nameOverride: ""
