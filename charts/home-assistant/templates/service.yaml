@@ -42,7 +42,7 @@ metadata:
 spec:
   selector:
     app: mosquitto
-  type: NodePort
+  # type: NodePort
   ports:
   - name: mqtt
     protocol: TCP
