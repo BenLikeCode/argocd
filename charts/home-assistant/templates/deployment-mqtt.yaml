@@ -39,8 +39,8 @@ spec:
           mountPath: /data
         # - name: usb
         #   mountPath: /dev/ttyUSB0
-        - name: udev
-          mountPath: /run/udev
+        # - name: udev
+        #   mountPath: /run/udev
         - mountPath: /app/configuration.yaml
           subPath: configuration.yaml
           name: vol-configmap-file-mqtt
@@ -53,9 +53,9 @@ spec:
       # - name: usb
       #   hostPath:
       #     path: /dev/ttyUSB0
-      - name: udev
-        hostPath:
-          path: /run/udev
+      # - name: udev
+      #   hostPath:
+      #     path: /run/udev
       - name: vol-configmap-file-mqtt
         configMap:
           name: home-assistant-configmap-mqtt
