@@ -32,3 +32,19 @@ spec:
     targetPort: http
   selector:
     app: zigbee2mqtt
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mosquitto
+spec:
+  selector:
+    app: mosquitto
+  type: NodePort
+  ports:
+  - name: mqtt
+    protocol: TCP
+    port: 1883
+    targetPort: 1883
