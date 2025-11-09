@@ -42,6 +42,7 @@ data:
     # Enable the frontend, runs on port 8080 by default
     frontend:
         enabled: true
+        url: 'https://mqtt.allapps.me/'
         # port: 8080
 
     # MQTT settings
