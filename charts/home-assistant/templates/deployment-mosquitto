@@ -17,7 +17,15 @@ spec:
       containers:
       - name: mosquitto
         image: amd64/eclipse-mosquitto:2.0.22
+        volumeMounts:
+        - name: mosquitto-config
+          mountPath: /mosquitto/config/mosquitto.conf
+          subPath: mosquitto.conf
         securityContext:
           privileged: true
         ports:
         - containerPort: 1883
+      volumes:
+      - name: mosquitto-config
+        configMap:
+          name: mosquitto-config
