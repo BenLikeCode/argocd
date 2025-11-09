@@ -74,17 +74,14 @@ volumes:
     config:
       persistentVolumeClaim:
         claimName: home-assistant-pvc
-  - name: configmap-file
-    config:
-      name: configmap-file
+  # - name: configmap-file
+  #   config:
+  #     name: configmap-file
   - name: home-assistant-time-volume
     config:
       persistentVolumeClaim:
         claimName: home-assistant-time-pvc
-  # - name: usb
-  #   config:
-  #     hostPath:
-  #       path: /dev/ttyUSB0
+
 volumeMounts:
   - mountPath: /config
     name: home-assistant-config-volume
@@ -96,8 +93,6 @@ volumeMounts:
   #   name: configmap-file
   - mountPath: /etc/localtime
     name: home-assistant-time-volume
-  # - name: usb
-  #   mountPath: /dev/ttyUSB0
 nodeSelector: {}
 tolerations: []
 affinity: {}

@@ -30,17 +30,6 @@ spec:
         {{- toYaml .Values.securityContext | nindent 8 }}
       {{- end }}
 
-      # --- Ajout de l'initContainer ---
-      initContainers:
-        - name: copy-config
-          image: busybox
-          command: ['sh', '-c', 'cp /configmap/*.yaml /config/']
-          volumeMounts:
-            - name: configmap-file
-              mountPath: /configmap
-            - name: home-assistant-config-volume
-              mountPath: /config
-
       containers:
         - name: {{ .Chart.Name }}
           {{- if .Values.containerSecurityContext }}
