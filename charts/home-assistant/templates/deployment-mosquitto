@@ -25,7 +25,7 @@ spec:
           privileged: true
         ports:
         - containerPort: 1883
-        - containerPort: 9001
+        - containerPort: 1884
       volumes:
       - name: mosquitto-config
         configMap:

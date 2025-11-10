@@ -39,7 +39,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: HostRegexp(`^zmqtt\..+$`)
+      match: HostRegexp(`^mqtt\..+$`)
       services:
         - kind: Service
           name: zigbee2mqtt
@@ -47,23 +47,23 @@ spec:
 
 ---
 
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
-metadata:
-  labels:
-    app.kubernetes.io/instance: home-assistant
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/name: home-assistant
-    argocd.argoproj.io/instance: home-assistant
-    helm.sh/chart: home-assistant-1.0.0
-  name: home-assistant-mqtt
-spec:
-  entryPoints:
-    - web
-  routes:
-    - kind: Rule
-      match: HostRegexp(`^mqtt\..+$`)
-      services:
-        - kind: Service
-          name: mosquitto
-          port: 1883
+# apiVersion: traefik.io/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   labels:
+#     app.kubernetes.io/instance: home-assistant
+#     app.kubernetes.io/managed-by: Helm
+#     app.kubernetes.io/name: home-assistant
+#     argocd.argoproj.io/instance: home-assistant
+#     helm.sh/chart: home-assistant-1.0.0
+#   name: home-assistant-mqtt
+# spec:
+#   entryPoints:
+#     - web
+#   routes:
+#     - kind: Rule
+#       match: HostRegexp(`^mqtt\..+$`)
+#       services:
+#         - kind: Service
+#           name: mosquitto
+#           port: 1883

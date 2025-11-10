@@ -50,5 +50,5 @@ spec:
     targetPort: 1883
   - name: mqtt-web-socket
     protocol: TCP
-    port: 9001
-    targetPort: 9001
+    port: 1884
+    targetPort: 1884
