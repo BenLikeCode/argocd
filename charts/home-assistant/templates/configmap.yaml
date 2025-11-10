@@ -36,8 +36,8 @@ data:
     version: 4
 
     # Home Assistant integration (MQTT discovery)
-    # homeassistant:
-    #     enabled: true
+    homeassistant:
+        enabled: true
 
     # Enable the frontend, runs on port 8080 by default
     frontend:
