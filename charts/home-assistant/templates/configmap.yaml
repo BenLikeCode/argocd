@@ -1,25 +1,25 @@
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: {{ include "home-assistant.name" . }}
-  labels:
-  {{- include "home-assistant.labels" . | nindent 4 }}
-data:
-  known_devices.yaml: |
-  automations.yaml: |
-  configuration.yaml: |-
-    default_config:
-    # Load frontend themes from the themes folder
-    frontend:
-      themes: !include_dir_merge_named themes
+# kind: ConfigMap
+# apiVersion: v1
+# metadata:
+#   name: {{ include "home-assistant.name" . }}
+#   labels:
+#   {{- include "home-assistant.labels" . | nindent 4 }}
+# data:
+#   known_devices.yaml: |
+#   automations.yaml: |
+#   configuration.yaml: |-
+#     default_config:
+#     # Load frontend themes from the themes folder
+#     frontend:
+#       themes: !include_dir_merge_named themes
 
-    automation: !include automations.yaml
-    script: !include scripts.yaml
-    scene: !include scenes.yaml
-    http:
-      use_x_forwarded_for: true
-      trusted_proxies:
-        - 10.244.0.0/16
+#     automation: !include automations.yaml
+#     script: !include scripts.yaml
+#     scene: !include scenes.yaml
+#     http:
+#       use_x_forwarded_for: true
+#       trusted_proxies:
+#         - 10.244.0.0/16
 
 
 ---
@@ -51,8 +51,8 @@ data:
         # MQTT server URL
         server: 'mqtt://mosquitto'
         # MQTT server authentication, uncomment if required:
-        user: ben
-        password: ben
+        # user: ben
+        # password: ben
 
     # Serial settings, only required when Zigbee2MQTT fails to start with:
     #   USB adapter discovery error (No valid USB adapter found).
