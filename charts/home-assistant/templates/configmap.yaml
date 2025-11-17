@@ -76,6 +76,9 @@ data:
         network_key: GENERATE
         # Let Zigbee2MQTT generate a pan_id on first start
         pan_id: GENERATE
+        # Optional: Zigbee channel, changing might require re-pairing of some devices (see docs below). (Note: use a ZLL channel: 11, 15, 20, or 25 to avoid problems)
+        # (default: 11)
+        channel: 25
         # Let Zigbee2MQTT generate a ext_pan_id on first start
         ext_pan_id: [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]
 
