@@ -15,7 +15,7 @@ spec:
     - {{ .Values.ingress.entryPoints | default "web" }}
   routes:
     - kind: Rule
-      match: 'HostRegexp(`^dom\..+$`)'
+      match: 'HostRegexp(`^ha\..+$`)'
       services:
         - kind: Service
           name: {{ include "home-assistant.fullname" . }}
