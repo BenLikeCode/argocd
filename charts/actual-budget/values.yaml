@@ -41,7 +41,13 @@ ingress:
     gethomepage.dev/pod-selector: ""
     gethomepage.dev/weight: "10"
 extraEnvVars: {}
-resources: {}
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "200m"
+    memory: "256Mi"
 livenessProbe:
   httpGet:
     path: /
