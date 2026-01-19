@@ -12,7 +12,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 serviceAccount:
-  create: true
+  create: false
   automount: true
   annotations: {}
   name: ""
