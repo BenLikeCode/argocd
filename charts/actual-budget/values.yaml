@@ -13,7 +13,8 @@ nameOverride: ""
 fullnameOverride: ""
 serviceAccount:
   create: false
-  automount: true
+  automount: false
+  automountServiceAccountToken: false
   annotations: {}
   name: ""
 podAnnotations: {}
