@@ -3,32 +3,30 @@ kind: IngressRoute
 metadata:
   name: argocd-ingressroute
   namespace: argocd
-  annotations:
-    meta.helm.sh/release-name: argocd
-    meta.helm.sh/release-namespace: argocd
-    app.kubernetes.io/managed-by: Helm
-    kubernetes.io/ingress.class: traefik
-    gethomepage.dev/href: "https://argocd.allapps.me"
-    gethomepage.dev/enabled: "false"
-    gethomepage.dev/group: Tools
-    gethomepage.dev/icon: argo-cd.png
-    gethomepage.dev/name: "Argo CD"
-    gethomepage.dev/pod-selector: ""
-    gethomepage.dev/weight: "10" # optional
 spec:
   entryPoints:
     - web
+    - websecure
   routes:
+    # Route principale pour l'interface Web (UI)
     - kind: Rule
-      match: 'Host(`argocd.allapps.me`)'
+      match: Host(`argocd.allapps.me`)
       priority: 10
       services:
-      - name: argocd-server
-        port: 80
+        - name: argocd-server
+          port: 80
+    # Route spécifique pour l'API gRPC (CLI ArgoCD)
     - kind: Rule
-      match: 'HostRegexp(`^argocd\..+$`) && Header(`Content-Type`, `application/grpc`)'
-      priority: 11
+      # match: Host(`argocd.allapps.me`) && Header(`Content-Type`, `application/grpc`)
+      match: HostRegexp(`^argocd\..+$`) && Header(`Content-Type`, `application/grpc`)
+      priority: 20
       services:
         - name: argocd-server
           port: 80
           scheme: h2c
+  tls:
+    certResolver: letsencrypt
+    # Optionnel : force le domaine pour le certificat
+    # domains:
+    #   - main: argocd.allapps.me
+    

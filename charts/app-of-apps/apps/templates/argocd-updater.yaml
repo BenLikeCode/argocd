@@ -1,24 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: traefik
+  name: argocd-updater
   finalizers:
   - resources-finalizer.argocd.argoproj.io/foreground
 spec:
   project: default
   source:
     repoURL: git@github.com:BenLikeCode/argocd.git
-    path: charts/traefik
+    path: charts/argocd-updater
     targetRevision: HEAD
-    helm:
-      valueFiles: 
-        - values.yaml
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: traefik
+    namespace: argocd
   syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false
+    automated: null
+      # prune: true
+      # selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    # - SkipMissingResources=true

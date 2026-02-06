@@ -1,22 +1,21 @@
-argo-cd:
-  fullnameOverride: argocd
-  namespaceOverride: argocd
-  server:
-    service:
-      # type: ClusterIP
-      type: NodePort
-      nodePortHttp: 30080
-  configs:
-    params:
-      # server.rootpath: "/"
-      # server.basehref: "/"
-      server.insecure: true
-      server.disable.auth: true
-    cm:
-      accounts.readonly: apiKey
-    rbac:
-      policy.csv: "g, readonly, role:readonly"
-  dex:
-    enabled: false
-  notifications:
-    enabled: false
+fullnameOverride: argocd
+namespaceOverride: argocd
+server:
+  service:
+    type: ClusterIP
+    # type: NodePort
+    nodePortHttp: 30080
+configs:
+  params:
+    # server.rootpath: "/"
+    # server.basehref: "/"
+    server.insecure: true
+    server.disable.auth: true
+  cm:
+    accounts.readonly: apiKey
+  rbac:
+    policy.csv: "g, readonly, role:readonly"
+dex:
+  enabled: false
+notifications:
+  enabled: false

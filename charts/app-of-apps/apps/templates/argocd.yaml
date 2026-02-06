@@ -1,21 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: unleash
+  name: argocd
   finalizers:
-    - resources-finalizer.argocd.argoproj.io/foreground
+  - resources-finalizer.argocd.argoproj.io/foreground
 spec:
   project: default
   source:
     repoURL: git@github.com:BenLikeCode/argocd.git
-    path: charts/unleash
+    path: charts/argocd
     targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: unleash
+    namespace: argocd
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    automated: null
+      # prune: true
+      # selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    # - SkipMissingResources=true

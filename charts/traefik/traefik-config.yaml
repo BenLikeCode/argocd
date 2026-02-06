@@ -1,0 +1,71 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    deployment:
+      replicas: 1
+      kind: Deployment
+      hostNetwork: true  # Permet à Traefik de binder directement les ports 80/443 de l'hôte
+      strategy:
+        type: Recreate
+      initContainers:
+        - name: volume-permissions
+          image: busybox:latest
+          command: ["sh", "-c", "touch /data/acme.json && chmod 600 /data/acme.json && chown 65532:65532 /data/acme.json"]
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          securityContext:
+            runAsNonRoot: false
+            runAsUser: 0
+
+    # Sécurité globale des pods
+    podSecurityContext:
+      fsGroup: 65532
+      fsGroupChangePolicy: "OnRootMismatch"
+
+    ports:
+      web:
+        port: 80
+        exposedPort: 80
+        nodePort: 80
+      websecure:
+        port: 443
+        exposedPort: 443
+        nodePort: 443
+
+    # On utilise ClusterIP car hostNetwork: true s'occupe de l'exposition réelle
+    service:
+      type: ClusterIP
+
+    additionalArguments:
+      - --certificatesresolvers.letsencrypt.acme.email=benjaminherve@gmail.com
+      - --certificatesresolvers.letsencrypt.acme.storage=/data/acme.json
+      - --certificatesresolvers.letsencrypt.acme.dnschallenge=true
+      - --certificatesresolvers.letsencrypt.acme.dnschallenge.provider=porkbun
+      - --certificatesresolvers.letsencrypt.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53
+      - --certificatesresolvers.letsencrypt.acme.dnschallenge.delaybeforecheck=30
+      - --certificatesresolvers.letsencrypt.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+      - --log.level=DEBUG
+
+    env:
+      - name: PORKBUN_API_KEY
+        valueFrom:
+          secretKeyRef:
+            name: porkbun-credentials
+            key: PORKBUN_API_KEY
+      - name: PORKBUN_SECRET_API_KEY
+        valueFrom:
+          secretKeyRef:
+            name: porkbun-credentials
+            key: PORKBUN_SECRET_API_KEY
+
+    persistence:
+      enabled: true
+      name: data
+      size: 128Mi
+      path: /data
+      accessMode: ReadWriteOnce
