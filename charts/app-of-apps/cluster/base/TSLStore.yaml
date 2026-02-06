@@ -1,8 +1,0 @@
-apiVersion: traefik.io/v1alpha1
-kind: TLSStore
-metadata:
-  name: allapps-tlsstore
-  namespace: cert-manager   # le namespace où est le secret
-spec:
-  defaultCertificate:
-    secretName: certificate-allapps-tls
