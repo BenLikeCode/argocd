@@ -1,77 +1,77 @@
-  replicaCount: 1
-  image:
-    repository: actualbudget/actual-server
-    pullPolicy: IfNotPresent
-    tag: v26.1.0
-  strategy:
-    type: Recreate
-    rollingUpdate:
-      maxSurge: 100%
-      maxUnavailable: 0
-  imagePullSecrets: []
-  nameOverride: ""
-  fullnameOverride: ""
-  serviceAccount:
-    create: false
-    automount: false
-    automountServiceAccountToken: false
-    annotations: {}
-    name: ""
-  podAnnotations: {}
-  podLabels: {}
-  podSecurityContext: {}
-  securityContext: {}
-  service:
-    type: ClusterIP
-    port: 5006
-    name: http
-    annotations: {}
-  files:
-    server: /data/server-files
-    user: /data/user-files
-  ingress:
+replicaCount: 1
+image:
+  repository: actualbudget/actual-server
+  pullPolicy: IfNotPresent
+  tag: 25.12.0
+strategy:
+  type: Recreate
+  rollingUpdate:
+    maxSurge: 100%
+    maxUnavailable: 0
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+serviceAccount:
+  create: false
+  automount: false
+  automountServiceAccountToken: false
+  annotations: {}
+  name: ""
+podAnnotations: {}
+podLabels: {}
+podSecurityContext: {}
+securityContext: {}
+service:
+  type: ClusterIP
+  port: 5006
+  name: http
+  annotations: {}
+files:
+  server: /data/server-files
+  user: /data/user-files
+ingress:
+  enabled: true
+  entryPoints: web
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    gethomepage.dev/href: https://money.allapps.me
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Tools
+    gethomepage.dev/icon: actual-budget.png
+    gethomepage.dev/name: Actual Budget
+    gethomepage.dev/pod-selector: ""
+    gethomepage.dev/weight: "10"
+extraEnvVars: {}
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+data:
+  persistence:
     enabled: true
-    entryPoints: web
-    annotations:
-      kubernetes.io/ingress.class: traefik
-      gethomepage.dev/href: https://money.allapps.me
-      gethomepage.dev/enabled: "true"
-      gethomepage.dev/group: Tools
-      gethomepage.dev/icon: actual-budget.png
-      gethomepage.dev/name: Actual Budget
-      gethomepage.dev/pod-selector: ""
-      gethomepage.dev/weight: "10"
-  extraEnvVars: {}
-  resources:
-    requests:
-      cpu: "100m"
-      memory: "128Mi"
-    limits:
-      cpu: "200m"
-      memory: "256Mi"
-  livenessProbe:
-    httpGet:
-      path: /
-      port: http
-  readinessProbe:
-    httpGet:
-      path: /
-      port: http
-  data:
-    persistence:
-      enabled: true
-      size: 1Gi
-      annotations: {}
-      accessModes:
-      - ReadWriteOnce
-      name: ""
-      volumes:
-      - name: data
-        persistentVolumeClaim:
-          claimName: actualbudget-data
-      volumeMounts:
-      - name: data
-        mountPath: /data
-  nodeSelector: {}
-  tolerations: []
-  affinity: {}
+    size: 1Gi
+    annotations: {}
+    accessModes:
+    - ReadWriteOnce
+    name: ""
+    volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: actualbudget-data
+    volumeMounts:
+    - name: data
+      mountPath: /data
+nodeSelector: {}
+tolerations: []
+affinity: {}
