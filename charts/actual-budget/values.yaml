@@ -53,10 +53,14 @@ livenessProbe:
   httpGet:
     path: /
     port: http
+  initialDelaySeconds: 30  # Temps d'attente avant le 1er test
+  periodSeconds: 10 # Fréquence du test (optionnel)
 readinessProbe:
   httpGet:
     path: /
     port: http
+  initialDelaySeconds: 15  # Le readiness peut souvent commencer plus tôt
+  periodSeconds: 5
 data:
   persistence:
     enabled: true
