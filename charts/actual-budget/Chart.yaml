@@ -1,4 +1,4 @@
 apiVersion: v2
 name: actualbudget
 version: 1.0.0
-appVersion: "v26.1.0"
+appVersion: "v26.2.0"
