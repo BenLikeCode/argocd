@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/name: argocd-image-updater
     app.kubernetes.io/part-of: argocd-image-updater
   name: argocd-image-updater
+  namespace: argocd
 rules:
 - apiGroups:
   - ""
@@ -16,3 +17,15 @@ rules:
   - get
   - list
   - watch
+# --- AJOUTEZ CETTE SECTION ---
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
