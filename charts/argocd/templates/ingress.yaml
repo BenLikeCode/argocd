@@ -5,28 +5,21 @@ metadata:
   namespace: argocd
 spec:
   entryPoints:
-    - web
     - websecure
   routes:
-    # Route principale pour l'interface Web (UI)
+    # 1. Priorité au trafic gRPC (pour la CLI ArgoCD)
     - kind: Rule
-      match: HostRegexp(`^argocd\..+$`)
-      priority: 10
-      services:
-        - name: argocd-server
-          port: 80
-    # Route spécifique pour l'API gRPC (CLI ArgoCD)
-    - kind: Rule
-      # match: Host(`argocd.allapps.me`) && Header(`Content-Type`, `application/grpc`)
-      match: HostRegexp(`^argocd\..+$`) && Header(`Content-Type`, `application/grpc`)
+      match: Host(`argocd.allapps.me`) && Header(`Content-Type`, `application/grpc`)
       priority: 20
       services:
         - name: argocd-server
           port: 80
-          scheme: h2c
-  tls:
-    certResolver: letsencrypt
-    # Optionnel : force le domaine pour le certificat
-    # domains:
-    #   - main: argocd.allapps.me
+          scheme: h2c # Indispensable pour l'HTTP/2 non chiffré entre Traefik et le Pod
     
+    # 2. Trafic Web classique (Interface UI)
+    - kind: Rule
+      match: Host(`argocd.allapps.me`)
+      priority: 10
+      services:
+        - name: argocd-server
+          port: 80

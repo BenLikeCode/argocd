@@ -12,10 +12,10 @@ metadata:
   {{- end }}
 spec:
   entryPoints:
-    - {{ .Values.ingress.entryPoints | default "web" }}
+    - {{ .Values.ingress.entryPoints | default "websecure" }}
   routes:
     - kind: Rule
-      match: HostRegexp(`^money\..+$`)
+      match: Host(`money.allapps.me`)
       priority: 10
       services:
         - kind: Service
@@ -25,8 +25,4 @@ spec:
       middlewares:
       {{ toYaml .Values.ingress.middlewares | indent 8 }}
       {{- end }}
-  tls:
-    certResolver: letsencrypt
-    domains:
-      - main: money.allapps.me
 {{- end }}

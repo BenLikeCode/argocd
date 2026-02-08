@@ -8,7 +8,7 @@ spec:
     deployment:
       replicas: 1
       kind: Deployment
-      hostNetwork: true  # Permet à Traefik de binder directement les ports 80/443 de l'hôte
+      hostNetwork: false
       strategy:
         type: Recreate
       initContainers:
@@ -22,34 +22,38 @@ spec:
             runAsNonRoot: false
             runAsUser: 0
 
-    # Sécurité globale des pods
     podSecurityContext:
       fsGroup: 65532
       fsGroupChangePolicy: "OnRootMismatch"
 
     ports:
       web:
-        port: 80
-        exposedPort: 80
-        nodePort: 80
+        port: 8000
+        exposedPort: 8000
+        # Redirection automatique vers HTTPS (équivalent à ta config Docker)
+        redirectTo:
+          port: websecure
+          priority: 10
       websecure:
-        port: 443
-        exposedPort: 443
-        nodePort: 443
+        port: 8443
+        exposedPort: 8443
+        # TLS activé par défaut sur ce port
+        tls:
+          enabled: true
+          certResolver: letsencrypt
 
-    # On utilise ClusterIP car hostNetwork: true s'occupe de l'exposition réelle
     service:
-      type: ClusterIP
+      type: LoadBalancer
 
     additionalArguments:
-      - --certificatesresolvers.letsencrypt.acme.email=benjaminherve@gmail.com
-      - --certificatesresolvers.letsencrypt.acme.storage=/data/acme.json
-      - --certificatesresolvers.letsencrypt.acme.dnschallenge=true
-      - --certificatesresolvers.letsencrypt.acme.dnschallenge.provider=porkbun
-      - --certificatesresolvers.letsencrypt.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53
-      - --certificatesresolvers.letsencrypt.acme.dnschallenge.delaybeforecheck=30
-      - --certificatesresolvers.letsencrypt.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
-      - --log.level=DEBUG
+      - "--certificatesresolvers.letsencrypt.acme.email=benjaminherve@gmail.com"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.dnschallenge=true"
+      - "--certificatesresolvers.letsencrypt.acme.dnschallenge.provider=porkbun"
+      - "--certificatesresolvers.letsencrypt.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53"
+      - "--certificatesresolvers.letsencrypt.acme.dnschallenge.propagation.delayBeforeChecks=30"
+      - "--certificatesresolvers.letsencrypt.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
+      - "--log.level=INFO"
 
     env:
       - name: PORKBUN_API_KEY
