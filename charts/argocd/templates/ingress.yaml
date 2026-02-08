@@ -10,7 +10,7 @@ spec:
   routes:
     # Route principale pour l'interface Web (UI)
     - kind: Rule
-      match: Host(`argocd.allapps.me`)
+      match: HostRegexp(`^argocd\..+$`)
       priority: 10
       services:
         - name: argocd-server

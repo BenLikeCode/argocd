@@ -27,4 +27,7 @@ spec:
       {{- end }}
   tls:
     certResolver: letsencrypt
+    Optionnel : force le domaine pour le certificat
+    domains:
+      - main: money.allapps.me
 {{- end }}
