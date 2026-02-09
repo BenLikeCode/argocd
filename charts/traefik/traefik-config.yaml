@@ -46,7 +46,7 @@ spec:
       type: LoadBalancer
 
     additionalArguments:
-      - "--certificatesresolvers.letsencrypt.acme.email=benjaminherve@gmail.com"
+      - "--certificatesresolvers.letsencrypt.acme.email=benjaminherve.pro@gmail.com"
       - "--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json"
       - "--certificatesresolvers.letsencrypt.acme.dnschallenge=true"
       - "--certificatesresolvers.letsencrypt.acme.dnschallenge.provider=porkbun"
