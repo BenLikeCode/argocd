@@ -22,7 +22,7 @@ spec:
     namespace: home-assistant
   syncPolicy:
     automated: null
-      # prune: true
-      # selfHeal: true
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true

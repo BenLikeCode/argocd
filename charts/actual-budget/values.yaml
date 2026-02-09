@@ -59,7 +59,7 @@ readinessProbe:
   httpGet:
     path: /
     port: http
-  initialDelaySeconds: 15  # Le readiness peut souvent commencer plus tôt
+  initialDelaySeconds: 30  # Le readiness peut souvent commencer plus tôt
   periodSeconds: 5
 data:
   persistence:
