@@ -90,9 +90,9 @@ volumeMounts:
   - mountPath: /config/configuration.yaml
     subPath: configuration.yaml
     name: configmap-file
-  - mountPath: /config/automations.yaml
-    subPath: automations.yaml
-    name: configmap-file
+  # - mountPath: /config/automations.yaml
+  #   subPath: automations.yaml
+  #   name: configmap-file
   - mountPath: /etc/localtime
     name: home-assistant-time-volume
     readOnly: true
