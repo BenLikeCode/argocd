@@ -32,12 +32,12 @@ service:
   annotations: {}
 ingress:
   enabled: true
-  entryPoints: web
+  entryPoints: websecure
   trustedProxies:
     - 127.0.0.1
     - ::1
   annotations:
-    gethomepage.dev/href: https://dom.allapps.me
+    gethomepage.dev/href: https://ha.allapps.me
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Tools
     gethomepage.dev/icon: home-assistant.png
