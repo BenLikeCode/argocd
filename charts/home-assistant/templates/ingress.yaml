@@ -36,7 +36,7 @@ metadata:
   name: home-assistant-zmqtt
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - kind: Rule
       match: Host(`mqtt.allapps.me`)
