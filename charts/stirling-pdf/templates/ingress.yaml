@@ -19,5 +19,6 @@ spec:
         - kind: Service
           name: {{ include "stirlingpdf.name" . }}
           port: {{ .Values.service.port }}
-
+  tls:
+      certResolver: letsencrypt
 {{- end }}
