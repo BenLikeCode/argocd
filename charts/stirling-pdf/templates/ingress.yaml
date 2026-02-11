@@ -11,23 +11,13 @@ metadata:
   {{- end }}
 spec:
   entryPoints:
-    {{- range .Values.ingress.entryPoints | default (list "web") }}
-    - {{ . }}
-    {{- end }}
+    - {{ .Values.ingress.entryPoints | default "websecure" }}
   routes:
     - kind: Rule
-      match: |
-        {{- if .Values.ingress.matchRule }}
-        {{ .Values.ingress.matchRule }}
-        {{- else }}
-        Host(`{{ include "stirlingpdf.name" . }}.allapps.me`)
-        {{- end }}
+      match: Host(`pdf.allapps.me`)
       services:
         - kind: Service
           name: {{ include "stirlingpdf.name" . }}
           port: {{ .Values.service.port }}
-  {{- if .Values.ingress.tls }}
-  tls:
-    {{- toYaml .Values.ingress.tls | nindent 4 }}
-  {{- end }}
+
 {{- end }}
