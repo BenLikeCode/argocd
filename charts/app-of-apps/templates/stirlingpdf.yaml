@@ -4,13 +4,13 @@ metadata:
   name: stirling-pdf
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: stirlingpdf=ghcr.io/stirling-tools/stirling-pdf:1.x
-    argocd-image-updater.argoproj.io/stirlingpdf.helm.image-name: image.name
-    argocd-image-updater.argoproj.io/stirlingpdf.helm.image-tag: image.tag
-    argocd-image-updater.argoproj.io/stirlingpdf.update-strategy: semver
-    argocd-image-updater.argoproj.io/write-back-method: git
-    argocd-image-updater.argoproj.io/write-back-target: helmvalues:../stirling-pdf/values.yaml
+  # annotations:
+  #   argocd-image-updater.argoproj.io/image-list: stirlingpdf=ghcr.io/stirling-tools/stirling-pdf:2.x
+  #   argocd-image-updater.argoproj.io/stirlingpdf.helm.image-name: image.name
+  #   argocd-image-updater.argoproj.io/stirlingpdf.helm.image-tag: image.tag
+  #   argocd-image-updater.argoproj.io/stirlingpdf.update-strategy: semver
+  #   argocd-image-updater.argoproj.io/write-back-method: git
+  #   argocd-image-updater.argoproj.io/write-back-target: helmvalues:../stirling-pdf/values.yaml
 spec:
   project: default
   source:
@@ -21,8 +21,8 @@ spec:
     server: "https://kubernetes.default.svc"
     namespace: stirling-pdf
   syncPolicy:
-    automated: null
-      # prune: true
-      # selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true

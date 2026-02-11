@@ -20,7 +20,7 @@ spec:
         {{- if .Values.ingress.matchRule }}
         {{ .Values.ingress.matchRule }}
         {{- else }}
-        HostRegexp(`^{{ include "stirlingpdf.name" . }}\..*$`)
+        Host(`{{ include "stirlingpdf.name" . }}.allapps.me`)
         {{- end }}
       services:
         - kind: Service

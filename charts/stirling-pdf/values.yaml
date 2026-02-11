@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: ghcr.io/stirling-tools/stirling-pdf
-  tag: 1.6.0
+  tag: 2.4.5
   pullPolicy: IfNotPresent
   name: ghcr.io/stirling-tools/stirling-pdf
 imagePullSecrets: []
@@ -25,8 +25,8 @@ service:
 ingress:
   enabled: true
   entryPoints:
-  - web
-  matchRule: HostRegexp(`^pdf\..+$`)
+  - websecure
+  matchRule: Host(`pdf.allapps.me`)
   annotations:
     kubernetes.io/ingress.class: traefik
 resources:
