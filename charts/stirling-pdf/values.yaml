@@ -24,8 +24,7 @@ service:
   annotations: {}
 ingress:
   enabled: true
-  entryPoints:
-  - websecure
+  entryPoints: websecure
   matchRule: Host(`pdf.allapps.me`)
   annotations:
     kubernetes.io/ingress.class: traefik
