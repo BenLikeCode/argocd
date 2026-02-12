@@ -61,7 +61,7 @@ extraVolumeMounts: []
 env:
   APP_URL: https://auth.allapps.me/
   APP_TITLE: Login
-  LOG_LEVEL: "0"
+  LOG_LEVEL: "info"
   USERS: admin:$$2a$$10$$YYO4ehBmsr0efwCihJSItOUkXbsRS5ICnBQyvEGKdIqDzQ2JeHlRq
   COOKIE_SECURE: "true"
   DISABLE_CONTINUE: "true"
