@@ -37,7 +37,7 @@ env:
   COOKIE_DOMAIN: allapps.me
   SESSION_EXPIRATION: "7200"
   APP_TITLE: TinyAuth
-  LOG_LEVEL: "info"
+  LOG_LEVEL: "debug"
   SECURE_COOKIE: "true"
   THEME: "dark"
   USERS: admin:$$2a$$10$$YYO4ehBmsr0efwCihJSItOUkXbsRS5ICnBQyvEGKdIqDzQ2JeHlRq
