@@ -33,7 +33,7 @@ ingress:
     kubernetes.io/ingress.class: traefik
 
 env:
-  APP_URL: https://auth.allapps.me/
+  APP_URL: https://auth.allapps.me
   COOKIE_DOMAIN: allapps.me
   SESSION_EXPIRATION: "7200"
   APP_TITLE: TinyAuth
