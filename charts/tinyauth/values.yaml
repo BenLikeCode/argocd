@@ -40,7 +40,7 @@ env:
   LOG_LEVEL: "debug"
   SECURE_COOKIE: "false"
   THEME: "dark"
-  USERS: admin:$$2a$$10$$YYO4ehBmsr0efwCihJSItOUkXbsRS5ICnBQyvEGKdIqDzQ2JeHlRq
+  USERS: admin:$2a$10$ACn0vGuLNAImqNVlma4HuO2bUCjRk/3.VD4jhRb1gtOw/KMakk.AG
 
 secretEnv:
   SECRET_KEY: # Nom exact attendu en v4
