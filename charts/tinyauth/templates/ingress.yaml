@@ -12,17 +12,12 @@ metadata:
   {{- end }}
 spec:
   entryPoints:
-    {{- range .Values.ingress.entryPoints | default (list "web") }}
+    {{- range .Values.ingress.entryPoints | default (list "websecure") }}
     - {{ . }}
     {{- end }}
   routes:
     - kind: Rule
-      match: |
-        {{- if .Values.ingress.matchRule }}
-        {{ .Values.ingress.matchRule }}
-        {{- else }}
-        HostRegexp(`^{{ include "tinyauth.name" . }}\..*$`)
-        {{- end }}
+      match: Host(`auth.allapps.me`)
       services:
         - kind: Service
           name: {{ include "tinyauth.name" . }}

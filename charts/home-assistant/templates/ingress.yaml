@@ -46,5 +46,7 @@ spec:
         - kind: Service
           name: zigbee2mqtt
           port: 8080
+      middlewares:
+        - name: tinyauth-tinyauth@kubernetescrd
   tls:
       certResolver: letsencrypt

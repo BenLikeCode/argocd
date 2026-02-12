@@ -25,4 +25,6 @@ spec:
       middlewares:
       {{ toYaml .Values.ingress.middlewares | indent 8 }}
       {{- end }}
+  tls:
+      certResolver: letsencrypt
 {{- end }}
