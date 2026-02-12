@@ -3,34 +3,54 @@ image:
   repository: ghcr.io/steveiliop56/tinyauth
   tag: v4
   pullPolicy: IfNotPresent
-  name: ghcr.io/steveiliop56/tinyauth
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-serviceAccount:
-  create: false
-  name: ""
-  annotations: {}
-  automountServiceAccountToken: false
-podAnnotations: {}
-podLabels: {}
-securityContext:
-  runAsNonRoot: false
-  fsGroup: 1000
-containerSecurityContext: {}
+
 service:
   type: ClusterIP
   port: 3000
-  annotations: {}
+
+# Sécurité du Pod (Indispensable pour l'écriture sur le PVC)
+securityContext:
+  runAsNonRoot: false # Tinyauth v4 a besoin d'être root ou d'avoir les droits sur /data
+  fsGroup: 1000
+
+# PERSISTANCE : Configuration corrigée pour TinyAuth v4
+persistence:
+  enabled: true
+  size: 100Mi
+  accessModes:
+    - ReadWriteOnce
+  mountPath: /data
+  existingClaim: "tinyauth-data" # Nom du PVC que tu as créé
+  storageClass: "" # Laisse vide pour utiliser la classe par défaut (local-path sur K3s)
+
 ingress:
   enabled: true
   tls:
-      certResolver: letsencrypt
+    certResolver: letsencrypt
   entryPoints:
-  - websecure
-  matchRule: Host(`auth.allapps.me`)
+    - websecure
   annotations:
     kubernetes.io/ingress.class: traefik
+
+env:
+  APP_URL: https://auth.allapps.me/
+  COOKIE_DOMAIN: allapps.me
+  SESSION_EXPIRATION: "7200"
+  APP_TITLE: TinyAuth
+  LOG_LEVEL: "info"
+  SECURE_COOKIE: "true"
+  THEME: "dark"
+  USERS: admin:$$2a$$10$$YYO4ehBmsr0efwCihJSItOUkXbsRS5ICnBQyvEGKdIqDzQ2JeHlRq
+
+secretEnv:
+  SECRET_KEY: # Nom exact attendu en v4
+    name: tinyauth
+    key: secretKey
+
+# On laisse vide car géré par le bloc persistence ci-dessus
+extraVolumes: []
+extraVolumeMounts: []
+
 resources:
   limits:
     cpu: 100m
@@ -38,40 +58,6 @@ resources:
   requests:
     cpu: 50m
     memory: 56Mi
-persistence:
-  enabled: false
-  size: 1Gi
-  accessModes:
-  - ReadWriteOnce
-  mountPath: /data
-  existingClaim: ""
-  storageClass: ""
-  annotations: {}
-volumes:
-- name: tinyauth
-  config:
-    persistentVolumeClaim:
-      claimName: tinyauth
-volumeMounts:
-- name: tinyauth
-  mountPath: /usr/xxxx
-  subPath: xxx
-extraVolumes: []
-extraVolumeMounts: []
-env:
-  APP_URL: https://auth.allapps.me/
-  APP_TITLE: Login
-  LOG_LEVEL: "debug"
-  USERS: admin:$$2a$$10$$YYO4ehBmsr0efwCihJSItOUkXbsRS5ICnBQyvEGKdIqDzQ2JeHlRq
-  COOKIE_SECURE: "true"
-  DISABLE_CONTINUE: "true"
-  BACKGROUND_IMAGE: "https://images.unsplash.com/photo-1757600797414-7a7997f64226?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-secretEnv:
-  SECRET:
-    name: tinyauth
-    key: secretKey
+
 strategy:
-  type: RollingUpdate
-  rollingUpdate:
-    maxSurge: 25%
-    maxUnavailable: 25%
+  type: Recreate # Recreate est préférable pour SQLite afin d'éviter que 2 pods accèdent au même fichier
