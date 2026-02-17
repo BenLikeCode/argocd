@@ -17,7 +17,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`ddnslapps.me`)
+      match: Host(`ddns.allapps.me`)
       services:
       - kind: Service
         name: ddnsupdater
