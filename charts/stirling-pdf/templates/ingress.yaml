@@ -19,6 +19,8 @@ spec:
         - kind: Service
           name: {{ include "stirlingpdf.name" . }}
           port: {{ .Values.service.port }}
+      middlewares:
+        - name: tinyauth-tinyauth@kubernetescrd
   tls:
       certResolver: letsencrypt
 {{- end }}
