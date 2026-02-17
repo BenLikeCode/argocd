@@ -22,3 +22,5 @@ spec:
       - kind: Service
         name: ddnsupdater
         port: 80
+  tls:
+      certResolver: letsencrypt
