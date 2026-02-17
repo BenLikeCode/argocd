@@ -14,10 +14,10 @@ metadata:
     gethomepage.dev/weight: "10" # optional
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - kind: Rule
-      match: 'HostRegexp(`^ddns\..+$`)'
+      match: Host(`ddnslapps.me`)
       services:
       - kind: Service
         name: ddnsupdater
