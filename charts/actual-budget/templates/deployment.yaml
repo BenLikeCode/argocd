@@ -43,6 +43,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            - name: DEBUG
+              value: actual:config
             - name: ACTUAL_PORT
               value: {{ .Values.service.port | quote }}
             - name: ACTUAL_SERVER_FILES
