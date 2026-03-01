@@ -32,8 +32,8 @@ files:
 ingress:
   enabled: true
   entryPoints: websecure
-  middlewares:
-    - name: tinyauth-tinyauth@kubernetescrd
+  # middlewares:
+  #   - name: tinyauth-tinyauth@kubernetescrd
   annotations:
     kubernetes.io/ingress.class: traefik
     gethomepage.dev/href: https://money.allapps.me
@@ -61,7 +61,7 @@ readinessProbe:
   httpGet:
     path: /
     port: http
-  initialDelaySeconds: 180  # Le readiness peut souvent commencer plus tôt
+  initialDelaySeconds: 60  # Le readiness peut souvent commencer plus tôt
   periodSeconds: 5
 data:
   persistence:
