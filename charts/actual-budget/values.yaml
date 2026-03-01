@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: actualbudget/actual-server
   pullPolicy: IfNotPresent
-  tag: 26.2.0
+  tag: 26.2.1
 strategy:
   type: Recreate
   rollingUpdate:
@@ -61,7 +61,7 @@ readinessProbe:
   httpGet:
     path: /
     port: http
-  initialDelaySeconds: 30  # Le readiness peut souvent commencer plus tôt
+  initialDelaySeconds: 180  # Le readiness peut souvent commencer plus tôt
   periodSeconds: 5
 data:
   persistence:
